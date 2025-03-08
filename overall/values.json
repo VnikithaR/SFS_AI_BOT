@@ -1,0 +1,27 @@
+{
+    "title": "Core Values",
+    "values": [
+      {
+        "name": "Faith",
+        "description": "Cultivating trust in God, self, and others, guiding our actions and decisions."
+      },
+      {
+        "name": "Community",
+        "description": "Fostering a sense of belonging and unity, encouraging collaboration and support."
+      },
+      {
+        "name": "Excellence",
+        "description": "Striving for the highest standards in academics, character, and service."
+      },
+      {
+        "name": "Partnership",
+        "description": "Building strong relationships with stakeholders for mutual growth and success."
+      },
+      {
+        "name": "Service",
+        "description": "Committing to selfless acts that benefit society, reflecting our dedication to others."
+      }
+    ],
+    "source": "https://www.sfscollege.in/Core-Values.php"
+  }
+  
