@@ -1,0 +1,77 @@
+{
+    "jobs_opportunites":
+    [
+       {
+         "job1":"Accountant"
+       },
+       {
+         "job2":"Auditor"
+       },
+       {
+         "job3":"Bussiness Consultant"
+       },
+       {
+         "job4":"Consultant"
+       },
+       {
+         "job5":"Certified Public Accountant"
+       },
+       {
+         "job6":"Company Secretary"
+       },
+       {
+         "job7":"Chartered Accountant"
+       },
+       {
+         "job8":"Business Analyst"
+       },
+       {
+         "job9":"Chief Financial Officer"
+       },
+       {
+         "job10":"Finanace Consultant"
+       },
+       {
+         "job11":"Finance Officer"
+       },
+       {
+            "job12":"Sales Analyst"
+        },
+        {
+            "job13":"Cost Estimator"
+        },
+        {
+            "job14":"Junior Analyst"
+        },
+        {
+            "job15":"Tax Accountant"
+        },
+        {
+            "job16":"Financial Analyst"
+        },
+        {
+            "job17":"Stock Broker"
+        },
+        {
+            "job18":"Financial Manager"
+        },
+        {
+            "job19":"Economist"
+        },
+        {
+            "job20":"Business Development Trainee"
+        },
+        {
+            "job21":"Tax Consultant Bank PO"
+        },
+        {
+            "job22":"Commodity Trader"
+        },
+        {
+            "job23":"Account Executive"
+        },
+        {
+            "job24":"Event Manager"
+        }
+    ]
+}
