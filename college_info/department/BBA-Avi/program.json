@@ -1,0 +1,51 @@
+{
+    "programs": [
+      {
+        "title": "Bachelor of Business Administration (BBA)",
+        "overview": "The BBA program at St. Francis de Sales College is designed to nurture aspiring business leaders by providing a strong foundation in management principles, business ethics, and entrepreneurial skills.",
+        "specializations_offered": {
+          "Marketing": "Learn the art of market analysis, branding, and strategic sales management.",
+          "Human Resources": "Gain expertise in talent acquisition, employee engagement, and organizational development.",
+          "Finance": "Master financial planning, investment strategies, and risk management."
+        },
+        "value_added_courses": [
+          "Talent Management",
+          "Six Sigma",
+          "Recent Trends in Marketing"
+        ],
+        "program_details": {
+          "duration": "Three years (full-time)",
+          "eligibility": "A pre-university from a recognized institution",
+          "campus_infrastructure": "State-of-the-art facilities, including smart classrooms, libraries, and technology labs.",
+          "placement_assistance": "Dedicated career support team to help students secure internships and job opportunities."
+        }
+      },
+      {
+        "title": "Bachelor of Business Administration (BBA) in Aviation",
+        "overview": "The BBA in Aviation program provides in-depth knowledge and hands-on experience in key aviation sectors, including Air Traffic Control operations, Ground Handling, Customer Service Management, and Professional Skill Development.",
+        "activities_conducted": [
+          "IV to Bangalore International airport",
+          "ATC tower visit of Bangalore International airport",
+          "IV to Naval Aviation Museum Goa",
+          "Flight trip",
+          "Inter college and Intra college Aviation fest",
+          "Industry Expert sessions and workshops"
+        ],
+        "additional_courses_offered": [
+          "IATA, Skill development, Certificate course, SWAYAM",
+          "Free certifications in aviation management",
+          "International aviation Lease training",
+          "Introduction to technical records of aircraft lease",
+          "Certificate of airport council international"
+        ],
+        "program_details": {
+          "duration": "Three years (full-time)",
+          "seats_available": 60,
+          "eligibility": "A pre-university from a recognized institution",
+          "campus_infrastructure": "State-of-the-art facilities, including smart classrooms, libraries, and technology labs.",
+          "placement_assistance": "Dedicated career support team to help students secure internships and job opportunities."
+        }
+      }
+    ]
+}
+  

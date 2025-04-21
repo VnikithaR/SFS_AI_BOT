@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>College Website - SFS AI Chatbot</title>
+
+  <!-- Fonts and Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=El+Messiri:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="images/favicons/android-chrome-192x192.png" type="image/png" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="top-bar">
+      <img src="https://www.sfscollege.in/images/sfs24.png" alt="SFS Logo" class="logo-img" />
+      <div>
+        <a href="#">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#academics">Academics</a>
+        <a href="#Admission">Admissions</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="gold-line"></div>
+    <div class="topbar-text">St. Francis de Sales College</div>
+    <div class="topbar-text">Autonomous</div>
+    <div class="gold-line"></div>
+  </header>
+
+  <!-- Carousel -->
+  <div class="carousel">
+    <img src="https://www.sfscollege.in/slide/Photo1.webp" class="active" alt="Slide 1" />
+    <img src="https://www.sfscollege.in/slide/Photo5.webp" alt="Slide 2" />
+    <img src="https://www.sfscollege.in/slide/Photo2.webp" alt="Slide 3" />
+    <img src="https://www.sfscollege.in/slide/Photo6.webp" alt="Slide 4" />
+  </div>
+
+  <div class="gold-line"></div>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <h2>About Us</h2>
+    <p>St. Francis de Sales College (SFS) is a premier institution dedicated to academic excellence and holistic development. Founded on the principles of service and leadership, we nurture young minds to become future-ready global citizens.</p>
+  </section>
+
+  <!-- Academics Section -->
+  <section id="academics" class="academics-section">
+    <h2>Academics</h2>
+    <p>At SFS College, academics go beyond classrooms. We aim to build intellectual curiosity, critical thinking, and practical knowledge among our students.</p>
+
+    <div class="academics-cards">
+      <div class="academic-card">
+        <h3>Programs Offered</h3>
+        <ul>
+          <li>Bachelor of Computer Applications (BCA)</li>
+          <li>Bachelor of Commerce (B.Com)</li>
+          <li>Bachelor of Arts (BA)</li>
+          <li>Master of Computer Applications (MCA)</li>
+
+        </ul>
+      </div>
+      <div class="academic-card">
+        <h3>Departments</h3>
+        <ul>
+          <li>Computer Science</li>
+          <li>Commerce</li>
+          <li>Humanities</li>
+          <li>Languages</li>
+        </ul>
+      </div>
+      <div class="academic-card">
+        <h3>Academic Excellence</h3>
+        <p>Our dedicated faculty, modern labs, and academic clubs ensure students receive a well-rounded and industry-relevant education.</p>
+        <a href="#" class="btn">Download Syllabus PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Section -->
+  <section class="container" id="Admission">
+    <h3 class="section-title">Welcome to SFS College</h3>
+    <div class="main-content">
+      <div class="cover">
+        <p>SFS College is a vibrant institution committed to excellence in education and holistic development.</p>
+        <div class="card">
+          <div class="card-title">News & Announcements</div>
+          <p>Admissions open for 2025-26. Apply now!</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+        <div class="card">
+          <div class="card-title">Upcoming Events</div>
+          <p>Annual Cultural Fest scheduled for May 2025.</p>
+          <a href="#" class="btn">Details</a>
+        </div>
+      </div>
+      <div class="right">
+        <div class="quick-links card">
+          <div class="card-title">Quick Links</div>
+          <ul>
+            <li><a href="#">Admission</a></li>
+            <li><a href="#">Courses Offered</a></li>
+            <li><a href="#">Online Fee Payment</a></li>
+            <li><a href="#">Faculty</a></li>
+            <li><a href="#">Student Portal</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" id="contact">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+        <div>
+          <h5>Contact Us</h5>
+          <p>SFS College<br>Bangalore, India<br>Phone: +91 12345 67890</p>
+        </div>
+        <div>
+          <h5>Quick Links</h5>
+          <a href="#">Home</a>
+          <a href="#">Admissions</a>
+          <a href="#">Gallery</a>
+        </div>
+        <div>
+          <h5>Follow Us</h5>
+          <p>Facebook | Twitter | YouTube</p>
+        </div>
+      </div>
+      <hr />
+      <p style="text-align: center;">&copy; 2025 St. Francis de Sales College. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Chatbot Button -->
+  <button id="chatbot-btn" class="chatbot-btn">
+    <img src="images\icons\icons8-chatbot-94.png" alt="Chatbot Icon" class="icon-img" />
+  </button>
+
+  <!-- Chatbot Container -->
+  <div id="chatbot-container" class="chatbot-container">
+    <div class="chat-header">
+      <img src="images/favicons/android-chrome-192x192.png" alt="Bot Icon" class="chatbot-icon" />
+      <h2>College Assistant</h2>
+      <a href="#" id="settings-icon" class="settings-icon">
+        <img src="images/icons/icons8-menu-vertical-48.png" alt="Settings Icon" class="icon-img" />
+      </a>
+      <button id="close-chat" class="close-chat">
+        <img src="images/icons/icons8-off-24.png" alt="Close Chat" class="icon-img" />
+      </button>
+    </div>
+
+    <div id="chat-window" class="chat-window"></div>
+
+    <div class="chat-input-container">
+      <img id="refresh-btn" class="refresh-btn icon-img" src="images/icons/icons8-refresh-48.png" alt="Refresh" />
+      <input type="text" id="user-input" class="user-input" placeholder="Ask something..." />
+      <button id="send-btn" class="send-btn">
+        <img src="images/icons/icons8-send-48.png" alt="Send Icon" class="icon-img" />
+      </button>
+      <div id="typing-indicator" class="typing-indicator">Typing...</div>
+    </div>
+
+    <!-- Confirmation Popup -->
+    <div id="confirm-close-popup" class="confirm-close-popup">
+      <div class="popup-content">
+        <span id="popup-close" class="popup-close">&times;</span>
+        <p>Are you sure you want to stop chatting?</p>
+        <button id="yes-btn">Yes</button>
+        <button id="no-btn">No</button>
+      </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="settings-modal">
+      <div class="settings-content">
+        <span id="close-settings" class="close-settings">&times;</span>
+        <h3>Settings</h3>
+
+        <div class="setting-option">
+          <label for="language-select">Language:</label>
+          <select id="language-select">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+          </select>
+        </div>
+
+        <div class="setting-option">
+          <label for="chatbot-toggle">Chatbot Availability:</label>
+          <input type="checkbox" id="chatbot-toggle" checked />
+        </div>
+
+        <div class="setting-option">
+          <label for="notification-toggle">Mute Notifications:</label>
+          <input type="checkbox" id="notification-toggle" />
+        </div>
+
+        <div class="setting-option">
+          <a href="#profile-settings">Profile Settings</a>
+        </div>
+        <div class="setting-option">
+          <a href="#help-faq">Help/FAQ</a>
+        </div>
+        <div class="setting-option">
+          <a href="#feedback">Provide Feedback</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ JS File -->
+  <script src="js/script.js" defer></script>
+</body>
+</html>
