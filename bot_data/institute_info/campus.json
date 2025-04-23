@@ -1,0 +1,20 @@
+{
+  "college": {
+    "college_name": "St. Francis de Sales College (Autonomous)",
+    "location": "Bengaluru, Electronics City, along the Bengaluru-Hosur National Highway",
+    "address": {
+      "street": "Electronics City Post",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "postal_code": "560100",
+      "country": "India"
+    },
+    "campus_details": {
+      "environment": "Nestled amidst lush greenery, offering a cool climate conducive to learning.",
+      "recreational_space": "Ample space to support students' recreational activities.",
+      "atmosphere": "Serene surroundings, unpolluted atmosphere, and appealing ambiance for education.",
+      "infrastructure": "Superior infrastructure, intellectual resources, and progressive vision.",
+      "notable_presence": "The college has already established a strong reputation."
+    }
+  }
+}

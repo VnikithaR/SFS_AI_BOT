@@ -1,0 +1,94 @@
+{
+  "admissions": {
+    "documents_required": {
+      "karnataka_students": [
+        "Class X or SSLC Marks Card",
+        "PUC or +2 or Class XII or Equivalent Marks Card (I & II Year)",
+        "Conduct Certificate from the Head of the Institution last attended",
+        "Transfer Certificate",
+        "Passport size photographs in formal dress - 06",
+        "Caste Certificate (if applicable)"
+      ],
+      "non_karnataka_students": [
+        "Class X or SSLC Marks Card",
+        "PUC or +2 or Class XII or Equivalent Marks Card (I & II Year)",
+        "Conduct Certificate from the Head of the Institution last attended",
+        "Transfer Certificate",
+        "Migration Certificate",
+        "Passport size photographs in formal dress - 06",
+        "Caste and Income Certificate (if applicable)"
+      ],
+      "foreign_students": [
+        "Mark Statements of respective country equivalent to Higher Secondary",
+        "Testimonial",
+        "Conduct Certificate from the Head of the Institution last attended",
+        "10 passport size photographs in formals (latest)",
+        "Birth Certificate",
+        "Residential Certificate from their country",
+        "Provisional Eligibility Certificate",
+        "Valid Student Visa",
+        "Copy of passport attested by Gazetted Officer"
+      ]
+    },
+    "important_notes": [
+      "Incomplete Applications will not be processed",
+      "The Applicant should be personally present for Admission along with the Parent / Guardian",
+      "The candidate should satisfy all other conditions set by Bangalore University",
+      "After the counselling/interview, the candidates selected shall be enrolled after the payment of fee as per the fee structure",
+      "Final Admission is subject to the University's approval",
+      "No Transfer from one discipline to any other is permitted"
+    ],
+    "document_submission_conditions": [
+      "Submit all original documents, copies and a hard copy of the completed application form at the time of admission",
+      "Students must keep a photocopy of the documents for themselves",
+      "Original documents will be returned after university registration or at the end of the program",
+      "Acknowledgement receipt is required to collect documents later"
+    ]
+  },
+  "eligibility": {
+    "criteria": [
+      "Admission will be on merit",
+      "No recommendations will be entertained"
+    ]
+  },
+  "application_process": {
+    "portal_link": "https://sfs-ecity.linways.com/v4/adm-applicant/login",
+    "application_period": "Applications are invited usually from March onwards. Admissions take place in May/June",
+    "interview_required": true,
+    "interview_note": "Mandatory personal interview conducted by the Admission Committee",
+    "document_submission_terms": [
+      "All original documents, copies, and completed application form must be submitted",
+      "Students should retain photocopies of submitted documents",
+      "Original documents are returned only at the end of the program against the acknowledgement receipt"
+    ],
+    "required_documents": {
+      "general_note": "All originals along with 3 sets of photocopies are required",
+      "international_note": "A different set of documents is required for International students and Non-Resident Indians"
+    },
+    "selection_process": [
+      "Only complete applications with all required attachments are considered",
+      "Shortlisted candidates are invited for a personal interview",
+      "Interview details (date, time, venue) are communicated individually",
+      "Final results are based on board exam marks and interview performance"
+    ],
+    "terms_and_conditions": [
+      "Application must be in prescribed format",
+      "Incomplete or false information affects admission",
+      "SFS College reserves the right of admission and allotment of program",
+      "No refund of fees once admitted"
+    ]
+  },
+  "hostel_facility": {
+    "available": true,
+    "details": {
+      "men": "On campus",
+      "women": "Just outside the campus with all necessary facilities"
+    }
+  },
+  "post_application_steps": [
+    "Eligible candidates are invited for a personal interview",
+    "Candidates are shortlisted based on board exam and interview performance",
+    "Final results are communicated to qualified candidates",
+    "Selected candidates take provisional admission based on subject/department vacancies"
+  ]
+}

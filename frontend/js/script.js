@@ -33,12 +33,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Toggle chatbot visibility
     chatbotBtn.addEventListener('click', function () {
-        if (chatbotContainer.style.display === 'none' || chatbotContainer.style.display === '') {
-            chatbotContainer.style.display = 'flex'; // Show the chatbot
-        } else {
-            chatbotContainer.style.display = 'none'; // Hide the chatbot
-        }
+        chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'flex' : 'none';
+        chatbotBtn.classList.toggle('active');
     });
+
+
     chatbotBtn.addEventListener('click', () => {
         chatbotBtn.classList.toggle('active');
     });
@@ -48,58 +47,77 @@ document.addEventListener('DOMContentLoaded', function () {
         confirmClosePopup.style.display = 'flex';
     });
 
-    // Cancel closing
     noBtn.addEventListener('click', function () {
         confirmClosePopup.style.display = 'none';
     });
 
-    // Confirm closing
     yesBtn.addEventListener('click', function () {
         chatbotContainer.style.display = 'none';
         confirmClosePopup.style.display = 'none';
     });
 
-    // Popup close button
     popupClose.addEventListener('click', function () {
         confirmClosePopup.style.display = 'none';
     });
 
-    // Settings icon opens modal
+    // Settings modal toggle
     settingsIcon.addEventListener('click', function (e) {
         e.preventDefault();
         settingsModal.style.display = 'flex';
     });
 
-    // Close settings modal
     closeSettings.addEventListener('click', function () {
         settingsModal.style.display = 'none';
     });
 
-    // Send message and simulate bot response
+    // Send message
     sendBtn.addEventListener('click', function () {
         const message = userInput.value.trim();
         if (message === '') return;
 
         appendMessage('user', message);
         userInput.value = '';
-
-        // Simulate bot typing
         typingIndicator.style.display = 'block';
 
-        setTimeout(() => {
+        // ✅ Connect to Rasa
+        fetch("http://localhost:5005/webhooks/rest/webhook", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                sender: "user",
+                message: message
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
             typingIndicator.style.display = 'none';
-            appendMessage('bot', generateBotResponse(message));
-        }, 1000);
+
+            if (data && data.length > 0) {
+                data.forEach(botMsg => {
+                    if (botMsg.text) {
+                        appendMessage('bot', botMsg.text);
+                    }
+                });
+            } else {
+                appendMessage('bot', "Hmm... I didn't get a response. Try again?");
+            }
+        })
+        .catch(error => {
+            typingIndicator.style.display = 'none';
+            appendMessage('bot', "Error connecting to Rasa server.");
+            console.error("Fetch error:", error);
+        });
     });
 
-    // Press Enter to send message
     userInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             sendBtn.click();
         }
     });
 
-    // Append message to chat
+    // Append chat message
     function appendMessage(sender, text) {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('chat-message', sender === 'user' ? 'user-message' : 'bot-message');
@@ -115,25 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 
-    // Generate simple bot response
-    function generateBotResponse(userMessage) {
-        const responses = {
-            hello: "Hi! How can I help you with admissions or courses today?",
-            hi: "Hello! 😊 What would you like to know?",
-            admissions: "Admissions are open! Visit the Admissions section for more info.",
-            courses: "We offer various UG & PG programs. Check out the Courses section.",
-            default: "I'm here to help! Ask me about the college, admissions, courses, and more."
-        };
-
-        const lower = userMessage.toLowerCase();
-        for (let key in responses) {
-            if (lower.includes(key)) return responses[key];
-        }
-
-        return responses.default;
-    }
-
-    // Refresh button to clear chat
+    // Clear chat window
     document.getElementById('refresh-btn').addEventListener('click', function () {
         chatWindow.innerHTML = '';
     });

@@ -1,0 +1,35 @@
+{
+    "course": "MCA (Mgmt)",
+    "annual_fee": {
+      "year_1": 125000,
+      "year_2": 130000
+    },
+    "semester_fee": {
+      "odd": {
+        "tuition": 50000,
+        "maint_library": 25000,
+        "total": 75000
+      },
+      "even": {
+        "tuition": 35000,
+        "maint_library": 15000,
+        "total": 50000
+      },
+      "grand_total": 125000
+    },
+    "batch": {
+      "PG": "2025–2027"
+    },
+    "notes": {
+      "PG": {
+        "uniform_fee": 5000,
+        "non_karnataka_fee": 12000,
+        "exam_registration_fee": "Per semester",
+        "pgcet_note": "Must pay KEA fee as applicable"
+      }
+    },
+    "syllabus": {
+      "2_years": "https://www.sfscollege.in/PDF/SFS_MCA_Syllabus-pg-question.pdf"
+    }
+  }
+  

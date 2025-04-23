@@ -1,0 +1,184 @@
+{
+  "Institution Overview": {
+    "institution": "SFS College, Bangalore"
+  },
+  "Contact Information": {
+    "email": [
+      "admission@sfscollege.in",
+      "pro@sfscollege.in"
+    ],
+    "phone": [
+      "(+91) 8088140679",
+      "(+91) 7899474082",
+      "(+91) 7022370051"
+    ],
+    "mobile_app_website": "SFS COLLEGE, BANGALORE (Available on Google Play/iOS)"
+  },
+  "Eligibility Criteria": {
+    "minimum_qualification": "Pass in 10+2/Pre-University Course/equivalent course recognized by Bangalore University"
+  },
+  "Admission Process": {
+    "Required Documents": {
+      "Karnataka Students": [
+        "Class X or SSLC Marks Card",
+        "PUC or +2 or Class XII or Equivalent Marks Card (I & II Year)",
+        "Conduct Certificate from the Head of the Institution last attended",
+        "Transfer Certificate",
+        "Passport size photographs in formal dress - 06",
+        "Caste Certificate (if applicable)"
+      ],
+      "Non-Karnataka Students": [
+        "Class X or SSLC Marks Card",
+        "PUC or +2 or Class XII or Equivalent Marks Card (I & II Year)",
+        "Conduct Certificate from the Head of the Institution last attended",
+        "Transfer Certificate",
+        "Migration Certificate",
+        "Passport size photographs in formal dress - 06",
+        "Caste and Income Certificate (if applicable)"
+      ],
+      "Foreign Students": [
+        "Mark Statements of respective country equivalent to Higher Secondary",
+        "Testimonial",
+        "Conduct Certificate from the Head of the Institution last attended",
+        "10 passport size photographs in formals (latest)",
+        "Birth Certificate",
+        "Residential Certificate from their country",
+        "Provisional Eligibility Certificate",
+        "Valid Student Visa",
+        "Copy of passport attested by Gazetted Officer"
+      ]
+    },
+    "Important Conditions": {
+      "student_guardian_presence": "The Applicant should be personally present for Admission along with the Parent/Guardian.",
+      "original_documents_required": "The candidate must submit all the original documents, copies, and other relevant documents as well as a hard copy of the completed application form.",
+      "university_approval_required": "Final Admission is subject to the University's approval."
+    },
+    "Document Submission": {
+      "submission": "At the time of admission, candidates must submit all the original documents, copies, and the completed application form.",
+      "return_policy": "The original documents submitted will be returned to the students only after university registration or at the end of the program. The student must present the acknowledgment receipt for document return."
+    },
+    "Selection Process": {
+      "selection": "Admission will be based on merit. No recommendations will be entertained."
+    }
+  },
+  "Fee Structure": {
+    "BBA": {
+      "annual_fee": {
+        "year_1": 95000,
+        "year_2": 99000,
+        "year_3": 103500
+      },
+      "semester_fee": {
+        "odd": {
+          "tuition": 43000,
+          "maint_library": 14000,
+          "total": 57000
+        },
+        "even": {
+          "tuition": 30000,
+          "maint_library": 8000,
+          "total": 38000
+        },
+        "grand_total": 95000
+      },
+      "notes": {
+        "uniform_fee": 5000,
+        "non_karnataka_fee": 12000,
+        "exam_registration_fee": "Per semester, as notified"
+      }
+    }
+  },
+  "Academic Programs": [
+    {
+      "title": "Bachelor of Business Administration (BBA)",
+      "overview": "The Bachelor of Business Administration (BBA) program at St. Francis de Sales College is designed to nurture aspiring business leaders by providing a strong foundation in management principles, business ethics, and entrepreneurial skills. With a blend of theoretical knowledge and practical exposure, the program emphasizes holistic development through workshops, guest lectures, industrial visits, and co-curricular activities. Specializations in key areas such as marketing, finance, and human resource management equip students to excel in the dynamic business environment, fostering critical thinking and leadership capabilities. The program aims to equip students with the skills required to meet the demands of the corporate world and pursue advanced studies or entrepreneurial ventures.",
+      "specializations": {
+        "Marketing": "Learn the art of market analysis, branding, and strategic sales management.",
+        "Human Resources": "Gain expertise in talent acquisition, employee engagement, and organizational development.",
+        "Finance": "Master financial planning, investment strategies, and risk management."
+      },
+      "program_details": {
+        "duration": "Three years (full-time)",
+        "eligibility": "A pre-university from a recognized institution",
+        "campus_infrastructure": "State-of-the-art facilities, including smart classrooms, libraries, and technology labs.",
+        "placement_assistance": "Dedicated career support team to help students secure internships and job opportunities in top companies."
+      },
+      "syllabus": [
+        {
+          "year": "1st & 2nd Semesters",
+          "url": "https://www.sfscollege.in/PDF/I&II_SEM_BBA-Gen.pdf"
+        },
+        {
+          "year": "3rd & 4th Semesters",
+          "url": "https://www.sfscollege.in/PDF/3rdand4th_sem_NEP_BBA-GenSYLLABUS.pdf"
+        },
+        {
+          "year": "5th & 6th Semesters",
+          "url": "https://www.sfscollege.in/PDF/5th&6th_sem_NEPBBA-Gen_SYLLABUS.pdf"
+        }
+      ]
+    }
+  ],
+  "Faculty Directory": [
+    {
+      "name": "Fr. Albin P Mathew",
+      "qualification": "M.A Economics"
+    },
+    {
+      "name": "Mrs. Mangayarkarasi. N",
+      "qualification": "M.Com (Accounts and Finance), M.Com, B.Ed, M.Phil"
+    },
+    {
+      "name": "Mrs. Devichandrika. S",
+      "qualification": "M.Com, Mba, (Ph.D)"
+    },
+    {
+      "name": "Mrs. Ramandeep Kaur",
+      "qualification": "M.Com, NET"
+    },
+    {
+      "name": "Mrs. Ashwini C",
+      "qualification": "M.Com, NET"
+    },
+    {
+      "name": "Mrs. Gulla Keerthi",
+      "qualification": "MBA"
+    },
+    {
+      "name": "Ms. Haritha S",
+      "qualification": "M.Com"
+    },
+    {
+      "name": "Ms. Suma D",
+      "qualification": "M.Com"
+    },
+    {
+      "name": "Mrs. Sonia Ashok",
+      "qualification": "LLB, PGDM"
+    },
+    {
+      "name": "Mrs. Rakshitha G",
+      "qualification": "B.E, MBA"
+    },
+    {
+      "name": "Mrs. Ginsa Roslet George",
+      "qualification": "MTM, M.A History (Pursuing), PGDESD, (PH.D)"
+    },
+    {
+      "name": "Ms. Thamburu Sunny",
+      "qualification": "MBA (Marketing & HR), (PH.D)"
+    },
+    {
+      "name": "Dr. Sindhu D G",
+      "qualification": "M.SC Maths, PH.D Maths"
+    },
+    {
+      "name": "Dr. Prabha D",
+      "qualification": "M.Com , M.Phil Marketing, MBA Marketing, Ph.D Management"
+    },
+    {
+      "name": "Dr. T. SUJIN",
+      "qualification": ""
+    }
+  ]
+}

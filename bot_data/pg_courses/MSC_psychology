@@ -1,0 +1,36 @@
+{
+    "course": "M.Sc (Psychology)",
+    "annual_fee": {
+      "year_1": 82000,
+      "year_2": 85500
+    },
+    "semester_fee": {
+      "odd": {
+        "tuition": 36000,
+        "maint_library": 14000,
+        "total": 50000
+      },
+      "even": {
+        "tuition": 24500,
+        "maint_library": 8000,
+        "total": 32500
+      },
+      "grand_total": 82000
+    },
+    "batch": {
+      "PG": "2025–2027"
+    },
+    "notes": {
+      "PG": {
+        "uniform_fee": 5000,
+        "non_karnataka_fee": 12000,
+        "exam_registration_fee": "Per semester",
+        "pgcet_note": "Must pay KEA fee as applicable"
+      }
+    },
+    "syllabus": {
+      "year_1": "https://www.sfscollege.in/PDF/I_YEAR_MSC.pdf",
+      "year_2": "https://www.sfscollege.in/PDF/III&IV_SEM_MSC.pdf"
+    }
+  }
+  

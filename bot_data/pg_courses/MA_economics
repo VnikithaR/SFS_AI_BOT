@@ -1,0 +1,36 @@
+{
+    "course": "M.A (Economics)",
+    "annual_fee": {
+      "year_1": 37500,
+      "year_2": 41000
+    },
+    "semester_fee": {
+      "odd": {
+        "tuition": 8500,
+        "maint_library": 14000,
+        "total": 22500
+      },
+      "even": {
+        "tuition": 7000,
+        "maint_library": 8000,
+        "total": 15000
+      },
+      "grand_total": 37500
+    },
+    "batch": {
+      "PG": "2025–2027"
+    },
+    "notes": {
+      "PG": {
+        "uniform_fee": 5000,
+        "non_karnataka_fee": 12000,
+        "exam_registration_fee": "Per semester",
+        "pgcet_note": "Must pay KEA fee as applicable"
+      }
+    },
+    "syllabus": {
+      "year_1": "https://www.sfscollege.in/PDF/MA_ECONOMICS_2024-25_I_yr.pdf",
+      "year_2": "blank"
+    }
+  }
+  

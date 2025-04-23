@@ -1,0 +1,23 @@
+version: "3.1"
+
+intents:
+  - greet
+  - welcome
+  - goodbye
+
+responses:
+  utter_greet:
+    - text: "Hello! 👋 How can I assist you today?"
+    - text: "Hey there! Need help with something?"
+  
+  utter_welcome:
+    - text: "Welcome! 😊 Let me know if there's anything you need."
+    - text: "So glad to have you here! How can I help?"
+
+  utter_goodbye:
+    - text: "Goodbye! Have a great day! 👋"
+    - text: "See you later! Take care! 😊"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
