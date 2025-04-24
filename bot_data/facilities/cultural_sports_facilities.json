@@ -1,0 +1,94 @@
+{
+  "facilities_for_cultural_and_sports_activities": {
+    "cultural_activities": {
+      "description": "The College is fully equipped with all the cultural facilities needed for students to participate in inter and intra-collegiate cultural events.",
+      "facilities": [
+        {"name": "Ambedkar Study Centre"},
+        {"name": "Cultural Room", "quantity": 2},
+        {"name": "Cultural Store Room"},
+        {"name": "Non AC Conference Hall 1"},
+        {"name": "Non AC Seminar Hall 1"},
+        {"name": "A/C Conference Room 2", "capacity": 100},
+        {"name": "A/C Conference Room 3", "capacity": 100},
+        {"name": "A/C Seminar Hall 2", "capacity": 300},
+        {"name": "Common Room for Girls"},
+        {"name": "Common Room for Boys"},
+        {"name": "Music Area", "location": "Basement"},
+        {"name": "Green Room"},
+        {"name": "Backstage"},
+        {"name": "Men’s & Women’s toilet"},
+        {"name": "Open Auditorium", "capacity": 4000},
+        {"name": "New Auditorium", "capacity": 1800},
+        {"name": "Auditorium", "capacity": 300}
+      ]
+    },
+    "sports_activities": {
+      "description": "The College promotes sports activities and offers several facilities to develop students' talents in various sports. National level coaches are engaged for training students, and cash awards and scholarships are provided for students excelling in sports.",
+      "facilities": [
+        {"name": "4 Basketball Courts"},
+        {"name": "2 Volleyball Courts"},
+        {"name": "2 Badminton Courts"},
+        {"name": "Cricket Practice Pitch"},
+        {"name": "Cricket Ground"},
+        {"name": "Football Ground"},
+        {"name": "Football Practice Ground"},
+        {"name": "Softball Practice Ground"},
+        {"name": "Baseball Practice Ground"},
+        {"name": "Kho-Kho Practice Ground"},
+        {"name": "Kabaddi Practice Ground"},
+        {"name": "Indoor Games", "types": ["Chess", "Carrom", "Table Tennis"]}
+      ]
+    },
+    "gym_facilities": {
+      "description": "The College maintains a gym for the students, where both hostel and regular students use the gym as part of their fitness regimen. The gym is open daily with specific timings for usage.",
+      "facilities": [
+        {"name": "Multi-gym Facility", "location": "Basement"},
+        {"name": "Regular Workout Timings", "hours": ["6 am to 8 am", "3 pm to 6 pm"]},
+        {"name": "Bodybuilding Achievements", "highlight": "Mr. Karthik, a student from M.Com, has won several awards in bodybuilding."}
+      ]
+    },
+    "yoga_facilities": {
+      "description": "The College provides Yoga and Prayer facilities, with trained faculty to teach students the basics of Yoga. The importance of Yoga is shared in classes, and Yoga Day is celebrated annually.",
+      "facilities": [
+        {"name": "Yoga and Prayer Centre"},
+        {"name": "Trained Faculty in Yoga"},
+        {"name": "International Yoga Day", "activity": "Celebrated every year"},
+        {"name": "NCC & NSS Yoga Camps", "participation": "Staff & Students participate actively"}
+      ]
+    },
+    "additional_facilities": [
+      {"name": "Badminton Court"},
+      {"name": "Boys Common Room"},
+      {"name": "Butterfly Park"},
+      {"name": "Canteen", "quantity": 2},
+      {"name": "Carrom Board Room"},
+      {"name": "Closed Audi Ground Floor", "quantity": 5},
+      {"name": "Counselling Room", "quantity": 2},
+      {"name": "Cricket Court"},
+      {"name": "Foodball"},
+      {"name": "Gandhian Study Centre"},
+      {"name": "Garden", "quantity": 2},
+      {"name": "Girls Common Room"},
+      {"name": "Green Room"},
+      {"name": "Gym", "quantity": 2},
+      {"name": "Hand Ball / Soft Ball Court"},
+      {"name": "Herbal Garden"},
+      {"name": "Kho Kho"},
+      {"name": "Music Zone"},
+      {"name": "NCC Office"},
+      {"name": "NGO Aspire Cell", "quantity": 2},
+      {"name": "Open Auditorium"},
+      {"name": "Placement Cell"},
+      {"name": "Prayer Hall"},
+      {"name": "Radio Room", "quantity": 2},
+      {"name": "Research / IP Cell"},
+      {"name": "SFS Woods"},
+      {"name": "Sports Room"},
+      {"name": "Table Tennis Room"},
+      {"name": "Throw Ball Court"},
+      {"name": "Volley Ball"},
+      {"name": "Women’s Cell"},
+      {"name": "Yoga Hall"}
+    ]
+  }
+}

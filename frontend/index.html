@@ -59,7 +59,6 @@
           <li>Bachelor of Commerce (B.Com)</li>
           <li>Bachelor of Arts (BA)</li>
           <li>Master of Computer Applications (MCA)</li>
-
         </ul>
       </div>
       <div class="academic-card">
@@ -137,14 +136,14 @@
 
   <!-- Chatbot Button -->
   <button id="chatbot-btn" class="chatbot-btn">
-    <img src="images\icons\icons8-chatbot-94.png" alt="Chatbot Icon" class="icon-img" />
+    <img src="images/icons/icons8-chatbot-94.png" alt="Chatbot Icon" class="icon-img" />
   </button>
 
   <!-- Chatbot Container -->
   <div id="chatbot-container" class="chatbot-container">
     <div class="chat-header">
       <img src="images/favicons/android-chrome-192x192.png" alt="Bot Icon" class="chatbot-icon" />
-      <h2>College Assistant</h2>
+      <h2>SFS InfoBot</h2>
       <a href="#" id="settings-icon" class="settings-icon">
         <img src="images/icons/icons8-menu-vertical-48.png" alt="Settings Icon" class="icon-img" />
       </a>
@@ -155,20 +154,29 @@
 
     <div id="chat-window" class="chat-window"></div>
 
-    <div class="chat-input-container">
-      <img id="refresh-btn" class="refresh-btn icon-img" src="images/icons/icons8-refresh-48.png" alt="Refresh" />
-      <input type="text" id="user-input" class="user-input" placeholder="Ask something..." />
-      <button id="send-btn" class="send-btn">
-        <img src="images/icons/icons8-send-48.png" alt="Send Icon" class="icon-img" />
-      </button>
-      <div id="typing-indicator" class="typing-indicator">Typing...</div>
-    </div>
+<!-- Typing indicator inside chat window -->
+<div id="typing-indicator" class="typing-indicator" style="display: none;">SFS InfoBot is typing...</div>
+
+<div class="chat-input-container">
+  <img id="refresh-btn" class="refresh-btn icon-img" src="images/icons/icons8-refresh-48.png" alt="Refresh" />
+  <input type="text" id="user-input" class="user-input" placeholder="Ask something..." />
+  <button id="send-btn" class="send-btn">
+    <img src="images/icons/icons8-send-48.png" alt="Send Icon" class="icon-img" />
+  </button>
+</div>
+
+    <!-- Watermark: SFS Logo + SFS InfoBot -->
+<div class="chatbot-watermark">
+  <img src="https://www.sfscollege.in/images/sfs24.png" alt="SFS Logo" class="sfs-watermark-logo" />
+  <div class="sfs-watermark-text">SFS InfoBot</div>
+  <div class="sfs-watermark-text2">Your Smart Campus Assistant.</div>
+</div>
 
     <!-- Confirmation Popup -->
     <div id="confirm-close-popup" class="confirm-close-popup">
       <div class="popup-content">
         <span id="popup-close" class="popup-close">&times;</span>
-        <p>Are you sure you want to stop chatting?</p>
+        <p>Are you sure you want to stop chatting with <strong>SFS InfoBot</strong>?</p>
         <button id="yes-btn">Yes</button>
         <button id="no-btn">No</button>
       </div>
@@ -179,7 +187,6 @@
       <div class="settings-content">
         <span id="close-settings" class="close-settings">&times;</span>
         <h3>Settings</h3>
-
         <div class="setting-option">
           <label for="language-select">Language:</label>
           <select id="language-select">

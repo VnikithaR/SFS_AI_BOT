@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initially hide the chatbot container
     chatbotContainer.style.display = 'none';
 
-    // College website UI (Carousel)
+    // Carousel functionality
     let slideIndex = 0;
     const slides = document.querySelectorAll('.carousel img');
 
@@ -32,17 +32,19 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(showSlides, 4000);
 
     // Toggle chatbot visibility
+    let welcomeMessageShown = false;
     chatbotBtn.addEventListener('click', function () {
-        chatbotContainer.style.display = chatbotContainer.style.display === 'none' ? 'flex' : 'none';
+        const isVisible = chatbotContainer.style.display !== 'none';
+        chatbotContainer.style.display = isVisible ? 'none' : 'flex';
         chatbotBtn.classList.toggle('active');
+
+        if (!isVisible && !welcomeMessageShown) {
+            appendMessage('bot', "Hi there! 👋 I'm SFS InfoBot. How can I assist you today?");
+            welcomeMessageShown = true;
+        }
     });
 
-
-    chatbotBtn.addEventListener('click', () => {
-        chatbotBtn.classList.toggle('active');
-    });
-
-    // Show confirmation popup when trying to close
+    // Show confirmation popup
     closeChatBtn.addEventListener('click', function () {
         confirmClosePopup.style.display = 'flex';
     });
@@ -77,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         appendMessage('user', message);
         userInput.value = '';
-        typingIndicator.style.display = 'block';
+        typingIndicator.style.display = 'block'; // 👈 Show typing indicator
 
-        // ✅ Connect to Rasa
+        // Fetch response from Rasa backend
         fetch("http://localhost:5005/webhooks/rest/webhook", {
             method: "POST",
             headers: {
@@ -92,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => response.json())
         .then(data => {
-            typingIndicator.style.display = 'none';
+            typingIndicator.style.display = 'none'; // 👈 Hide typing indicator
 
             if (data && data.length > 0) {
                 data.forEach(botMsg => {
@@ -101,23 +103,24 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
             } else {
-                appendMessage('bot', "Hmm... I didn't get a response. Try again?");
+                appendMessage('bot', "Hmm... SFS InfoBot didn't get a response. Try again?");
             }
         })
         .catch(error => {
-            typingIndicator.style.display = 'none';
-            appendMessage('bot', "Error connecting to Rasa server.");
+            typingIndicator.style.display = 'none'; // 👈 Hide typing indicator on error
+            appendMessage('bot', "Oops! SFS InfoBot had trouble connecting to the server.");
             console.error("Fetch error:", error);
         });
     });
 
+    // Send on Enter key
     userInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             sendBtn.click();
         }
     });
 
-    // Append chat message
+    // Append chat message to window
     function appendMessage(sender, text) {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('chat-message', sender === 'user' ? 'user-message' : 'bot-message');
@@ -133,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
         chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 
-    // Clear chat window
+    // Clear chat
     document.getElementById('refresh-btn').addEventListener('click', function () {
         chatWindow.innerHTML = '';
     });

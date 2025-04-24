@@ -1,0 +1,36 @@
+{
+    "general_time_table": {
+      "college_timings": {
+        "class_timings": "8:00 AM – 4:00 PM",
+        "office_timings_for_students": [
+          "7:30 AM – 8:00 AM",
+          "10:45 AM – 11:15 AM",
+          "1:00 PM – 1:45 PM"
+        ]
+      },
+      "weekly_schedule": {
+        "monday_to_friday": {
+          "1st_hour": "8:30 AM – 9:20 AM",
+          "2nd_hour": "9:25 AM – 10:15 AM",
+          "break": "10:15 AM – 10:40 AM",
+          "3rd_hour": "10:40 AM – 11:30 AM",
+          "4th_hour": "11:35 AM – 12:25 PM",
+          "lunch": "12:25 PM – 1:00 PM",
+          "5th_hour": "1:00 PM – 1:50 PM",
+          "6th_hour": "1:55 PM – 2:45 PM",
+          "7th_hour": "2:50 PM – 3:20 PM",
+          "8th_hour": "3:25 PM – 4:00 PM"
+        },
+        "saturday": {
+          "1st_hour": "8:30 AM – 9:20 AM",
+          "2nd_hour": "9:25 AM – 10:15 AM",
+          "break": "10:15 AM – 10:40 AM",
+          "3rd_hour": "10:40 AM – 11:30 AM",
+          "4th_hour": "11:35 AM – 12:25 PM",
+          "lunch": "12:25 PM – 1:00 PM",
+          "5th_hour": "STUDENT ACTIVITIES"
+        }
+      }
+    }
+  }
+  

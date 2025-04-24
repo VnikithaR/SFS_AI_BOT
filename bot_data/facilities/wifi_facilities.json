@@ -1,0 +1,54 @@
+{
+  "wifi_facilities": {
+    "overview": {
+      "description": "St. Francis de Sales College provides robust Wi-Fi infrastructure as part of its commitment to integrating ICT at all levels. This initiative supports enhanced access to education and development of IT skill sets across the institution.",
+      "policy": "The management policy supports the integration and enhancement of IT across all operational areas of the college."
+    },
+    "infrastructure": {
+      "internet_speed": "More than 2 Mbps data transfer rate",
+      "bandwidth": "200 Mbps Internet Bandwidth for campus-wide connectivity",
+      "deployment": "Optimal deployment of IT infrastructure through workshops, awareness and training programs for faculty",
+      "classroom_facilities": "Classrooms are equipped with technologically advanced audio-visual aids for innovative and interactive teaching."
+    },
+    "virtual_learning": {
+      "features": [
+        "Virtual learning and online courses",
+        "Digitally advanced library with daily student access",
+        "Teaching through OHP screens in computer centres",
+        "Student internet access, project preparation, and practice opportunities"
+      ]
+    },
+    "labs": {
+      "equipment": "Labs equipped with latest software and hardware",
+      "services": [
+        "Internet access",
+        "Printing and scanning facilities",
+        "Uninterrupted power backup"
+      ]
+    },
+    "erp": {
+      "impact": "ERP platform enhances equity, excellence, and expansion among diverse student communities",
+      "features": [
+        "Online fee payment",
+        "Automated exam fee payment",
+        "Hall ticket generation",
+        "Online results publication",
+        "Student attendance tracking",
+        "Student registration via ERP"
+      ]
+    },
+    "maintenance": {
+      "amc": "Annual Maintenance Contracts renewed at the beginning of each academic year for software, UPS, and generators",
+      "investment": "Institution invests in essential hardware and software to ensure continuous IT infrastructure support"
+    },
+    "online_learning_strategies": [
+      "Remote access to e-Resource Centre",
+      "Multimedia teaching approaches",
+      "Access to MOOC courses",
+      "Online certificate courses and internships",
+      "Provision for online counselling",
+      "Online admission process",
+      "Campus-wide Wi-Fi connectivity"
+    ]
+  }
+}

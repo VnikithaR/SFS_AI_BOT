@@ -460,6 +460,7 @@ footer hr {
     position: relative;
 }
 
+
 /* Red and blue gradient ribbon below the chatbot header */
 .chat-header::after {
     content: '';
@@ -470,6 +471,7 @@ footer hr {
     height: 5px;
     background: linear-gradient(to right, #b20505, #013365);
 }
+
 
 /* Chatbot Icon Styles */
 .chatbot-icon {
@@ -493,6 +495,8 @@ footer hr {
     background-color: #f9f9f9;
     border-bottom: 1px solid #ddd;
 }
+
+
 
 /* Message Box Styling */
 .chat-message {
@@ -557,27 +561,56 @@ footer hr {
     height: 27px;
 }
 
-/* Typing Indicator */
 .typing-indicator {
-    display: none;
-    font-size: 20px;
-    color: #003366;
-    font-weight: bold;
-    animation: blink 1s infinite;
-}
+    font-style: italic;
+    color: #555;
+    padding: 10px 15px;
+    margin: 5px 15px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    max-width: fit-content;
+    animation: blink 1.2s infinite;
+  }
+  
+  @keyframes blink {
+    0% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+  }  
 
-/* Blinking animation for typing indicator */
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
-}
+/* Chatbot Watermark - Centered Background Style */
+.chatbot-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0.08;
+    pointer-events: none; 
+    z-index: 0;
+  }
+  
+  .sfs-watermark-logo {
+    width: 250px;
+    height: 250px;
+    object-fit: contain;
+    margin-bottom: 5px;
+  }
+  
+  .sfs-watermark-text {
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 1px 1px 2px #fff;
+    font-family: 'El Messiri', sans-serif;
+  } 
+  .sfs-watermark-text2 {
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    text-shadow: 1px 1px 2px #fff;
+    font-family: 'El Messiri', sans-serif;
+  } 
 
 /* Timestamp Style */
 .timestamp {

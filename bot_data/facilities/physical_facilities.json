@@ -1,0 +1,115 @@
+{
+  "physical_facilities": {
+    "college_building": {
+      "description": "The College is housed in an imposing, but user-friendly and spacious building with every infrastructure. The Main Building is a four-storey structure which includes Administrative Wing, Principal’s Chamber, Board Room, Hospitality Room, Staff Rooms, Retiring Rooms, Rest Rooms, Seminar Halls, Conference Rooms, and an Auditorium.",
+      "images": [
+        "https://sfscollege.in/images/College-Building.webp"
+      ]
+    },
+    "classrooms": {
+      "description": "The classrooms are spacious, well-furnished, with proper ventilation and lighting and some classrooms have Audio Visual facilities.",
+      "images": [
+        "https://sfscollege.in/images/Class1.webp",
+        "https://sfscollege.in/images/Class2.webp"
+      ]
+    },
+    "exam_centre": {
+      "description": "St. Francis de Sales College has been an examination centre for a decade wherein various neighbouring colleges are tagged, with nearly 3000 students appearing for the Bangalore University examinations."
+    },
+    "library": {
+      "description": "The Library is stocked with the latest books on the disciplines offered for study at the College.",
+      "images": [
+        "https://sfscollege.in/images/Library1.webp",
+        "https://sfscollege.in/images/Library2.webp"
+      ]
+    },
+    "digital_library": {
+      "description": "The Digital Library is uploaded with the latest online databases on the disciplines offered for study at the College."
+    },
+    "computer_lab": {
+      "description": "The computer hands-on-experience laboratory is equipped with sufficient PCs and other paraphernalia."
+    },
+    "labs": {
+      "description": "The College has well-furnished Physics, Chemistry, Electronics, Psychology and Business Labs for the use of students and faculty. The College is also equipped with three computer labs and a language lab for IELTS courses.",
+      "images": [
+        "https://sfscollege.in/images/Lab%20(1).webp",
+        "https://sfscollege.in/images/Lab%20(2).webp",
+        "https://sfscollege.in/images/Lab%20(3).webp",
+        "https://sfscollege.in/images/Lab%20(4).webp"
+      ]
+    },
+    "gymnasium": {
+      "description": "A well-equipped Gymnasium provides for the fitness requirements of Desalites. The Gym is equipped with multi-user tools that are user-friendly and attractive."
+    },
+    "audio_visual_aids": {
+      "description": "The College is equipped with audio-visual facilities."
+    },
+    "college_chapel": {
+      "description": "The College uses the SFS Parish Chapel located on the main campus for the First Friday Holy Mass and other religious services."
+    },
+    "bank": {
+      "description": "A branch of South Indian Bank operates within the campus for the benefit of Desalites, parents, and staff. The bank is open from 10am to 2pm Monday to Friday, and 10:30 am to 12:00 noon on first and third Saturdays."
+    },
+    "parking": {
+      "description": "The College has ample provision for parking of two-wheelers and four-wheelers with good security both for students, staff, and guests. There is also a separate space for bicycle parking."
+    },
+    "hostels": {
+      "description": "Separate hostels for women and men are available with all necessary facilities proffering a homely atmosphere."
+    },
+    "sports_and_games": {
+      "description": "The College provides both open field and indoor sports activities. The sports complex includes basketball courts, volleyball courts, handball, softball, football, and cricket grounds, along with indoor facilities for table tennis, chess, carom, badminton, etc. The College organizes intra-college and inter-college tournaments and sports meets.",
+      "images": [
+        "https://sfscollege.in/images/Sports_Music.webp",
+        "https://sfscollege.in/images/Sports_Music_Counselling.webp"
+      ]
+    },
+    "board_room": {
+      "description": "Board meetings as well as HOD meetings are held in the board room."
+    },
+    "conference_room": {
+      "description": "This room is equipped with state-of-the-art audio-visual systems suitable for conducting conferences and presentations.",
+      "images": [
+        "https://sfscollege.in/images/Conference_Hall_02.webp"
+      ]
+    },
+    "college_auditorium": {
+      "description": "The College has a well-furnished auditorium with a seating capacity of 400 people which also includes audio-visual facilities.",
+      "images": [
+        "https://sfscollege.in/images/Closed_Auditorium.webp"
+      ]
+    },
+    "sfs_college_app": {
+      "description": "The College launched the SFS College App to keep parents and students updated with notifications."
+    },
+    "canteen": {
+      "description": "A spacious and comfortable canteen is provided with a large area for students to sit around in an informal environment.",
+      "images": [
+        "https://sfscollege.in/images/Canteen.webp"
+      ]
+    },
+    "media_room": {
+      "description": "The College has a media room located in the basement, furnished with an LCD projector and a large television with DTH connection.",
+      "images": [
+        "https://sfscollege.in/images/Media_Room%20(1).webp"
+      ]
+    },
+    "news_zones": {
+      "description": "Two news zones were created to help students update themselves on a daily basis. These zones are equipped with a television running news channels 24/7 and seating arrangements for reading newspapers.",
+      "images": [
+        "https://sfscollege.in/images/News_Zone.webp"
+      ]
+    },
+    "recording_studio": {
+      "description": "The College has a large audio-video recording and editing studio that allows students to experience audio-video recording, editing, and other related activities."
+    },
+    "study_lawns": {
+      "description": "The College provides study lawns for students to sit and study in a calm and conducive environment.",
+      "images": [
+        "https://sfscollege.in/images/Study_Lawns.webp"
+      ]
+    },
+    "sick_room": {
+      "description": "The College has a sick room for students who may feel unwell."
+    }
+  }
+}

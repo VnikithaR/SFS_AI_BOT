@@ -1,0 +1,72 @@
+{
+  "college_library": {
+    "overview": {
+      "description": "St. Francis de Sales College library aims at providing access to printed resources such as books and journals as well as electronic journals and online databases primarily for the use of faculty and staff.",
+      "growth": "The library stock is increasing at a rate of approximately 1,000 books a year. The library subscribes to over 100 current periodicals and a range of electronic journals and databases.",
+      "supervision": "The library is supervised by a committee consisting of the librarian and three members from the faculty.",
+      "management": "The day-to-day running of the library is conducted by the librarian who is assisted by the library staff and trainee."
+    },
+    "collection_development": {
+      "recommendation": "Any member of St. Francis de Sales College may recommend the purchase of desired or relevant books to the librarian. Books from vendors on approval will be available for display.",
+      "journal_subscription": "Members may recommend new journal subscriptions, which will be decided by the library committee based on input from faculty, available funds, and academic need."
+    },
+    "circulation_of_materials": {
+      "checkout": {
+        "books": "A member may have a maximum of four books checked out at any time for a maximum of two weeks.",
+        "journals": "Members may borrow two bound journals for a maximum of two days.",
+        "renewal": "Books may be renewed if no reservations have been made. Bound journals cannot be renewed."
+      },
+      "reservations": {
+        "books": "Books can be reserved if requested, and a minimum period of five days before return may be applied for books.",
+        "journals": "Bound journals are reserved for a period of one day before return can be requested."
+      },
+      "unbound_issues": "Unbound issues of journals may be issued for a maximum of two hours with the librarian's permission. Extended borrowing may be allowed on merit."
+    },
+    "access_control_system": {
+      "cards": "Access cards are issued to faculty members, post-docs, research scholars, and JRFs with prior permission. A refundable deposit of Rs. 150/- is required for the card.",
+      "function": "All entry and exit are recorded. The cards are strictly non-transferable."
+    },
+    "loss_and_defacement": {
+      "charges": "A replacement fee with an additional 20% handling fee will be charged for lost or damaged items.",
+      "privileges_revocation": "Library privileges may be revoked for intentional defacing or damaging of library materials, either temporarily or permanently."
+    },
+    "newly_arrived_journals": {
+      "in_library_use": "Newly arrived journals, magazines, and newspapers cannot be borrowed immediately and are designated as 'in-library use only' for a specified period."
+    },
+    "books_for_reference": {
+      "reservation": "Readers may reserve books, bound journals, and journals on tables for up to 3 days by writing their name and the message 'please leave' or 'don't disturb'."
+    },
+    "online_journals_resources": {
+      "website": "Details of online journals and resources can be found on the library website: www.ncbs.res.in/academic/library-electronic-resources",
+      "access": "This service is available to all NCBS network users, with access restricted to NCBS IP addresses only."
+    },
+    "computers_in_the_library": {
+      "facilities": "The library offers 6 user computers connected to the NCBS network for accessing online journals and databases.",
+      "restrictions": "Users must not use library computers for non-academic work, including email or web browsing, and are prohibited from installing any software."
+    },
+    "photocopying": {
+      "availability": "A photocopy machine is available in the library for faculty and library staff. Other users may access the common photocopy facility."
+    },
+    "inter_library_loan": {
+      "service": "Inter-library loans are available through memberships with the Indian Institute of Science (IISc) and the British Library.",
+      "guidelines": "The librarian will distribute the necessary membership cards/tickets and ensure proper use and return of the materials."
+    },
+    "external_users_visitors": {
+      "policy": "External users from other institutions can use the library with an access card. Visitors may access the library during office hours with staff assistance."
+    },
+    "role_of_library_staff": {
+      "assistance": "Library staff will assist users in obtaining reference materials, personal subscriptions, and book purchases. They also handle reprints for faculty and students."
+    },
+    "code_of_conduct": {
+      "rules": [
+        "No loud conversations or group discussions are allowed in the library.",
+        "Laptops and computers must have their own power and cable connectors.",
+        "No food or drink is allowed in the library.",
+        "Borrowing materials without a valid membership is prohibited.",
+        "Do not replace books or periodicals on the shelf after use.",
+        "Take personal belongings when leaving the library.",
+        "Do not install unauthorized software on the PCs."
+      ]
+    }
+  }
+}

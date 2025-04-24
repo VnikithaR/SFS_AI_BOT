@@ -1,0 +1,63 @@
+{
+  "welfare_measures_and_facilities": {
+    "overview": "St. Francis de Sales College provides a supportive and motivating environment for teaching and non-teaching staff through various welfare measures and facilities.",
+    "teaching_staff": {
+      "welfare_measures": [
+        "Medical reimbursement on deserving cases",
+        "Scholarships for staff children studying in the institution",
+        "Festival bonus",
+        "Provision of laptops on easy monthly installments",
+        "Reimbursement for registration in research activities",
+        "Funding for minor research projects",
+        "Bus facility",
+        "Coffee during break time",
+        "Seed money for research",
+        "Free Wi-Fi and access to digital library",
+        "Felicitation for staff completing 10 years of service",
+        "Procurement of required books for teaching and research",
+        "Dedicated library space for staff",
+        "Exclusive two-wheeler and four-wheeler parking",
+        "Power sockets and internet at every workstation",
+        "Dedicated computer room with printer for staff",
+        "In-campus bank facility",
+        "Day care facility for staff kids",
+        "Emergency medical support",
+        "Library and ICT access for higher education pursuing staff",
+        "Permission for in-campus research sampling",
+        "Well-maintained staff rooms, canteen, and hygienic restrooms",
+        "In-house nurse and medical room",
+        "Educational leave without salary deduction for academic enhancement",
+        "Special leave for serious illness or accidents",
+        "Orientation programs on new developments",
+        "Annual increments based on performance appraisal"
+      ]
+    },
+    "non_teaching_staff": {
+      "welfare_measures": [
+        "Financial support for bereaved staff",
+        "Interest-free loans for house repair and construction",
+        "Scholarships for staff children",
+        "Festival bonus",
+        "Free uniforms for housekeeping staff",
+        "Medical reimbursement for serious cases",
+        "Regular orientation and development programs",
+        "In-house nurse",
+        "Annual increments based on performance appraisal",
+        "Casual and special leaves as per policy",
+        "Bus facility",
+        "Coffee during break time",
+        "Felicitation for staff completing 10 years of service",
+        "Exclusive two-wheeler and four-wheeler parking",
+        "In-campus bank facility",
+        "Day care facility for staff kids",
+        "Emergency medical support",
+        "Locker-equipped staff rooms",
+        "Assistance with loan applications"
+      ]
+    },
+    "additional_support": {
+      "counselling": "On-campus counselor available for staff support",
+      "hr_support": "HR available to address administrative queries from staff"
+    }
+  }
+}

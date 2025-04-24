@@ -1,0 +1,50 @@
+{
+  "ict_facilities": {
+    "description": "Information and Communication Technologies (ICTs), characterised by the internet and interactive multimedia, are an important focus for Education at St Francis de Sales College. ICTs integrate formal teaching and learning with modern technologies.",
+    "budget": "There is flexibility in annual budget allocation for procurement, upgradation, and maintenance of computers and their accessories.",
+    "maintenance": {
+      "staff": "Full-time lab attendants manage campus area networking and handle troubleshooting of computer systems and accessories.",
+      "warranty": "After the warranty period, the college maintains the equipment on its own, with services from external hardware engineers for major issues."
+    },
+    "facilities": [
+      {"name": "Branded Computers", "description": "A good number of branded computers with the latest configuration."},
+      {"name": "Administrative Block & Departments", "description": "Equipped with ICT facilities."},
+      {"name": "Laptops, Printers, Scanners", "description": "Laptops, printers, and scanners with the latest configurations."},
+      {"name": "Smart Classes", "description": "Fully equipped with an interactive board, interactive panel, visualizer, projector, stylus, mimeo pad, and mimeo pad pen."},
+      {"name": "Computer Labs", "description": "Well-equipped computer labs for student use."},
+      {"name": "Auditorium", "description": "The auditorium is equipped with ICT facilities."},
+      {"name": "Dedicated Server", "description": "The college uses a dedicated server with the latest configuration."},
+      {"name": "Stand-alone Facility", "description": "Facilities available for stand-alone computing needs."},
+      {"name": "LAN Facility", "description": "The college has a Local Area Network (LAN) for internal connectivity."},
+      {"name": "WiFi Facility", "description": "The campus is equipped with WiFi connectivity."},
+      {"name": "Licensed Software", "description": "Licensed software available for use in labs and administrative areas."},
+      {"name": "Internet Facility", "description": "High-speed internet facility for all students and staff."},
+      {"name": "UPS", "description": "Online and offline UPS systems to ensure uninterrupted power supply."},
+      {"name": "Computerized Libraries", "description": "The college has 3 computerized libraries with a browsing center providing access to e-learning materials."},
+      {"name": "Off-campus Internet Connectivity", "description": "BSNL provides off-campus internet connectivity."},
+      {"name": "Lab Interconnectivity", "description": "Labs are interconnected using the latest D-Link CAT 6 wires and switches."},
+      {"name": "High-speed Internet Leased Line", "description": "A leased line connection ensures high-speed internet."},
+      {"name": "CCTV Surveillance", "description": "CCTV cameras are installed in labs and key points across the campus with online monitoring through static IP addresses."},
+      {"name": "Website", "description": "The college website: www.sfscollege.in."},
+      {"name": "Bulk SMS Service", "description": "The college uses bulk SMS services for communication."},
+      {"name": "Email for Academic Purposes", "description": "Academic email: sfscollege@rediffmail.com."},
+      {"name": "Departmental Email IDs", "description": "Every department has its own email ID for departmental purposes and research."},
+      {"name": "Biometric Attendance", "description": "Biometric machines are used for attendance tracking."}
+    ],
+    "advantages": [
+      "Enhanced modes of communication.",
+      "Cost-efficient.",
+      "Paperless operations, eliminating the usage of paper.",
+      "Better teaching and learning methods.",
+      "Enhanced data and information security.",
+      "Minimized costs and saved time.",
+      "Easy student management.",
+      "Automatic solutions to manual paper-based processes and procedures."
+    ],
+    "images": [
+      "https://sfscollege.in/images/ICT_1.webp",
+      "https://sfscollege.in/images/ICT_2.webp",
+      "https://sfscollege.in/images/ICT_3.webp"
+    ]
+  }
+}
