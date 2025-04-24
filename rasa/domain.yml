@@ -2,22 +2,26 @@ version: "3.1"
 
 intents:
   - greet
-  - welcome
   - goodbye
+  - welcome
+  - ask_courses
+  - list_courses
+
+entities:
+  - course_type
 
 responses:
   utter_greet:
-    - text: "Hello! 👋 How can I assist you today?"
-    - text: "Hey there! Need help with something?"
-  
+    - text: "Hello! How can I help you today?"
+
   utter_welcome:
-    - text: "Welcome! 😊 Let me know if there's anything you need."
-    - text: "So glad to have you here! How can I help?"
+    - text: "Welcome! Let me know how I can assist you."
 
   utter_goodbye:
-    - text: "Goodbye! Have a great day! 👋"
-    - text: "See you later! Take care! 😊"
+    - text: "Goodbye! Have a great day."
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  utter_ask_course_type:
+    - text: "What type of courses are you looking for? (UG/PG)"
+
+actions:
+  - action_get_courses

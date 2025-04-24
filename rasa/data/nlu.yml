@@ -26,3 +26,9 @@ nlu:
       - talk to you soon
       - catch you later
       - see ya
+
+  - intent: list_courses
+    examples: |
+      - show me [ug](course_type) courses
+      - what [pg](course_type) courses do you offer?
+      - list all courses

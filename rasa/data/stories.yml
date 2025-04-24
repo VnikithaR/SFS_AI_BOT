@@ -15,3 +15,10 @@ stories:
     steps:
       - intent: goodbye
       - action: utter_goodbye
+
+  - story: ask and provide courses
+    steps:
+      - intent: ask_courses
+      - action: utter_ask_course_type
+      - intent: list_courses
+      - action: action_get_courses

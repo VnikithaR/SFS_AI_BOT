@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const userInput = document.getElementById('user-input');
     const chatWindow = document.getElementById('chat-window');
     const typingIndicator = document.getElementById('typing-indicator');
+    const rasaServerUrl = "http://localhost:5005";
+
 
     // Initially hide the chatbot container
     chatbotContainer.style.display = 'none';
