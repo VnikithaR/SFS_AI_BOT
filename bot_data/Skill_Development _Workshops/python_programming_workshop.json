@@ -1,0 +1,14 @@
+{
+    "intent": "ask_python_workshop",
+    "responses": [
+      "Get all the details about the Python Programming workshop here: https://www.sfscollege.in/PythonProgramming24.php",
+      "Explore the Python Programming session at: https://www.sfscollege.in/PythonProgramming24.php"
+    ],
+    "keywords": [
+      "python",
+      "python workshop",
+      "programming",
+      "coding session"
+    ]
+  }
+  

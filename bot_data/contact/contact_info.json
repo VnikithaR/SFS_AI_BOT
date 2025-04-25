@@ -1,0 +1,15 @@
+{
+    "intent": "ask_contact_info",
+    "responses": [
+      "You can contact the college using the details on this page: https://www.sfscollege.in/Contact.php",
+      "Here is the official contact page of SFS College: https://www.sfscollege.in/Contact.php"
+    ],
+    "keywords": [
+      "contact",
+      "phone number",
+      "email",
+      "college address",
+      "reach college"
+    ]
+  }
+  

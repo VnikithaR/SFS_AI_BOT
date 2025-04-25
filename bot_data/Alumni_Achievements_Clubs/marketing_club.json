@@ -1,0 +1,14 @@
+{
+    "intent": "ask_marketing_club",
+    "responses": [
+      "Learn about the Marketing Club and its activities: https://www.sfscollege.in/Marketing_Club24.php",
+      "Here’s the Marketing Club page: https://www.sfscollege.in/Marketing_Club24.php"
+    ],
+    "keywords": [
+      "marketing club",
+      "club activities",
+      "marketing team",
+      "club events"
+    ]
+  }
+  

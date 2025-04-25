@@ -1,0 +1,14 @@
+{
+    "intent": "ask_ncc_orientation",
+    "responses": [
+      "Here are the details about the NCC Orientation: https://www.sfscollege.in/NCC_ORIENTATION.php",
+      "Check out the NCC Orientation program: https://www.sfscollege.in/NCC_ORIENTATION.php"
+    ],
+    "keywords": [
+      "ncc",
+      "ncc orientation",
+      "cadet training",
+      "ncc program"
+    ]
+  }
+  
