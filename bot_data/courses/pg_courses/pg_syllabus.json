@@ -1,0 +1,33 @@
+{
+	"ma_economics_syllabus_details": {
+		"year_1": "https://www.sfscollege.in/PDF/MA_ECONOMICS_2024-25_I_yr.pdf",
+		"year_2": "Not available"
+	},
+	"mba_mgmt_syllabus": {
+		"year_1": "https://www.sfscollege.in/PDF/I&II_MBA-pg-question.pdf",
+		"year_2": "https://www.sfscollege.in/PDF/III&IV_MBA-pg-question.pdf"
+	},
+	"mba_pgcet_syllabus": {
+		"year_1": "https://www.sfscollege.in/PDF/I&II_MBA-pg-question.pdf",
+		"year_2": "https://www.sfscollege.in/PDF/III&IV_MBA-pg-question.pdf"
+	},
+	"mca_mgmt_syllabus": {
+		"2_years": "https://www.sfscollege.in/PDF/SFS_MCA_Syllabus-pg-question.pdf"
+	},
+	"mca_pgcet_syllabus": {
+		"2_years": "https://www.sfscollege.in/PDF/SFS_MCA_Syllabus-pg-question.pdf"
+	},
+	"mcom_syllabus": {
+		"year_1": "https://www.sfscollege.in/PDF/Ist_Year_MCOM_Pg.pdf",
+		"year_2": "https://www.sfscollege.in/PDF/IInd_Year_MCOM_Pg.pdf"
+	},
+	"msc_math_syllabus": {
+		"year_1": "https://www.sfscollege.in/PDF/I_YEAR_MSC.pdf",
+		"year_2": "https://www.sfscollege.in/PDF/III&IV_SEM_MSC.pdf"
+	},
+	"msc_psychology_syllabus": {
+		"year_1": "https://www.sfscollege.in/PDF/I_YEAR_MSC.pdf",
+		"year_2": "https://www.sfscollege.in/PDF/III&IV_SEM_MSC.pdf"
+	}
+}
+

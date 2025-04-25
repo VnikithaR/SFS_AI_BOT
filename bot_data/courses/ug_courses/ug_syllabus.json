@@ -1,0 +1,179 @@
+{
+    "BA_HEP_HES_syllabus": {
+      "syllabus": {
+        "Economics": {
+          "year_1": "https://www.sfscollege.in/PDF/I_YEAR_SYLLABUS-ba-eco-que.pdf",
+          "year_2": "https://www.sfscollege.in/PDF/II_YEAR_SYLLABUS-ba-eco-que.pdf",
+          "year_3": "https://www.sfscollege.in/PDF/III_YEAR_SYLLABUS-ba-eco-que.pdf"
+        },
+        "History": {
+          "year_1": "https://www.sfscollege.in/PDF/I_YEAR_SYLLABUS-ba-history-que.pdf",
+          "year_2": "https://www.sfscollege.in/PDF/II_YEAR_SYLLABUS-ba-history-que.pdf",
+          "year_3": "https://www.sfscollege.in/PDF/III_YEAR_SYLLABUS-ba-history-que.pdf"
+        },
+        "Political_Science": {
+          "year_1": "https://www.sfscollege.in/PDF/I_YEAR_SYLLABUS-ba-Political-que.pdf",
+          "year_2": "https://www.sfscollege.in/PDF/II_YEAR_SYLLABUS-ba-Political-que.pdf",
+          "year_3": "https://www.sfscollege.in/PDF/III_YEAR_SYLLABUS-ba-Political-que.pdf"
+        },
+        "Sociology": {
+          "year_2": "https://www.sfscollege.in/PDF/II_YEAR_SYLLABUS-ba-Sociology-que.pdf",
+          "year_3": "https://www.sfscollege.in/PDF/III_YEAR_SYLLABUS-ba-Sociology-que.pdf"
+        }
+      }
+    },
+    "BA_JPE_SEP_syllabus": {
+      "syllabus": {
+        "Journalism": {
+          "year_1": "https://www.sfscollege.in/PDF/I_YEAR_SYLLABUS-ba-Journlaism-que.pdf",
+          "year_2": "https://www.sfscollege.in/PDF/II_YEAR_SYLLABUS-ba-Journlaism-que.pdf",
+          "year_3": "https://www.sfscollege.in/PDF/III_YEAR_SYLLABUS-ba-Journlaism-que.pdf"
+        },
+        "Psychology": {
+          "year_1": "https://www.sfscollege.in/PDF/I_YEAR_SYLLABUS-ba-Psychology-que.pdf",
+          "year_2": "https://www.sfscollege.in/PDF/II_YEAR_SYLLABUS-ba-Psychology-que.pdf",
+          "year_3": "https://www.sfscollege.in/PDF/III_YEAR_SYLLABUS-ba-Psychology-que.pdf"
+        },
+        "Economics": {
+          "year_1": "https://www.sfscollege.in/PDF/I_YEAR_SYLLABUS-ba-eco-que.pdf",
+          "year_2": "https://www.sfscollege.in/PDF/II_YEAR_SYLLABUS-ba-eco-que.pdf",
+          "year_3": "https://www.sfscollege.in/PDF/III_YEAR_SYLLABUS-ba-eco-que.pdf"
+        },
+        "Sociology": {
+          "year_2": "https://www.sfscollege.in/PDF/II_YEAR_SYLLABUS-ba-Sociology-que.pdf",
+          "year_3": "https://www.sfscollege.in/PDF/III_YEAR_SYLLABUS-ba-Sociology-que.pdf"
+        }
+      }
+    },
+    "BBA_Aviation_syllabus": {
+      "syllabus": [
+        {
+          "year": "1st & 2nd Semesters",
+          "url": "https://www.sfscollege.in/PDF/I&II_SEM_BBA_Aviation.pdf"
+        },
+        {
+          "year": "3rd & 4th Semesters",
+          "url": "https://www.sfscollege.in/PDF/3rd&4thSem_BBA_AviationMangement.pdf"
+        },
+        {
+          "year": "5th & 6th Semesters",
+          "url": "https://www.sfscollege.in/PDF/5th&6th_BBA_Aviation.pdf"
+        }
+      ]
+    },
+    "BBA_Regular_syllabus": {
+      "syllabus": [
+        {
+          "year": "1st & 2nd Semesters",
+          "url": "https://www.sfscollege.in/PDF/I&II_SEM_BBA-Gen.pdf"
+        },
+        {
+          "year": "3rd & 4th Semesters",
+          "url": "https://www.sfscollege.in/PDF/3rdand4th_sem_NEP_BBA-GenSYLLABUS.pdf"
+        },
+        {
+          "year": "5th & 6th Semesters",
+          "url": "https://www.sfscollege.in/PDF/5th&6th_sem_NEPBBA-Gen_SYLLABUS.pdf"
+        }
+      ]
+    },
+    "BCA_syllabus": {
+      "syllabus": [
+        {
+          "type": "BU & NEP",
+          "syllabus_details": [
+            {
+              "title": "BCA BU Sep 2023",
+              "url": "https://www.sfscollege.in/PDF/BCA_BU_Sep_2023.pdf"
+            },
+            {
+              "title": "BCA NEP",
+              "url": "https://www.sfscollege.in/PDF/BCA_NEP.pdf"
+            },
+            {
+              "title": "NEP UG BCA III & IV",
+              "url": "https://www.sfscollege.in/PDF/NEP-UG-Syllabus-BCA-III-IV.pdf"
+            },
+            {
+              "title": "Computer Science NEP",
+              "url": "https://www.sfscollege.in/PDF/NEP-UG-Syllabus-Comp-SC.pdf"
+            }
+          ]
+        },
+        {
+          "type": "Autonomous",
+          "syllabus_details": [
+            {
+              "title": "BCA Autonomous",
+              "url": "https://www.sfscollege.in/PDF/SFS_BCA_Sylabus(1)_Autonomous.pdf"
+            },
+            {
+              "title": "B.Sc. Autonomous",
+              "url": "https://www.sfscollege.in/PDF/SFS_BSC_Syllabus_Autonomous.pdf"
+            }
+          ]
+        }
+      ]
+    },
+    "BCOM_Regular_syllabus": {
+      "syllabus": [
+        {
+          "year": "2nd Year",
+          "url": "https://www.sfscollege.in/PDF/II_Year.pdf"
+        },
+        {
+          "year": "3rd Year",
+          "url": "https://www.sfscollege.in/PDF/III_Year.pdf"
+        },
+        {
+          "year": "2024-25",
+          "url": "https://www.sfscollege.in/PDF/BCOM-Tourism-Travel-Management_SYLLABUS_2024-25.pdf"
+        }
+      ]
+    },
+    "BCOM_Travel_Tourism_syllabus": {
+      "syllabus": [
+        {
+          "year": "2nd Year",
+          "url": "https://www.sfscollege.in/PDF/II_Year.pdf"
+        },
+        {
+          "year": "3rd Year",
+          "url": "https://www.sfscollege.in/PDF/III_Year.pdf"
+        },
+        {
+          "year": "2024-25",
+          "url": "https://www.sfscollege.in/PDF/BCOM-Tourism-Travel-Management_SYLLABUS_2024-25.pdf"
+        }
+      ]
+    },
+    "BSC_MEC_CJP_syllabus": {
+      "syllabus": [
+        {
+          "year": "2nd Year",
+          "url": "https://www.sfscollege.in/PDF/IIndYear_Chemistry.pdf"
+        },
+        {
+          "year": "3rd Year",
+          "url": "https://www.sfscollege.in/PDF/IIIrdYear_Chemistry.pdf"
+        }
+      ]
+    },
+    "BSC_PCM_syllabus": {
+      "syllabus": [
+        {
+          "year": "1st Year",
+          "url": "https://www.sfscollege.in/PDF/IST_mathYEAR.pdf"
+        },
+        {
+          "year": "2nd Year",
+          "url": "https://www.sfscollege.in/PDF/IInd_math_Year.pdf"
+        },
+        {
+          "year": "3rd Year",
+          "url": "https://www.sfscollege.in/PDF/IIIrd_math_YEAR.pdf"
+        }
+      ]
+    }
+  }
+  

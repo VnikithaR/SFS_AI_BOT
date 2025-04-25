@@ -1,17 +1,31 @@
 version: "3.1"
-
 rules:
-  - rule: Greet the user
-    steps:
-      - intent: greet
-      - action: utter_greet
+- rule: Greet user
+  steps:
+    - intent: greet
+    - action: utter_greet
 
-  - rule: Welcome the user
-    steps:
-      - intent: welcome
-      - action: utter_welcome
+- rule: Say goodbye
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
 
-  - rule: Say goodbye
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
+- rule: Provide list of PG courses
+  steps:
+    - intent: ask_pg_courses
+    - action: action_get_courses
+
+- rule: Provide fee details
+  steps:
+    - intent: ask_course_fee
+    - action: action_fetch_course_fee
+
+- rule: Provide syllabus
+  steps:
+    - intent: ask_course_syllabus
+    - action: action_fetch_syllabus
+
+- rule: Provide NAAC information
+  steps:
+    - intent: ask_naac_info
+    - action: action_fetch_naac_info

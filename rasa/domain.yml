@@ -3,25 +3,73 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - welcome
-  - ask_courses
-  - list_courses
+  - ask_pg_courses
+  - ask_course_fee
+  - ask_course_syllabus
+  - ask_naac_info
 
 entities:
-  - course_type
+  - course_name
+  - fee_type
+  - naac_info
+  - pg_courses
+  - course_syllabus
+
+slots:
+  course_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: course_name
+
+  fee_type:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: fee_type
 
 responses:
   utter_greet:
-    - text: "Hello! How can I help you today?"
-
-  utter_welcome:
-    - text: "Welcome! Let me know how I can assist you."
-
+    - text: "Hello! How can I assist you today?"
   utter_goodbye:
-    - text: "Goodbye! Have a great day."
-
-  utter_ask_course_type:
-    - text: "What type of courses are you looking for? (UG/PG)"
+    - text: "Goodbye! Have a great day!"
+  utter_ask_course_name:
+    - text: "Please specify the course name."
 
 actions:
   - action_get_courses
+  - action_fetch_course_fee
+  - action_fetch_syllabus
+  - action_fetch_naac_info
+
+intents:
+  - request_bba_syllabus
+  - request_bba_regular_syllabus
+  - request_bba_aviation_syllabus
+  - request_bsc_syllabus
+  - request_bsc_mec_syllabus
+  - request_bsc_pcm_syllabus
+  - request_bcom_syllabus
+  - request_bcom_regular_syllabus
+  - request_bcom_travel_tourism_syllabus
+
+actions:
+  - action_get_bba_syllabus
+  - action_get_bba_regular_syllabus
+  - action_get_bba_aviation_syllabus
+  - action_get_bsc_syllabus
+  - action_get_bsc_mec_syllabus
+  - action_get_bsc_pcm_syllabus
+  - action_get_bcom_syllabus
+  - action_get_bcom_regular_syllabus
+  - action_get_bcom_travel_tourism_syllabus
+
+responses:
+  utter_bba_syllabus_options:
+    - text: "Please choose one of the following options for the BBA syllabus: \n1. BBA Regular \n2. BBA Aviation"
+  utter_bsc_syllabus_options:
+    - text: "Please choose one of the following options for the BSC syllabus: \n1. BSC MEC \n2. BSC PCM"
+  utter_bcom_syllabus_options:
+    - text: "Please choose one of the following options for the BCom syllabus: \n1. BCom Regular \n2. BCom Travel & Tourism"

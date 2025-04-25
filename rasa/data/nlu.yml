@@ -1,34 +1,103 @@
 version: "3.1"
-
 nlu:
-  - intent: greet
-    examples: |
-      - hello
-      - hi
-      - hey there
-      - good morning
-      - good evening
-      - hey
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - hey
 
-  - intent: welcome
-    examples: |
-      - welcome
-      - welcome back
-      - nice to be here
-      - thanks for welcoming me
-      - glad to be here
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you
 
-  - intent: goodbye
-    examples: |
-      - bye
-      - goodbye
-      - see you later
-      - talk to you soon
-      - catch you later
-      - see ya
+- intent: ask_pg_courses
+  examples: |
+    - pg courses available
+    - what are the pg courses available
+    - list pg courses
+    - list all pg courses
 
-  - intent: list_courses
+- intent: ask_course_fee
+  examples: |
+    - What is the annual fee for [MCA (Mgmt)](course_name)?
+    - Tell me the semester fee of [MBA (Mgmt)](course_name)
+    - How much is the [M.Com](course_name) total fee?
+    - Give me odd and even semester fees for [M.Sc (Psychology)](course_name)
+    - What's the yearly fee for [MBA (PGCET)](course_name)?
+    - Give me full fee details of [MCA (PGCET)](course_name)
+    - What is the grand total fee for [MBA (Mgmt)](course_name)?
+
+- regex: fee_type
+  examples: |
+    - annual
+    - semester
+    - grand total
+    - odd
+    - even
+
+
+- intent: ask_course_syllabus
+  examples: |
+    - Show me the syllabus for [MBA (Mgmt)](course_name)
+    - I want the syllabus of [MCA (Mgmt)](course_name)
+    - Give me the [M.Sc (Psychology)](course_name) syllabus
+
+- intent: ask_naac_info
+  examples: |
+    - naac details
+    - collges naac info
+
+  #cources-ugcourses
+  - intent: request_bba_syllabus
     examples: |
-      - show me [ug](course_type) courses
-      - what [pg](course_type) courses do you offer?
-      - list all courses
+      - bba syllabus
+      - I need the syllabus for BBA
+      - Can you show me the BBA syllabus?
+
+  - intent: request_bba_regular_syllabus
+    examples: |
+      - BBA regular syllabus
+      - Show me the regular BBA syllabus
+      - Regular BBA syllabus
+
+  - intent: request_bba_aviation_syllabus
+    examples: |
+      - BBA Aviation syllabus
+      - Show me the syllabus for BBA Aviation
+      - BBA Aviation syllabus details
+
+  - intent: request_bsc_syllabus
+    examples: |
+      - bsc syllabus
+      - Can you show me the BSC syllabus?
+
+  - intent: request_bsc_mec_syllabus
+    examples: |
+      - BSC MEC syllabus
+      - Show me the syllabus for BSC MEC
+      - BSC MEC syllabus details
+
+  - intent: request_bsc_pcm_syllabus
+    examples: |
+      - BSC PCM syllabus
+      - Show me the syllabus for BSC PCM
+      - BSC PCM syllabus details
+
+  - intent: request_bcom_syllabus
+    examples: |
+      - BCom syllabus
+      - Can I see the BCom syllabus?
+
+  - intent: request_bcom_regular_syllabus
+    examples: |
+      - BCom regular syllabus
+      - Show me the regular BCom syllabus
+      - BCom regular syllabus details
+
+  - intent: request_bcom_travel_tourism_syllabus
+    examples: |
+      - BCom Travel and Tourism syllabus
+      - Show me the syllabus for BCom Travel and Tourism
+      - BCom Travel and Tourism syllabus details

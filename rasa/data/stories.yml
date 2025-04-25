@@ -1,24 +1,25 @@
 version: "3.1"
-
 stories:
-  - story: greeting path
-    steps:
-      - intent: greet
-      - action: utter_greet
+- story: Ask about PG courses
+  steps:
+    - intent: ask_pg_courses
+    - action: action_get_courses
 
-  - story: welcome path
-    steps:
-      - intent: welcome
-      - action: utter_welcome
+- story: Ask about course fee
+  steps:
+    - intent: ask_course_fee
+    - slot_was_set:
+        - course_name: "MBA (Mgmt)"
+    - action: action_fetch_course_fee
 
-  - story: goodbye path
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
+- story: Ask about course syllabus
+  steps:
+    - intent: ask_course_syllabus
+    - slot_was_set:
+        - course_name: "M.Sc (Psychology)"
+    - action: action_fetch_syllabus
 
-  - story: ask and provide courses
-    steps:
-      - intent: ask_courses
-      - action: utter_ask_course_type
-      - intent: list_courses
-      - action: action_get_courses
+- story: Ask NAAC info
+  steps:
+    - intent: ask_naac_info
+    - action: action_fetch_naac_info

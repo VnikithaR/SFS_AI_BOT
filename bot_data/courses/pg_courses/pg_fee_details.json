@@ -1,0 +1,212 @@
+{
+	"pg_courses_fee_details": {
+		"mba_mgmt_fee": {
+			"course_name": "MBA (Mgmt)",
+			"annual_fee": {
+				"first_year_fee": 305000,
+				"second_year_fee": 255000
+			},
+			"mba_mgmt_semester_fee": {
+				"oddsem_fee": {
+					"tuition_fee": 75000,
+					"library_maintenance_fee": 35000,
+					"total_fee": 110000
+				},
+				"even_sem_fee": {
+					"tuition_fee": 95000,
+					"library_maintenance_fee": 25000,
+					"total_fee": 120000
+				},
+				"grand_total_fee": 305000
+			},
+			"mba_mgmt_additional_fee": {
+				"uniform_fee": 5000,
+				"non_karnataka_fee": 12000,
+				"exam_registration_fee": "Per semester",
+				"pgcet_note": "Must pay KEA fee as applicable"
+			}
+		},
+		"mba_pgcet_fee": {
+			"course_name": "MBA (PGCET)",
+			"annual_fee": {
+				"first_year_fee": "57500 + KEA",
+				"second_year_fee": "64500 + KEA"
+			},
+			"mba_pgcet_semester_fee": {
+				"oddsem_fee": {
+					"tuition_fee": null,
+					"library_maintenance_fee": 34500,
+					"total_fee": "34500"
+				},
+				"even_sem_fee": {
+					"tuition_fee": null,
+					"library_maintenance_fee": 23000,
+					"total_fee": "23000 + KEA"
+				},
+				"grand_total_fee": "57500 + KEA"
+			},
+			"mba_pgcet_additional_fee": {
+				"uniform_fee": 5000,
+				"non_karnataka_fee": 12000,
+				"exam_registration_fee": "Per semester",
+				"pgcet_note": "Must pay KEA fee as applicable"
+			}
+		},
+		"mca_mgmt_fee": {
+			"course_name": "MCA (Mgmt)",
+			"annual_fee": {
+				"first_year_fee": 125000,
+				"second_year_fee": 130000
+			},
+			"mca_mgmt_semester_fee": {
+				"oddsem_fee": {
+					"tuition_fee": 50000,
+					"library_maintenance_fee": 25000,
+					"total_fee": 75000
+				},
+				"even_sem_fee": {
+					"tuition_fee": 35000,
+					"library_maintenance_fee": 15000,
+					"total_fee": 50000
+				},
+				"grand_total_fee": 125000
+			},
+			"mca_mgmt_additional_fee": {
+				"uniform_fee": 5000,
+				"non_karnataka_fee": 12000,
+				"exam_registration_fee": "Per semester",
+				"pgcet_note": "Must pay KEA fee as applicable"
+			}
+		},
+		"mca_pgcet_fee": {
+			"course_name": "MCA (PGCET)",
+			"annual_fee": {
+				"first_year_fee": "37500 + KEA",
+				"second_year_fee": "45000 + KEA"
+			},
+			"mca_pgcet_semester_fee": {
+				"oddsem_fee": {
+					"tuition_fee": null,
+					"library_maintenance_fee": 22500,
+					"total_fee": "22500"
+				},
+				"even_sem_fee": {
+					"tuition_fee": null,
+					"library_maintenance_fee": 15000,
+					"total_fee": "15000 + KEA"
+				},
+				"grand_total_fee": "37500 + KEA"
+			},
+			"mca_pgcet_additional_fee": {
+				"uniform_fee": 5000,
+				"non_karnataka_fee": 12000,
+				"exam_registration_fee": "Per semester",
+				"pgcet_note": "Must pay KEA fee as applicable"
+			}
+		},
+		"mcom_fee": {
+			"course_name": "M.Com",
+			"annual_fee": {
+				"first_year_fee": 63500,
+				"second_year_fee": 67000
+			},
+			"mcom_fee_semester_fee": {
+				"oddsem_fee": {
+					"tuition_fee": 24500,
+					"library_maintenance_fee": 14000,
+					"total_fee": 38500
+				},
+				"even_sem_fee": {
+					"tuition_fee": 17000,
+					"library_maintenance_fee": 8000,
+					"total_fee": 25000
+				},
+				"grand_total_fee": 63500
+			},
+			"mcom_fee_additional_fee": {
+				"uniform_fee": 5000,
+				"non_karnataka_fee": 12000,
+				"exam_registration_fee": "Per semester",
+				"pgcet_note": "Must pay KEA fee as applicable"
+			}
+		},
+		"msc_math_fee": {
+			"course_name": "M.Sc (Mathematics)",
+			"annual_fee": {
+				"first_year_fee": 41500,
+				"second_year_fee": 45000
+			},
+			"msc_math_semester_fee": {
+				"oddsem_fee": {
+					"tuition_fee": 11000,
+					"library_maintenance_fee": 14000,
+					"total_fee": 25000
+				},
+				"even_sem_fee": {
+					"tuition_fee": 8500,
+					"library_maintenance_fee": 8000,
+					"total_fee": 16500
+				},
+				"grand_total_fee": 41500
+			},
+			"msc_math_additional_fee": {
+				"uniform_fee": 5000,
+				"non_karnataka_fee": 12000,
+				"exam_registration_fee": "Per semester",
+				"pgcet_note": "Must pay KEA fee as applicable"
+			}
+		},
+		"msc_math_msc_psych_fee": {
+			"course_name": "M.Sc (Psychology)",
+			"annual_fee": {
+				"first_year_fee": 82000,
+				"second_year_fee": 85500
+			},
+			"semester_fee": {
+				"oddsem_fee": {
+					"tuition_fee": 36000,
+					"library_maintenance_fee": 14000,
+					"total_fee": 50000
+				},
+				"even_sem_fee": {
+					"tuition_fee": 24500,
+					"library_maintenance_fee": 8000,
+					"total_fee": 32500
+				},
+				"grand_total_fee": 82000
+			},
+			"msc_math_additional_fee": {
+				"uniform_fee": 5000,
+				"non_karnataka_fee": 12000,
+				"exam_registration_fee": "Per semester",
+				"pgcet_note": "Must pay KEA fee as applicable"
+			}
+		},
+		"ma_eco_fee": {
+			"course_name": "M.A (Economics)",
+			"annual_fee": {
+				"first_year_fee": 37500,
+				"second_year_fee": 41000
+			},
+			"ma_eco_semester_fee": {
+				"oddsem_fee": {
+					"tuition_fee": 8500,
+					"library_maintenance_fee": 14000,
+					"total_fee": 22500
+				},
+				"even_sem_fee": {
+					"tuition_fee": 7000,
+					"library_maintenance_fee": 8000,
+					"total_fee": 15000
+				},
+				"grand_total_fee": 37500
+			},
+			"ma_eco_additional_fee": {
+				"uniform_fee": 5000,
+				"non_karnataka_fee": 12000,
+				"exam_registration_fee": "Per semester",
+				"pgcet_note": "Must pay KEA fee as applicable"
+			}
+		}
+	}
+}

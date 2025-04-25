@@ -42,8 +42,4 @@ def load_files_from_folder(folder_relative_path, collection_name):
 load_files_from_folder("courses/pg_courses", "courses")
 load_files_from_folder("courses/ug_courses", "courses")
 load_files_from_folder("compliance", "compliance")
-load_files_from_folder("events", "events")
-load_files_from_folder("facilities", "facilities")
-load_files_from_folder("institute_info", "institute_info")
-load_files_from_folder("institute_info/admissions", "admissions")
-load_files_from_folder("institute_info/placemets", "placements")
+
