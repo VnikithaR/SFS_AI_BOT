@@ -1,0 +1,14 @@
+{
+    "intent": "ask_newsletter",
+    "responses": [
+      "View the college newsletter here: https://www.sfscollege.in/newsletter.php",
+      "Find all newsletters at: https://www.sfscollege.in/newsletter.php"
+    ],
+    "keywords": [
+      "newsletter",
+      "college newsletter",
+      "news bulletin",
+      "campus newsletter"
+    ]
+  }
+  
