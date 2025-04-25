@@ -1,0 +1,14 @@
+{
+    "intent": "ask_achievements",
+    "responses": [
+      "Check out the achievers and their accomplishments: https://www.sfscollege.in/achievers.php",
+      "You can see student and faculty achievements here: https://www.sfscollege.in/achievers.php"
+    ],
+    "keywords": [
+      "achievements",
+      "awards",
+      "achievers",
+      "honors"
+    ]
+  }
+  

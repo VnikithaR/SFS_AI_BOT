@@ -1,0 +1,14 @@
+{
+    "intent": "ask_advanced_excel_workshop",
+    "responses": [
+      "Check out the Advanced Excel workshop here: https://www.sfscollege.in/WORKSHOP_ADVANCEDEXCEL24.php",
+      "Details about the Advanced Excel session are available at: https://www.sfscollege.in/WORKSHOP_ADVANCEDEXCEL24.php"
+    ],
+    "keywords": [
+      "excel workshop",
+      "advanced excel",
+      "spreadsheet skills",
+      "data skills"
+    ]
+  }
+  
