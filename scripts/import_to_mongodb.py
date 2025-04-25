@@ -39,7 +39,7 @@ def load_files_from_folder(folder_relative_path, collection_name):
 
 
 # Load all relevant folders
-load_files_from_folder("courses/pg_courses", "courses")
-load_files_from_folder("courses/ug_courses", "courses")
-load_files_from_folder("compliance", "compliance")
-
+load_files_from_folder("../bot_data/courses/pg_courses", "courses")
+load_files_from_folder("../bot_data/courses/ug_courses", "courses")
+load_files_from_folder("../bot_data/compliance/", "compliance")
+load_files_from_folder("../bot_data/Alumni_Achievements_Clubs", "Alumni_Achievements_Clubs")
