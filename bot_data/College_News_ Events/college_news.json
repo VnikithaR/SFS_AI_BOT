@@ -1,0 +1,14 @@
+{
+    "intent": "ask_college_news",
+    "responses": [
+      "Check out the latest college news here: https://www.sfscollege.in/news.php",
+      "You can read all college updates at: https://www.sfscollege.in/news.php"
+    ],
+    "keywords": [
+      "college news",
+      "latest news",
+      "updates",
+      "announcements"
+    ]
+  }
+  

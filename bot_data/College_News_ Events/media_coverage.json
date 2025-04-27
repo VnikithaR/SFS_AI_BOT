@@ -1,0 +1,15 @@
+{
+    "intent": "ask_media_coverage",
+    "responses": [
+      "College media coverage can be viewed here: https://www.sfscollege.in/media.php",
+      "Check out press and media highlights: https://www.sfscollege.in/media.php"
+    ],
+    "keywords": [
+      "media",
+      "media coverage",
+      "press",
+      "news reports",
+      "publications"
+    ]
+  }
+  
