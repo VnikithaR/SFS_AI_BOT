@@ -1,0 +1,14 @@
+{
+    "intent": "ask_alumni_2020",
+    "responses": [
+      "You can learn more about the 2020 alumni here: https://www.sfscollege.in/Alumni_2020.php",
+      "Visit this page for details on the 2020 batch alumni: https://www.sfscollege.in/Alumni_2020.php"
+    ],
+    "keywords": [
+      "alumni",
+      "2020 alumni",
+      "graduates",
+      "past students"
+    ]
+  }
+  
