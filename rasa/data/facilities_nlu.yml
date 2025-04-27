@@ -1,0 +1,103 @@
+version: "3.1"
+
+nlu:
+- intent: ask_about_facilities
+  examples: |
+    - What facilities are available at SFS College?
+    - Tell me about the facilities.
+    - List the facilities offered by the college.
+    - What kind of facilities do you have?
+    - Can you tell me about the infrastructure?
+
+- intent: ask_about_specific_facility
+  examples: |
+    - Tell me about the [library](facility_type) facilities.
+    - What about the [sports](facility_type) facilities?
+    - Are there [computer lab](facility_type) facilities?
+    - What [cultural](facility_type) facilities do you have?
+    - Information on [hostel](facility_type) facilities.
+    - Details about the [gym](facility_type) facilities.
+    - What [wifi](facility_type) facilities are there?
+    - Tell me about [canteen](facility_type) facilities.
+    - What [parking](facility_type) is available?
+    - Are there [bank](facility_type) facilities on campus?
+    - Tell me about [welfare](facility_type) facilities for staff.
+    - What [ICT](facility_type) facilities are offered?
+    - Details on [physical](facility_type) infrastructure.
+    - Tell me about the [auditorium](facility_type).
+    - What [study lawns](facility_type) are there?
+
+entities:
+  - facility_type:
+    type: categorical
+    values:
+      - library
+      - sports
+      - computer lab
+      - cultural
+      - hostel
+      - gym
+      - wifi
+      - canteen
+      - parking
+      - bank
+      - welfare
+      - ICT
+      - physical
+      - auditorium
+      - study lawns
+      - classrooms
+      - labs
+      - digital library
+      - chapel
+      - recording studio
+      - media room
+      - news zones
+      - placement cell
+      - counselling room
+      - sick room
+      - board room
+      - conference room
+      - sfs college app
+      - butterfly park
+      - herbal garden
+      - music zone
+      - prayer hall
+      - research / ip cell
+      - sfs woods
+      - sports room
+      - table tennis room
+      - women’s cell
+      - yoga hall
+      - ambedkar study centre
+      - cultural room
+      - cultural store room
+      - seminar hall
+      - common room
+      - music area
+      - green room
+      - backstage
+      - toilet
+      - open auditorium
+      - new auditorium
+      - basketball courts
+      - volleyball courts
+      - badminton courts
+      - cricket practice pitch
+      - cricket ground
+      - football ground
+      - softball practice ground
+      - baseball practice ground
+      - kho-kho practice ground
+      - kabaddi practice ground
+      - indoor games
+      - multi-gym facility
+      - yoga and prayer centre
+      - ncc office
+      - ngo aspire cell
+      - radio room
+      - throw ball court
+      - volley ball
+      - gandhian study centre
+      - garden
+      - hand ball / soft ball court

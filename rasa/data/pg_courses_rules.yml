@@ -1,0 +1,22 @@
+version: "3.1"
+
+rules:
+- rule: Ask about postgraduate courses
+  steps:
+  - intent: ask_pg_courses
+  - action: action_list_pg_courses
+
+- rule: Ask about a specific postgraduate course details
+  steps:
+  - intent: ask_pg_course_details
+  - action: action_show_pg_course_details
+
+- rule: Ask about postgraduate course fee
+  steps:
+  - intent: ask_pg_course_fee
+  - action: action_show_pg_course_fee
+
+- rule: Ask about postgraduate course syllabus
+  steps:
+  - intent: ask_pg_course_syllabus
+  - action: action_show_pg_course_syllabus

@@ -3,25 +3,43 @@ language: en
 
 # Configuration for the NLU pipeline
 pipeline:
-- name: WhitespaceTokenizer
-- name: RegexFeaturizer
-- name: LexicalSyntacticFeaturizer
-- name: CountVectorsFeaturizer
-- name: DIETClassifier
+- name: "WhitespaceTokenizer"
+- name: "RegexFeaturizer"
+- name: "LexicalSyntacticFeaturizer"
+- name: "CountVectorsFeaturizer"
+- name: "DIETClassifier"
   epochs: 100
-- name: FallbackClassifier
-  threshold: 0.3
-  ambiguity_threshold: 0.1
-- name: EntitySynonymMapper
-- name: ResponseSelector
+  constrain_similarities: true
+- name: "EntitySynonymMapper"
+- name: "ResponseSelector"
   epochs: 100
-- name: RegexEntityExtractor
+  constrain_similarities: true
+- name: "FallbackClassifier"
+  threshold: 0.6
 
 # Configuration for policies
 policies:
-- name: RulePolicy
-- name: MemoizationPolicy
-- name: TEDPolicy
+- name: "RulePolicy"
+- name: "MemoizationPolicy"
+- name: "TEDPolicy"
   max_history: 5
   epochs: 100
-assistant_id: 20250421-171403-young-drywall
+
+# Configuration for data loading
+data:
+- data/basic_nlu.yml
+- data/basic_rules.yml
+- data/basic_stories.yml
+- data/events_nlu.yml
+- data/events_rules.yml
+- data/events_stories.yml
+- data/facilities_nlu.yml
+- data/facilities_rules.yml
+- data/facilities_stories.yml
+- data/courses/pg_courses/pg_courses_nlu.yml
+- data/courses/pg_courses/pg_courses_rules.yml
+- data/courses/pg_courses/pg_courses_stories.yml
+- data/courses/ug_courses/ug_courses_nlu.yml
+- data/courses/ug_courses/ug_courses_rules.yml
+- data/courses/ug_courses/ug_courses_stories.yml
+assistant_id: 20250425-232113-numerous-mint

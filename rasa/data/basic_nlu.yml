@@ -1,0 +1,62 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - Hi SFS InfoBot
+    - Hey SFS InfoBot
+    - Hello SFS InfoBot
+    - Good morning
+    - Good afternoon
+    - Good evening
+    - Greetings
+    - What's up
+    - Hello there
+    - Hi there
+
+- intent: welcome
+  examples: |
+    - Tell me about SFS College
+    - What is St. Francis de Sales College?
+    - Can you give me some information about the college?
+    - About SFS College
+    - College introduction
+
+- intent: goodbye
+  examples: |
+    - Bye SFS InfoBot
+    - See you
+    - Goodbye
+    - Thanks, bye
+    - That's all, thank you
+    - Farewell
+    - Take care
+    - See you later
+
+- intent: thank
+  examples: |
+    - Thank you SFS InfoBot
+    - Thanks a lot
+    - That's helpful, thanks
+    - Appreciate it
+    - Thanks for the info
+    - Okay, thank you
+
+- intent: deny
+  examples: |
+    - No
+    - Not really
+    - That's not it
+    - Nope
+    - Not exactly
+    - Wrong
+    - That's incorrect
+
+- intent: bot_challenge
+  examples: |
+    - Are you a bot?
+    - Are you human?
+    - I am talking to a bot.
+    - Are you an AI?
+    - Who are you?
+    - What are you?
