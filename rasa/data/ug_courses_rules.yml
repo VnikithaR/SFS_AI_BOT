@@ -1,0 +1,42 @@
+version: "3.1"
+
+rules:
+- rule: Ask about all undergraduate courses
+  steps:
+  - intent: ask_about_courses
+  - action: action_list_all_courses
+
+- rule: Ask about course details
+  steps:
+  - intent: ask_course_details
+  - action: action_show_course_details
+  - slot_was_set:
+    - course_name: "{course_name}"
+
+- rule: Ask about course fee
+  steps:
+  - intent: ask_course_fee
+  - action: action_show_course_fee
+  - slot_was_set:
+    - course_name: "{course_name}"
+
+- rule: Ask about course faculty
+  steps:
+  - intent: ask_course_faculty
+  - action: action_show_course_faculty
+  - slot_was_set:
+    - course_name: "{course_name}"
+
+- rule: Ask about course syllabus
+  steps:
+  - intent: ask_course_syllabus
+  - action: action_show_course_syllabus
+  - slot_was_set:
+    - course_name: "{course_name}"
+
+- rule: Ask about department programs
+  steps:
+  - intent: ask_about_department_programs
+  - action: action_list_department_programs
+  - slot_was_set:
+    - department_name: "{department_name}"

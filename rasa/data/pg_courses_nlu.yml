@@ -1,0 +1,85 @@
+version: "3.1"
+
+nlu:
+- intent: ask_pg_courses
+  examples: |
+    - What postgraduate courses do you offer?
+    - Tell me about the available PG courses.
+    - List the postgraduate programs.
+    - What are the PG courses offered?
+    - Show me the postgraduate courses.
+    - What master's programs are available?
+    - Can you list the PG degrees?
+
+- intent: ask_pg_course_details
+  examples: |
+    - Tell me about the [M.A (Economics)](pg_course_name) course.
+    - What can you tell me about [M.Sc (Psychology)](pg_course_name)?
+    - I want to know more about [M.Com](pg_course_name).
+    - Details for [MBA (Mgmt)](pg_course_name).
+    - What is the duration of [MCA (PGCET)](pg_course_name)?
+    - What are the specializations in [MBA (PGCET)](pg_course_name)?
+    - Tell me the description of [M.Sc (Mathematics)](pg_course_name).
+    - Info on [MBA (Mgmt)](pg_course_name) program.
+
+- intent: ask_pg_course_fee
+  examples: |
+    - What is the fee for [M.A (Economics)](pg_course_name)?
+    - How much does the [M.Sc (Psychology)](pg_course_name) cost?
+    - What's the fee structure for [M.Com](pg_course_name)?
+    - Tell me the first year fee for [MBA (Mgmt)](pg_course_name).
+    - What is the year 2 fee for [MCA (PGCET)](pg_course_name)?
+    - What are the tuition charges for [M.Sc (Mathematics)](pg_course_name)?
+    - What is the semester-wise breakdown for [M.A (Economics)](pg_course_name) first year?
+    - Cost for [MBA (PGCET)](pg_course_name).
+
+- intent: ask_pg_course_syllabus
+  examples: |
+    - Can I get the syllabus for [M.A (Economics)](pg_course_name)?
+    - Where can I find the syllabus for [M.Sc (Psychology)](pg_course_name)?
+    - Show me the syllabus for [M.Com](pg_course_name).
+    - What is the syllabus for [MBA (Mgmt)](pg_course_name) 1st year?
+    - Do you have the course outline for [MCA (PGCET)](pg_course_name)?
+    - Link to the syllabus for [M.Sc (Mathematics)](pg_course_name).
+
+entities:
+  - pg_course_name:
+    values:
+      - M.A (Economics): "M.A (Economics)"
+      - M.Sc (Psychology): "M.Sc (Psychology)"
+      - M.Sc (Mathematics): "M.Sc (Mathematics)"
+      - M.Com: "M.Com"
+      - MBA (Mgmt): "MBA (Mgmt)"
+      - MBA (PGCET): "MBA (PGCET)"
+      - MCA (Mgmt): "MCA (Mgmt)"
+      - MCA (PGCET): "MCA (PGCET)"
+      - MA (Economics): "M.A (Economics)"
+      - MSc (Psychology): "M.Sc (Psychology)"
+      - MSc (Mathematics): "M.Sc (Mathematics)"
+      - M Com: "M.Com"
+      - MBA Mgmt: "MBA (Mgmt)"
+      - MBA PGCET: "MBA (PGCET)"
+      - MCA Mgmt: "MCA (Mgmt)"
+      - MCA PGCET: "MCA (PGCET)"
+
+synonyms:
+  pg course:
+    - postgraduate course
+    - PG program
+    - master's degree
+    - masters program
+
+  course:
+    - program
+    - degree
+
+  fee:
+    - cost
+    - tuition
+    - charges
+    - amount
+
+  syllabus:
+    - course outline
+    - curriculum
+    - academic plan

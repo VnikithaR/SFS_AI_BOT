@@ -1,0 +1,26 @@
+version: "3.1"
+
+stories:
+- story: User asks about event on a specific date
+  steps:
+  - intent: ask_event_on_date
+    entities:
+    - date: "03-01-2025"
+  - action: action_show_event_on_date
+  - action: utter_event_on_date
+
+- story: User asks about festival in a specific month
+  steps:
+  - intent: ask_festival_on_date
+    entities:
+    - month: "February"
+  - action: action_show_festival_on_date
+  - action: utter_festival_on_date
+
+- story: User asks about festival on a specific date
+  steps:
+  - intent: ask_festival_on_date
+    entities:
+    - date: "14-01-2025"
+  - action: action_show_festival_on_date
+  - action: utter_festival_on_date

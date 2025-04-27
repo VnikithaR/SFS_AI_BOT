@@ -1,0 +1,42 @@
+version: "3.1"
+
+stories:
+- story: User asks about all undergraduate courses
+  steps:
+  - intent: ask_about_courses
+  - action: action_list_all_courses
+
+- story: User asks about course details
+  steps:
+  - intent: ask_course_details
+    entities:
+    - course_name: "BCA"
+  - action: action_show_course_details
+
+- story: User asks about course fee
+  steps:
+  - intent: ask_course_fee
+    entities:
+    - course_name: "BCA"
+  - action: action_show_course_fee
+
+- story: User asks about course faculty
+  steps:
+  - intent: ask_course_faculty
+    entities:
+    - course_name: "BCA"
+  - action: action_show_course_faculty
+
+- story: User asks about course syllabus
+  steps:
+  - intent: ask_course_syllabus
+    entities:
+    - course_name: "BCA"
+  - action: action_show_course_syllabus
+
+- story: User asks about department programs
+  steps:
+  - intent: ask_about_department_programs
+    entities:
+    - department_name: "Department of Commerce"
+  - action: action_list_department_programs

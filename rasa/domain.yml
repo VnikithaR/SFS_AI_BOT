@@ -1,75 +1,143 @@
+# domain.yml
 version: "3.1"
 
 intents:
   - greet
   - goodbye
-  - ask_pg_courses
+  - thank
+  - affirm
+  - deny
+  - bot_challenge
+  - ask_about_courses
+  - ask_course_details
   - ask_course_fee
+  - ask_course_faculty
   - ask_course_syllabus
-  - ask_naac_info
+  - ask_about_department_programs
+  - ask_pg_courses
+  - ask_pg_course_details
+  - ask_pg_course_fee
+  - ask_pg_course_syllabus
+  - welcome
+  - ask_college_events
+  - ask_event_on_date
+  - ask_festival_on_date
+  - ask_about_facilities
+  - ask_about_specific_facility
 
 entities:
   - course_name
-  - fee_type
-  - naac_info
-  - pg_courses
-  - course_syllabus
+  - department_name
+  - pg_course_name
+  - date
+  - month
+  - facility_type
 
 slots:
   course_name:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: course_name
-
-  fee_type:
+    - type: from_entity
+      entity: course_name
+  department_name:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: fee_type
+    - type: from_entity
+      entity: department_name
+  pg_course_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: pg_course_name
+  date:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: date
+  month:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: month
+  facility_type:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: facility_type
 
 responses:
   utter_greet:
-    - text: "Hello! How can I assist you today?"
+  - text: "Hello! Welcome to SFS InfoBot. How can I help you with information about St. Francis de Sales College?"
   utter_goodbye:
-    - text: "Goodbye! Have a great day!"
-  utter_ask_course_name:
-    - text: "Please specify the course name."
+  - text: "Goodbye! Feel free to reach out if you have more questions about SFS College."
+  utter_default:
+  - text: "I'm sorry, I didn't understand that. Could you please rephrase your question?"
+  utter_bot_challenge:
+  - text: "I am SFS InfoBot, a chatbot designed to provide information about St. Francis de Sales College."
+  utter_thankyou:
+  - text: "You're welcome! Glad I could assist you."
+  utter_ask_about_courses:
+  - text: "We offer the following undergraduate courses: {ug_courses}"
+  utter_course_details:
+  - text: "Here are some details about {course_name}: {course_details}"
+  utter_course_fee:
+  - text: "The fee details for {course_name} are: {fee_details}"
+  utter_course_faculty:
+  - text: "The faculty members for {course_name} are: {faculty_list}"
+  utter_course_syllabus:
+  - text: "You can find the syllabus for {course_name} here: {syllabus_links}"
+  utter_department_programs:
+  - text: "The {department_name} department offers the following programs: {department_programs}"
+  utter_ask_pg_courses:
+  - text: "We offer the following postgraduate courses: {pg_courses}"
+  utter_pg_course_details:
+  - text: "Here are some details about {pg_course_name}: {pg_course_details}"
+  utter_pg_course_fee:
+  - text: "The fee details for {pg_course_name} are: {pg_fee_details}"
+  utter_pg_course_syllabus:
+  - text: "You can find the syllabus for {pg_course_name} here: {pg_syllabus_links}"
+  utter_welcome:
+  - text: "Welcome to SFS InfoBot! St. Francis de Sales College, established in 2004, is a leading institution in Bengaluru... How can I assist you today?"
+  utter_college_events:
+  - text: "Here are the upcoming college events:\n{college_events}"
+  utter_event_on_date:
+  - text: "On {date}, the following events are scheduled:\n{events_on_date}"
+  utter_festival_on_date:
+  - text: "On {date}, the following festival or special day is observed: {festival_on_date}"
+  utter_festivals_in_month:
+  - text: "In {month}, the following festivals and special days are observed:\n{festivals_in_month}"
+  utter_all_facilities:
+  - text: "St. Francis de Sales College offers a wide range of facilities including physical infrastructure like spacious classrooms, a well-stocked library, digital library, computer labs, science labs, a gymnasium, auditoriums, and sports grounds. We also have ICT facilities such as Wi-Fi, smart classrooms, and a dedicated server. For cultural and sports activities, we have dedicated rooms, courts, and an open auditorium. Welfare facilities include a canteen, hostels, bank, parking, and support for staff."
+  utter_specific_facility:
+  - text: "Here's some information about the {facility_type} facilities at SFS College:\n{facility_details}"
+  - text: "Regarding {facility_type}, we offer the following:\n{facility_details}"
+  - text: "You asked about {facility_type}. Here are the details:\n{facility_details}"
 
 actions:
-  - action_get_courses
-  - action_fetch_course_fee
-  - action_fetch_syllabus
-  - action_fetch_naac_info
+  - action_list_ug_courses
+  - action_show_course_details
+  - action_show_course_fee
+  - action_show_course_faculty
+  - action_show_course_syllabus
+  - action_show_department_programs
+  - action_list_all_courses
+  - action_list_department_programs
+  - action_list_pg_courses
+  - action_show_pg_course_details
+  - action_show_pg_course_fee
+  - action_show_pg_course_syllabus
+  - action_list_college_events
+  - action_show_event_on_date
+  - action_show_festival_on_date
+  - action_list_all_facilities
+  - action_show_specific_facility
 
-intents:
-  - request_bba_syllabus
-  - request_bba_regular_syllabus
-  - request_bba_aviation_syllabus
-  - request_bsc_syllabus
-  - request_bsc_mec_syllabus
-  - request_bsc_pcm_syllabus
-  - request_bcom_syllabus
-  - request_bcom_regular_syllabus
-  - request_bcom_travel_tourism_syllabus
-
-actions:
-  - action_get_bba_syllabus
-  - action_get_bba_regular_syllabus
-  - action_get_bba_aviation_syllabus
-  - action_get_bsc_syllabus
-  - action_get_bsc_mec_syllabus
-  - action_get_bsc_pcm_syllabus
-  - action_get_bcom_syllabus
-  - action_get_bcom_regular_syllabus
-  - action_get_bcom_travel_tourism_syllabus
-
-responses:
-  utter_bba_syllabus_options:
-    - text: "Please choose one of the following options for the BBA syllabus: \n1. BBA Regular \n2. BBA Aviation"
-  utter_bsc_syllabus_options:
-    - text: "Please choose one of the following options for the BSC syllabus: \n1. BSC MEC \n2. BSC PCM"
-  utter_bcom_syllabus_options:
-    - text: "Please choose one of the following options for the BCom syllabus: \n1. BCom Regular \n2. BCom Travel & Tourism"
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
