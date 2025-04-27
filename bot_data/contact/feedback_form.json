@@ -1,0 +1,14 @@
+{
+    "intent": "ask_feedback_form",
+    "responses": [
+      "You can submit your feedback here: https://sfscollege.in/feed_back_form.php",
+      "Here is the feedback form link: https://sfscollege.in/feed_back_form.php"
+    ],
+    "keywords": [
+      "feedback",
+      "complaint",
+      "suggestion",
+      "feedback form"
+    ]
+  }
+  

@@ -1,0 +1,13 @@
+{
+  "intent": "ask_question_papers",
+  "responses": [
+    "You can view previous question papers here: https://www.sfscollege.in/question.php",
+    "Old question papers are available at: https://www.sfscollege.in/question.php"
+  ],
+  "keywords": [
+    "question papers",
+    "old papers",
+    "previous year",
+    "exam questions"
+  ]
+}
