@@ -1,0 +1,14 @@
+version: "3.1"
+
+rules:
+- rule: Ask about all facilities
+  steps:
+  - intent: ask_about_facilities
+  - action: action_list_all_facilities
+
+- rule: Ask about specific facility
+  steps:
+  - intent: ask_about_specific_facility
+  - action: action_show_specific_facility
+  - slot_was_set:
+    - facility_type: "{facility_type}"

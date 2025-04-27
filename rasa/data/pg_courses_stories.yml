@@ -1,0 +1,30 @@
+# rasa/data/pg_courses_stories.yml
+version: "3.1"
+
+stories:
+- story: Inquire about M.Sc (Psychology) details
+  steps:
+  - intent: ask_pg_courses
+  - action: action_list_pg_courses
+  - intent: ask_pg_course_details
+    entities:
+    - pg_course_name: "M.Sc (Psychology)"
+  - action: action_show_pg_course_details
+
+- story: Ask about MBA (Mgmt) fee
+  steps:
+  - intent: ask_pg_courses
+  - action: action_list_pg_courses
+  - intent: ask_pg_course_fee
+    entities:
+    - pg_course_name: "MBA (Mgmt)"
+  - action: action_show_pg_course_fee
+
+- story: Request M.Com syllabus
+  steps:
+  - intent: ask_pg_courses
+  - action: action_list_pg_courses
+  - intent: ask_pg_course_syllabus
+    entities:
+    - pg_course_name: "M.Com"
+  - action: action_show_pg_course_syllabus

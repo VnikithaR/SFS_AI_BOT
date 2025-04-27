@@ -1,0 +1,150 @@
+{
+    "departments": [
+      {
+        "name": "Department of Commerce",
+        "programs": [
+          {
+            "name": "BCom (Regular)",
+            "duration": "3 years / 4 years",
+            "specializations": [
+              "Accounts",
+              "Taxation",
+              "Finance"
+            ],
+            "professional_certifications": [
+              "CA (Chartered Accountant)",
+              "ACCA (Association of Chartered Certified Accountants) - UK",
+              "CMA (Certified Management Accountant) – USA"
+            ],
+            "description": "BCom (Regular) or Bachelor of Commerce is a three-year undergraduate course (four-year for BCom Honours) that trains students for several job profiles. Candidates are taught core subjects related to commerce and finance. The program is spread over six semesters / eight semesters."
+          }
+        ]
+      },
+      {
+        "name": "Department of Management",
+        "programs": [
+          {
+            "name": "BBA (Regular)",
+            "duration": "3 years / 4 years",
+            "description": "Bachelor of BBA is a three-year (4 years for BBA Honours) undergraduate program under Bangalore University spanning over six semesters / eight semesters. This course aims to introduce business management to students as a vehicle to imbibe knowledge that would equip them for the industry or non-trading organizations."
+          },
+          {
+            "name": "BBA Aviation Management",
+            "duration": "3 years / 4 years",
+            "description": "Aviation is one of the fastest-growing industries in the country and across the world. BBA in Aviation focuses on business communication, operations, economics, and security in the aviation sector. The course deals with airport operations, airlines, financial accounting, and more."
+          }
+        ]
+      },
+      {
+        "name": "Department of Computer Applications",
+        "programs": [
+          {
+            "name": "BCA (Bachelor of Computer Applications)",
+            "duration": "3 years / 4 years",
+            "description": "Bachelor of Computer Applications is a three-year undergraduate course (four-year for BCA Honours) which deals with information technology and computer applications. It provides knowledge about different computer applications and how to address problems in IT and software."
+          }
+        ]
+      },
+      {
+        "name": "Department of Computer Science",
+        "programs": [
+          {
+            "name": "BSc Mathematics - Computer Science",
+            "duration": "3 years / 4 years",
+            "description": "BSc (Bachelor of Science) is a three-year undergraduate program (four-year for BSc Honours) under Bangalore University spanning over six / eight semesters. This program allows students to take up further postgraduate programs or enter the field of research or corporate."
+          },
+          {
+            "name": "BSc Mathematics - Physics",
+            "duration": "3 years / 4 years",
+            "description": "A comprehensive program to develop an understanding of the interrelation between Mathematics and Physics, suitable for research and academic progression."
+          },
+          {
+            "name": "BSc Mathematics - Chemistry",
+            "duration": "3 years / 4 years",
+            "description": "The program focuses on combining mathematics and chemistry for a deep scientific approach to problem-solving."
+          },
+          {
+            "name": "BSc Computer Science - Psychology",
+            "duration": "3 years / 4 years",
+            "description": "Combining the study of computer science with psychology to provide an understanding of both technical and human aspects of computing."
+          },
+          {
+            "name": "BSc Computer Science - Electronics",
+            "duration": "3 years / 4 years",
+            "description": "Focuses on the integration of computer science and electronics to understand modern computing and electronic systems."
+          },
+          {
+            "name": "BSc Physics - Chemistry",
+            "duration": "3 years / 4 years",
+            "description": "An interdisciplinary program that combines physics and chemistry for students interested in research and development."
+          },
+          {
+            "name": "BSc Chemistry - Mathematics",
+            "duration": "3 years / 4 years",
+            "description": "Combining the study of chemistry and mathematics to provide analytical and scientific skills."
+          }
+        ]
+      },
+      {
+        "name": "Department of Humanities",
+        "programs": [
+          {
+            "name": "BA Economics - Political Science",
+            "duration": "3 years / 4 years",
+            "description": "A combination of economics and political science, focusing on the intersection between economics and political systems."
+          },
+          {
+            "name": "BA Economics - History",
+            "duration": "3 years / 4 years",
+            "description": "Combines economics and history to understand the historical context of economic systems and policies."
+          },
+          {
+            "name": "BA Economics - Sociology",
+            "duration": "3 years / 4 years",
+            "description": "A combination of economics and sociology that explores how economic systems and societal structures are interconnected."
+          },
+          {
+            "name": "BA Economics - Psychology",
+            "duration": "3 years / 4 years",
+            "description": "Focuses on the economic decision-making process and its psychological implications."
+          },
+          {
+            "name": "BA History - Political Science",
+            "duration": "3 years / 4 years",
+            "description": "A combination that focuses on historical and political systems and their impact on society."
+          },
+          {
+            "name": "BA History - Sociology",
+            "duration": "3 years / 4 years",
+            "description": "Combines historical and sociological perspectives to understand societal developments."
+          },
+          {
+            "name": "BA Psychology - Sociology",
+            "duration": "3 years / 4 years",
+            "description": "Focuses on human psychology and its relation to social structures and societal behavior."
+          },
+          {
+            "name": "BA Psychology - Journalism",
+            "duration": "3 years / 4 years",
+            "description": "Combines psychology and journalism, focusing on media communication and human behavior."
+          },
+          {
+            "name": "BA Sociology - History",
+            "duration": "3 years / 4 years",
+            "description": "Explores the relationship between societal changes and historical events."
+          },
+          {
+            "name": "BA Psychology - Optional English",
+            "duration": "3 years / 4 years",
+            "description": "Combines the study of psychology with English literature for a comprehensive understanding of human behavior and communication."
+          },
+          {
+            "name": "BA Optional English - Journalism",
+            "duration": "3 years / 4 years",
+            "description": "Combines English literature with journalism for students interested in media, communication, and writing."
+          }
+        ]
+      }
+    ]
+  }
+  

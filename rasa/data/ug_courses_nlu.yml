@@ -1,0 +1,50 @@
+version: "3.1"
+
+nlu:
+- intent: ask_about_courses
+  examples: |
+    - What undergraduate courses do you offer?
+    - Tell me about the available UG courses.
+    - List the undergraduate programs.
+    - What are the courses offered?
+    - Show me the UG courses.
+
+- intent: ask_course_details
+  examples: |
+    - Tell me about the [BCA](course_name) course.
+    - What can you tell me about [BBA (Aviation)](course_name)?
+    - I want to know more about [B.Com (Regular)](course_name).
+    - Details for [BSC (PCM)](course_name).
+    - What is the duration of [BA(HEP & HES)](course_name)?
+    - What are the specializations in [BCom (Regular)](course_name)?
+    - Tell me the description of [BBA (Regular)](course_name).
+
+- intent: ask_course_fee
+  examples: |
+    - What is the fee for [BCA](course_name)?
+    - How much does the [BBA (Aviation)](course_name) course cost?
+    - What's the fee structure for [B.Com & TT](course_name)?
+    - Tell me the first year fee for [BSC (PCM)](course_name).
+    - What is the year 2 fee for [BA (JPE & SEP)](course_name)?
+    - What is the third year fee for [BBA](course_name)?
+    - What is the semester-wise breakdown for [BCA](course_name) first year?
+
+- intent: ask_course_faculty
+  examples: |
+    - Who are the faculty for [BCA](course_name)?
+    - Tell me about the faculty in [BBA (Aviation)](course_name).
+    - List the faculty for [BA(HEP & HES)](course_name).
+    - Who teaches [B.Com (Regular)](course_name)?
+
+- intent: ask_course_syllabus
+  examples: |
+    - Can I get the syllabus for [BCA](course_name)?
+    - Where can I find the syllabus for [BBA (Aviation)](course_name)?
+    - Show me the syllabus for [BSC (PCM)](course_name).
+    - What is the syllabus for [B.Com (Travel & Tourism)](course_name) 2nd year?
+
+- intent: ask_about_department_programs
+  examples: |
+    - What programs are offered by the [Department of Commerce](department_name)?
+    - Tell me the programs in the [Department of Management](department_name).
+    - What does the [Department of Computer Applications](department_name) offer?

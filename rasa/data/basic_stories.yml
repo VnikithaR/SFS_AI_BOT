@@ -1,0 +1,30 @@
+version: "3.1"
+
+stories:
+- story: Greet and then ask about courses
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_about_courses
+  - action: action_list_all_courses  # Fixed to match rule
+
+- story: Welcome and then ask about PG courses
+  steps:
+  - intent: welcome
+  - action: utter_welcome
+  - intent: ask_pg_courses
+  - action: action_list_pg_courses
+
+- story: User greets and says goodbye
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: User welcomes and thanks
+  steps:
+  - intent: welcome
+  - action: utter_welcome
+  - intent: thank
+  - action: utter_thankyou

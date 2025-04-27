@@ -1,0 +1,176 @@
+{
+    "undergraduate_fee_structure": {
+      "courses": [
+        {
+          "course_name": "BA (HEP & HES)",
+          "year_1_fee": 40000,
+          "year_2_fee": 50000,
+          "year_3_fee": 51000
+        },
+        {
+          "course_name": "BA (JPE & SEP)",
+          "year_1_fee": 49000,
+          "year_2_fee": 53000,
+          "year_3_fee": 57500
+        },
+        {
+          "course_name": "B.Com & TT",
+          "year_1_fee": 75000,
+          "year_2_fee": 81000,
+          "year_3_fee": 83000
+        },
+        {
+          "course_name": "BBA",
+          "year_1_fee": 95000,
+          "year_2_fee": 99000,
+          "year_3_fee": 103500
+        },
+        {
+          "course_name": "BBA (Aviation)",
+          "year_1_fee": 122000,
+          "year_2_fee": 128000,
+          "year_3_fee": 133000
+        },
+        {
+          "course_name": "BCA",
+          "year_1_fee": 109000,
+          "year_2_fee": 110000,
+          "year_3_fee": 115000
+        },
+        {
+          "course_name": "B.Sc (PCM)",
+          "year_1_fee": 69000,
+          "year_2_fee": 70000,
+          "year_3_fee": 73000
+        },
+        {
+          "course_name": "B.Sc (MEC & CJP)",
+          "year_1_fee": 72000,
+          "year_2_fee": 77000,
+          "year_3_fee": 80000
+        }
+      ]
+    },
+    "semester_wise_fee_breakdown": {
+      "1st_year": [
+        {
+          "course_name": "BA (HEP & HES)",
+          "odd_semester": {
+            "tuition_fee": 10000,
+            "maintenance_library_fee": 14000,
+            "total_fee": 24000
+          },
+          "even_semester": {
+            "tuition_fee": 8000,
+            "maintenance_library_fee": 8000,
+            "total_fee": 16000
+          },
+          "grand_total": 40000
+        },
+        {
+          "course_name": "BA (JPE & SEP)",
+          "odd_semester": {
+            "tuition_fee": 16000,
+            "maintenance_library_fee": 14000,
+            "total_fee": 30000
+          },
+          "even_semester": {
+            "tuition_fee": 11500,
+            "maintenance_library_fee": 8000,
+            "total_fee": 19500
+          },
+          "grand_total": 49000
+        },
+        {
+          "course_name": "B.Com & TT",
+          "odd_semester": {
+            "tuition_fee": 31000,
+            "maintenance_library_fee": 14000,
+            "total_fee": 45000
+          },
+          "even_semester": {
+            "tuition_fee": 22000,
+            "maintenance_library_fee": 8000,
+            "total_fee": 30000
+          },
+          "grand_total": 75000
+        },
+        {
+          "course_name": "BBA",
+          "odd_semester": {
+            "tuition_fee": 43000,
+            "maintenance_library_fee": 14000,
+            "total_fee": 57000
+          },
+          "even_semester": {
+            "tuition_fee": 30000,
+            "maintenance_library_fee": 8000,
+            "total_fee": 38000
+          },
+          "grand_total": 95000
+        },
+        {
+          "course_name": "BBA (Aviation)",
+          "odd_semester": {
+            "tuition_fee": 59500,
+            "maintenance_library_fee": 14000,
+            "total_fee": 73500
+          },
+          "even_semester": {
+            "tuition_fee": 40500,
+            "maintenance_library_fee": 8000,
+            "total_fee": 48500
+          },
+          "grand_total": 122000
+        },
+        {
+          "course_name": "BCA",
+          "odd_semester": {
+            "tuition_fee": 51500,
+            "maintenance_library_fee": 14000,
+            "total_fee": 65500
+          },
+          "even_semester": {
+            "tuition_fee": 35500,
+            "maintenance_library_fee": 8000,
+            "total_fee": 43500
+          },
+          "grand_total": 109000
+        },
+        {
+          "course_name": "B.Sc (PCM)",
+          "odd_semester": {
+            "tuition_fee": 27500,
+            "maintenance_library_fee": 14000,
+            "total_fee": 41500
+          },
+          "even_semester": {
+            "tuition_fee": 19500,
+            "maintenance_library_fee": 8000,
+            "total_fee": 27500
+          },
+          "grand_total": 69000
+        },
+        {
+          "course_name": "B.Sc (MEC & CJP)",
+          "odd_semester": {
+            "tuition_fee": 29500,
+            "maintenance_library_fee": 14000,
+            "total_fee": 43500
+          },
+          "even_semester": {
+            "tuition_fee": 20500,
+            "maintenance_library_fee": 8000,
+            "total_fee": 28500
+          },
+          "grand_total": 72000
+        }
+      ]
+    },
+    "additional_fees": {
+      "uniform_fee": 5000,
+      "non_karnataka_fee": 12000,
+      "exam_registration_fee": "Per semester, as notified"
+    }
+  }
+  
