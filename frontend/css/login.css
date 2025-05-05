@@ -1,0 +1,438 @@
+/*-------------------------login styles-------------------------*/
+
+/* General reset and font settings */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body background and layout */
+body {
+  position: relative;
+  background: url('assets/site/background-image.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+/* Overlay for login/signup/modal */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: none;
+}
+
+body.login-active .overlay {
+  display: block;
+}
+
+/* Modal containers */
+.login-form, .forgot-password-modal {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2rem;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  width: 100%;
+  max-width: 420px;
+  display: none;
+}
+
+body.login-active .login-form,
+body.login-active .forgot-password-modal {
+  display: block;
+}
+
+/* Auth wrapper */
+.auth-wrapper {
+  width: 100%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Tabs ---------- */
+.tab-header {
+  display: flex;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  color: #666;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  width: 50%;
+  background: #0052cc;
+  transition: 0.3s;
+}
+
+#tab-signup:checked ~ .tab-indicator {
+  left: 50%;
+}
+
+#tab-login:checked ~ .tab-indicator {
+  left: 0%;
+}
+
+.tab-content {
+  width: 100%;
+  display: flex;
+  transition: 0.4s ease;
+  flex-direction: column;
+}
+
+#tab-login:checked ~ .tab-content .signup {
+  display: none;
+}
+
+#tab-signup:checked ~ .tab-content .login {
+  display: none;
+}
+
+/* ---------- Form Styles ---------- */
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.input {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  width: 100%;
+  text-align: left;
+}
+
+.input::placeholder {
+  text-align: left;
+  color: #888;
+}
+
+.input:focus {
+  border-color: #0052cc;
+  outline: none;
+}
+
+.forgot-password-link {
+  text-align: right;
+  font-size: 13px;
+  color: #0052cc;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-bottom: 4px;
+}
+
+.forgot-password-link:hover {
+  text-decoration: none;
+}
+
+/* ---------- Form Buttons ---------- */
+.form-btn {
+  background-color: #0052cc;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  align-self: center;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.form-btn:hover {
+  background-color: #0041a3;
+}
+
+/* Centered alignment for form buttons */
+.login .form-btn,
+.signup .form-btn {
+  display: block;
+  margin: 20px auto 0;
+}
+
+/* ---------- Alternate Login Buttons ---------- */
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.apple-login-button,
+.google-login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.apple-login-button {
+  background: #000;
+  color: #fff;
+}
+
+.google-login-button {
+  border: 2px solid #ccc;
+  background: #fff;
+  color: #333;
+}
+
+/* ---------- Labels & Links ---------- */
+.page-link {
+  text-align: end;
+  font-size: 12px;
+  color: #555;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.sign-up-label {
+  font-size: 12px;
+  text-align: center;
+  color: #555;
+}
+
+.sign-up-link {
+  color: #0041a3;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 5px;
+  text-decoration: underline;
+}
+
+/* ---------- Modal (Forgot Password) ---------- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal .logo-container {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.modal .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.modal .form-group input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-submit-btn {
+  background-color: #212121;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.form-submit-btn:hover {
+  background-color: #313131;
+}
+
+.modal-close {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: #0052cc;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Login button to open modal */
+.login-btn {
+  cursor: pointer;
+  color: #0052cc;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* Forgot Password Section */
+.forgot-password-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.forgot-password-link {
+  font-size: 14px;
+  color: #0052cc;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.forgot-password-link:hover {
+  text-decoration: none;
+}
+
+.forgot-password-title {
+  font-size: 22px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.forgot-password-input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.forgot-password-btn {
+  background-color: #0052cc;
+  color: #fff;
+  padding: 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.forgot-password-btn:hover {
+  background-color: #0052cc;
+}
+
+/* ---------- Sign Up Prompt Style ---------- */
+.sign-up-prompt {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .sign-up-prompt p {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .sign-up-link {
+    color: #0041a3;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .sign-up-link:hover {
+    text-decoration: none;
+  }
+
+  /* ---------- Login Prompt Style (Signup Form) ---------- */
+.login-prompt {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-prompt p {
+    font-size: 14px;
+    color: #555;
+}
+
+.login-link {
+    color: #0041a3;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-link:hover {
+    text-decoration: none;
+}
+
+.forgot-password-modal {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10001;
+    width: 90%;
+    max-width: 420px;
+    display: none;
+  }
+  
+  body.forgot-password-active .forgot-password-modal {
+    display: block;
+  }
+  
+  body.forgot-password-active .overlay {
+    display: block;
+  }
+  
