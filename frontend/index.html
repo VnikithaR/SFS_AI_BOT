@@ -1,4 +1,4 @@
-<!--frontend\index.html--->
+<!-- frontend\index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,23 +7,25 @@
   <title>College Website - SFS AI Chatbot</title>
 
   <!-- Fonts and Styles -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\css\styles.css" />
+  <link rel="stylesheet" href="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\css\login.css" />
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=El+Messiri:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="icon" href="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\favicons\apple-touch-icon.png" type="image/png" />
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- Header Section navigation -->
   <header>
     <div class="top-bar">
-      <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\favicons\apple-touch-icon.png" alt="SFS Logo" class="logo-img" />
+      <img src="./assets/favicons/apple-touch-icon.png" alt="SFS Logo" class="logo-img" />
       <div>
         <a href="#">Home</a>
         <a href="#about">About</a>
         <a href="#academics">Academics</a>
         <a href="#Admission">Admissions</a>
         <a href="#contact">Contact</a>
-        <a href="login_signup.html">Login</a>
+        <a href="#" class="login-btn" onclick="showLogin()">Login</a>
       </div>
     </div>
     <div class="gold-line"></div>
@@ -32,7 +34,7 @@
     <div class="gold-line"></div>
   </header>
 
-  <!-- Carousel -->
+  <!-- Carousel Section -->
   <div class="carousel">
     <img src="https://www.sfscollege.in/slide/Photo1.webp" class="active" alt="Slide 1" />
     <img src="https://www.sfscollege.in/slide/Photo5.webp" alt="Slide 2" />
@@ -136,18 +138,72 @@
     </div>
   </footer>
 
-  <!-- Chatbot Button -->
+<!-- Login/Signup Modal -->
+  <div class="overlay"></div>
+    <div class="auth-wrapper login-form">
+        <div class="tab-header">
+            <input type="radio" id="tab-login" name="tab" checked>
+            <label for="tab-login" class="tab">Login</label>
+            <input type="radio" id="tab-signup" name="tab" >
+            <label for="tab-signup" class="tab">Sign Up</label>
+            <span class="tab-indicator"></span>
+        </div>
+
+        <div class="tab-content">
+          <!-- Login Form -->
+          <form id="login-form" class="form login">
+              <div class="title">Welcome back !</div>
+              <input type="email" class="input" placeholder="Email" required>
+              <input type="password" class="input" placeholder="Password" required>
+              <div class="forgot-password-wrapper">
+                  <a href="#" class="forgot-password-link">Forgot Password?</a>
+              </div>
+              <button type="submit" class="form-btn">Log In</button>
+              
+              <!-- Sign Up Prompt -->
+              <div class="sign-up-prompt">
+                  <p>Don't have an account? <a href="#" class="sign-up-link">Sign up</a></p>
+              </div>
+          </form>
+      </div>      
+
+            <form id="signup-form" class="form signup">
+                <div class="title">Create An account</div>
+                <input type="text" class="input" placeholder="Full Name" required>
+                <input type="email" class="input" placeholder="Email" required>
+                <input type="password" class="input" placeholder="Password" required>
+                <input type="password" class="input" placeholder="Confirm Password" required>
+                <button type="submit" class="form-btn">Sign Up</button>
+                
+                <!-- Already Have an Account Prompt -->
+        <div class="login-prompt">
+          <p>Already have an account? <a href="#" class="login-link">Log In</a></p>
+      </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="forgot-password-modal" id="forgot-password-modal">
+      <form id="reset-password-form" class="form">
+        <div class="title">Reset Password</div>
+        <input type="email" class="input" placeholder="Enter your email" required>
+        <button type="submit" class="form-btn">Reset Password</button>
+        <button type="button" class="modal-close" id="close-modal">Cancel</button>
+      </form>
+    </div>    
+
+  <!-- Chatbot Button Section -->
   <button id="chatbot-btn" class="chatbot-btn">
-    <img src="assets/icons/icons8-chatbot-94.png" alt="Chatbot Icon" class="icon-img" />
+    <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\icons\icons8-chatbot-94.png" alt="Chatbot Icon" class="icon-img" />
   </button>
 
-  <!-- Chatbot Container -->
+  <!-- Chatbot Container Section -->
   <div id="chatbot-container" class="chatbot-container">
     <div class="chat-header">
-      <img src="assets/favicons/android-chrome-192x192.png" alt="Bot Icon" class="chatbot-icon" />
+      <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\favicons\android-chrome-192x192.png" alt="Bot Icon" class="chatbot-icon" />
       <h2>SFS InfoBot</h2>
       <a href="#" id="settings-icon" class="settings-icon">
-        <img src="assets/icons/icons8-menu-vertical-48.png" alt="Settings Icon" class="icon-img" />
+        <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\icons\icons8-menu-vertical-48.png" alt="Settings Icon" class="icon-img" />
       </a>
       <button id="close-chat" class="close-chat">
         <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\icons\icons8-close-48.png" alt="Close Chat" class="icon-img" />
@@ -156,23 +212,23 @@
 
     <div id="chat-window" class="chat-window"></div>
 
-<!-- Typing indicator inside chat window -->
-<div id="typing-indicator" class="typing-indicator" style="display: none;">SFS InfoBot is typing...</div>
+    <!-- Typing indicator inside chat window -->
+    <div id="typing-indicator" class="typing-indicator" style="display: none;">SFS InfoBot is typing...</div>
 
-<div class="chat-input-container">
-  <img id="refresh-btn" class="refresh-btn icon-img" src="assets/icons/icons8-refresh-48.png" alt="Refresh" />
-  <input type="text" id="user-input" class="user-input" placeholder="Ask something..." />
-  <button id="send-btn" class="send-btn">
-    <img src="assets/icons/icons8-send-48.png" alt="Send Icon" class="icon-img" />
-  </button>
-</div>
+    <div class="chat-input-container">
+      <img id="refresh-btn" class="refresh-btn icon-img" src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets/icons/icons8-refresh-48.png" alt="Refresh" />
+      <input type="text" id="user-input" class="user-input" placeholder="Ask something..." />
+      <button id="send-btn" class="send-btn">
+        <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\icons\icons8-send-48.png" alt="Send Icon" class="icon-img" />
+      </button>
+    </div>
 
     <!-- Watermark: SFS Logo + SFS InfoBot -->
-<div class="chatbot-watermark">
-  <img src="https://www.sfscollege.in/images/sfs24.png" alt="SFS Logo" class="sfs-watermark-logo" />
-  <div class="sfs-watermark-text">SFS InfoBot</div>
-  <div class="sfs-watermark-text2">Your Smart Campus Assistant.</div>
-</div>
+    <div class="chatbot-watermark">
+      <img src="https://www.sfscollege.in/images/sfs24.png" alt="SFS Logo" class="sfs-watermark-logo" />
+      <div class="sfs-watermark-text">SFS InfoBot</div>
+      <div class="sfs-watermark-text2">Your Smart Campus Assistant.</div>
+    </div>
 
     <!-- Confirmation Popup -->
     <div id="confirm-close-popup" class="confirm-close-popup">
@@ -221,7 +277,9 @@
     </div>
   </div>
 
-  <!-- ✅ JS File -->
-  <script src="js/script.js" defer></script>
+  <!-- JS File -->
+  <script src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\js\script.js"></script>
+  <script src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\js\login.js"></script>
+
 </body>
 </html>
