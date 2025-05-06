@@ -1,0 +1,12 @@
+version: "3.1"
+nlu:
+- intent: ask_contact_info
+  examples: |
+    - How can I contact the college?
+    - Give me the contact details
+    - What's the phone number of the college?
+    - College email address?
+    - Where is SFS College located?
+    - I need help contacting the office
+    - Provide the contact number
+    - Who can I talk to for more information?

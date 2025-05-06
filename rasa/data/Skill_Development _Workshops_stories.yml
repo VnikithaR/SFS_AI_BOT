@@ -1,0 +1,11 @@
+version: "3.1"
+stories:
+- story: user asks about skill development
+  steps:
+  - intent: ask_skill_development
+  - action: utter_ask_skill_development
+
+- story: user asks about workshops
+  steps:
+  - intent: ask_workshops
+  - action: utter_ask_workshops
