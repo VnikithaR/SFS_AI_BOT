@@ -1,4 +1,4 @@
-/* Global Styles*/
+/* Global Styles */
 
 /* Website UI styles */
 * {
@@ -13,15 +13,15 @@ body {
     background-image: url('images/spm-bg.png');
     background-size: cover;
     background-attachment: fixed;
+    font-size: 16px; /* Base font size */
 }
-
 
 /* Header Section */
 
 header {
     background-color: #003366;
     color: white;
-    padding: 1px;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -33,8 +33,8 @@ header {
 .top-bar {
     background: linear-gradient(to right, #b20505, #013365);
     color: #ffffff;
-    padding: 10px 30px;
-    font-size: 20px;
+    padding: 10px 5%;
+    font-size: 1.2rem; /* Scalable font size */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,16 +50,18 @@ header {
 
 /* Logo Section */
 .logo-img {
-    height: 80px;
+    height: auto;
+    max-height: 80px;
 }
 
 header .logo {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 }
 
 header .logo img {
-    width: 60px;
+    width: auto;
     height: 60px;
     border-radius: 50%;
 }
@@ -72,7 +74,7 @@ header .logo img {
 
 .logo2 {
     color: #25408f;
-    font-size: 38px;
+    font-size: 2rem;
     text-align: center;
     margin-top: 5px;
 }
@@ -83,7 +85,7 @@ header .logo img {
     color: #25408f;
     text-align: center;
     padding: 5px 0;
-    font-size: 30px;
+    font-size: 1.9rem;
     font-weight: bold;
 }
 
@@ -98,7 +100,7 @@ header .logo img {
 
 nav {
     background: white;
-    padding: 8px 20px;
+    padding: 8px 5%;
     position: sticky;
     top: 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -148,21 +150,21 @@ nav ul li a:hover {
 /* Hamburger Button */
 .hamburger {
     cursor: pointer;
-    display: none; /* Show only on mobile */
-    z-index: 1001; /* Keep it above nav */
-  }
-  
-  .hamburger input {
     display: none;
-  }
-  
-  .hamburger svg {
+    z-index: 1001;
+}
+
+.hamburger input {
+    display: none;
+}
+
+.hamburger svg {
     height: 2.5em;
     width: 2.5em;
     transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .line {
+}
+
+.line {
     fill: none;
     stroke: white;
     stroke-linecap: round;
@@ -170,77 +172,77 @@ nav ul li a:hover {
     stroke-width: 3;
     transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
                 stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .line-top-bottom {
+}
+
+.line-top-bottom {
     stroke-dasharray: 12 63;
-  }
-  
-  .hamburger input:checked + svg {
+}
+
+.hamburger input:checked + svg {
     transform: rotate(-45deg);
-  }
-  
-  .hamburger input:checked + svg .line-top-bottom {
+}
+
+.hamburger input:checked + svg .line-top-bottom {
     stroke-dasharray: 20 300;
     stroke-dashoffset: -32.42;
-  }
-  
-  /* Navigation Styling */
-  .nav-links {
+}
+
+/* Navigation Styling */
+.nav-links {
     display: flex;
     gap: 20px;
     align-items: center;
-  }
-  
-  .nav-links a {
+}
+
+.nav-links a {
     text-decoration: none;
     color: white;
     font-weight: 500;
-  }
-  
-  /* Responsive Styling */
-  @media (max-width: 768px) {
-    .hamburger {
-      display: block;
-    }
-  
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      background-color: #ffffff4e;
-      position: absolute;
-      top: 70px;
-      left: 0;
-      right: 0;
-      padding: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-  
-    .nav-links.open {
-      display: flex;
-    }
-  
-    .nav-links a {
-      padding: 10px 0;
-      font-size: 1.1em;
-    }
-  
-    .top-bar {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-  }
-  
+}
 
-/* Carousel Section*/
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #ffffff4e;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 10px 0;
+        font-size: 1.1em;
+    }
+
+    .top-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+}
+
+/* Carousel Section */
 
 .carousel {
     position: relative;
     width: 100%;
-    height: 550px;
+    height: 50vw; /* Responsive height */
+    max-height: 550px;
     overflow: hidden;
 }
 
@@ -255,13 +257,11 @@ nav ul li a:hover {
     display: inline-block;
 }
 
-
 /* About Section */
 
 .about-section {
     background-color: #b6050e;
-    padding: 40px 20px;
-    display: inline-block;
+    padding: 40px 5%;
     text-align: center;
 }
 
@@ -271,17 +271,16 @@ nav ul li a:hover {
 }
 
 .about-section p {
-    font-size: 16px;
+    font-size: 1rem;
     color: #fdfdfe;
     line-height: 1.6;
 }
-
 
 /* Academics Section */
 
 .academics-section {
     background-color: #6e7d0f6c;
-    padding: 50px 20px;
+    padding: 50px 5%;
     text-align: center;
 }
 
@@ -292,7 +291,7 @@ nav ul li a:hover {
 
 .academics-section p {
     color: #555;
-    font-size: 16px;
+    font-size: 1rem;
     margin-bottom: 30px;
 }
 
@@ -310,7 +309,7 @@ nav ul li a:hover {
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 300px;
+    width: 280px;
     text-align: left;
 }
 
@@ -344,13 +343,12 @@ nav ul li a:hover {
     background-color: #b6050e;
 }
 
-
-/* Utility & Layout Classes*/
+/* Utility & Layout Classes */
 
 .container {
     max-width: 1200px;
     margin: 40px auto;
-    padding: 0 20px;
+    padding: 0 5%;
 }
 
 .section-title {
@@ -362,11 +360,13 @@ nav ul li a:hover {
 .main-content {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap; /* For responsiveness */
 }
 
 .left,
 .right {
     flex: 1;
+    min-width: 250px; /* Ensuring they don’t shrink too much */
 }
 
 .card {
@@ -417,24 +417,57 @@ html {
 footer {
     background-color: #003366;
     color: white;
-    padding: 40px 20px;
+    padding: 0;  
+    width: 100%;
+    box-sizing: border-box;
 }
 
 footer h5 {
     color: #ffcc00;
-    margin-bottom: 10px;
+    margin-bottom: 8px;  
+    font-size: 1rem;  
 }
 
 footer a {
     color: white;
     text-decoration: none;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 5px;  
+    font-size: 0.9rem;  
 }
 
 footer hr {
     border-color: rgba(255, 255, 255, 0.3);
-    margin: 20px 0;
+    margin: 10px 0;  
+}
+
+/* Footer layout - Flexbox to evenly distribute content */
+footer .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;  
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer .footer-container .footer-section {
+    flex: 1;
+    padding: 5px;  
+    min-width: 200px;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    footer .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer .footer-container .footer-section {
+        margin-bottom: 5px;  
+    }
 }
 
 /* Chatbot Styles */
