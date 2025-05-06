@@ -22,18 +22,20 @@ document.addEventListener('DOMContentLoaded', function () {
     // Simulate user database using localStorage
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-// Show Login Modal
-loginBtn.addEventListener("click", function (e) {
-    e.preventDefault();
+    // Show Login Modal
+    loginBtn.addEventListener("click", function (e) {
+        e.preventDefault();
 
-    // Only show login if we're not already showing forgot password
-    if (!document.body.classList.contains("forgot-password-active")) {
+        // Ensure forgot password modal is hidden
+        document.body.classList.remove("forgot-password-active");
+        forgotPasswordModal.style.display = "none";
+
+        // Show login modal
         document.body.classList.add("login-active");
         overlay.style.display = "block";
         loginWrapper.style.display = "block";
-        toggleAuthTabs(); // This ensures the correct tab is shown
-    }
-});
+        toggleAuthTabs();
+    });
 
     // Toggle Login/Signup Tabs
     loginTab.addEventListener("change", toggleAuthTabs);
@@ -63,12 +65,15 @@ loginBtn.addEventListener("click", function (e) {
     // Show Forgot Password Modal
     forgotPasswordLink.addEventListener("click", function (e) {
         e.preventDefault();
+        document.body.classList.remove("login-active"); // Hide login modal if open
+        loginWrapper.style.display = "none";
+
         document.body.classList.add("forgot-password-active");
         forgotPasswordModal.style.display = "block";
         overlay.style.display = "block";
     });
 
-    // Toggle Login/Signup via inline text links
+    // Inline navigation links
     const loginLink = document.querySelector(".login-link");
     const signUpLink = document.querySelector(".sign-up-link");
 
@@ -107,7 +112,7 @@ loginBtn.addEventListener("click", function (e) {
         });
     }
 
-    // Handle Login Submit
+    // Handle Login
     loginForm.addEventListener("submit", function (e) {
         e.preventDefault();
         const email = this.querySelector('input[type="email"]').value.trim();
@@ -127,7 +132,7 @@ loginBtn.addEventListener("click", function (e) {
         }
     });
 
-    // Handle Signup Submit
+    // Handle Signup
     signupForm.addEventListener("submit", function (e) {
         e.preventDefault();
         const fullName = this.querySelector('input[placeholder="Full Name"]').value.trim();
@@ -188,6 +193,6 @@ loginBtn.addEventListener("click", function (e) {
         return emailPattern.test(email);
     }
 
-    // Initialize tab visibility on load
+    // Initial tab setup
     toggleAuthTabs();
 });
