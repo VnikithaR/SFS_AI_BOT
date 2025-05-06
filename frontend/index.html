@@ -15,24 +15,41 @@
 </head>
 <body>
 
-  <!-- Header Section navigation -->
-  <header>
-    <div class="top-bar">
-      <img src="./assets/favicons/apple-touch-icon.png" alt="SFS Logo" class="logo-img" />
-      <div>
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#academics">Academics</a>
-        <a href="#Admission">Admissions</a>
-        <a href="#contact">Contact</a>
-        <a href="#" class="login-btn" onclick="showLogin()">Login</a>
-      </div>
-    </div>
-    <div class="gold-line"></div>
-    <div class="topbar-text">St. Francis de Sales College</div>
-    <div class="topbar-text">Autonomous</div>
-    <div class="gold-line"></div>
-  </header>
+  <div class="top-bar">
+    <img src="./assets/favicons/apple-touch-icon.png" alt="SFS Logo" class="logo-img" />
+  
+    <!-- Hamburger Menu -->
+    <label class="hamburger">
+      <input type="checkbox" id="menu-toggle" />
+      <svg viewBox="0 0 32 32">
+        <path
+          d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+          class="line line-top-bottom"
+        ></path>
+        <path d="M7 16 27 16" class="line"></path>
+      </svg>
+    </label>
+  
+<!-- Navigation Links -->
+<nav class="nav-links" id="menu">
+  <a href="#">Home</a>
+  <a href="#about">About</a>
+  <a href="#academics">Academics</a>
+  <a href="#Admission">Admissions</a>
+  <a href="#contact">Contact</a>
+
+  <!-- Links with IDs to toggle based on login status -->
+  <a href="#" onclick="showLogin()" id="login-link">Login / Sign Up</a>
+  <a href="#" id="profile-link" style="display: none;">Profile</a>
+  <a href="#settings-modal" id="settings-link" style="display: none;">Settings</a>
+  <a href="#" onclick="logout()" id="logout-link" style="display: none;">Logout</a>
+</nav>
+
+<!-- Welcome Message for Logged-in User -->
+<div id="user-welcome-message" style="display: none; color: white; margin-left: 15px;">
+  Welcome, <span id="user-name"></span>!
+</div>
+</div>
 
   <!-- Carousel Section -->
   <div class="carousel">
@@ -187,6 +204,7 @@
       <form id="reset-password-form" class="form">
         <div class="title">Reset Password</div>
         <input type="email" class="input" placeholder="Enter your email" required>
+        <input type="password" class="input" placeholder="Enter new password" required id="new-password">
         <button type="submit" class="form-btn">Reset Password</button>
         <button type="button" class="modal-close" id="close-modal">Cancel</button>
       </form>
