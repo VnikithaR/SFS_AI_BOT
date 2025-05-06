@@ -33,7 +33,7 @@ header {
 .top-bar {
     background: linear-gradient(to right, #b20505, #013365);
     color: #ffffff;
-    padding: 10px 50px;
+    padding: 10px 30px;
     font-size: 20px;
     display: flex;
     justify-content: space-between;
@@ -46,12 +46,6 @@ header {
     color: #ffffff;
     margin-left: 20px;
     text-decoration: none;
-}
-
-.top-bar > div {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
 }
 
 /* Logo Section */
@@ -99,7 +93,6 @@ header .logo img {
     background-color: gold;
     width: 100%;
 }
-
 
 /* Navigation Styles */
 
@@ -152,6 +145,95 @@ nav ul li a:hover {
     color: #000;
 }
 
+/* Hamburger Button */
+.hamburger {
+    cursor: pointer;
+    display: none; /* Show only on mobile */
+    z-index: 1001; /* Keep it above nav */
+  }
+  
+  .hamburger input {
+    display: none;
+  }
+  
+  .hamburger svg {
+    height: 2.5em;
+    width: 2.5em;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .line {
+    fill: none;
+    stroke: white;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .line-top-bottom {
+    stroke-dasharray: 12 63;
+  }
+  
+  .hamburger input:checked + svg {
+    transform: rotate(-45deg);
+  }
+  
+  .hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+  }
+  
+  /* Navigation Styling */
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+    }
+  
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background-color: #ffffff4e;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+  
+    .nav-links.open {
+      display: flex;
+    }
+  
+    .nav-links a {
+      padding: 10px 0;
+      font-size: 1.1em;
+    }
+  
+    .top-bar {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+  }
+  
 
 /* Carousel Section*/
 
