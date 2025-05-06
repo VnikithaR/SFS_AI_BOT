@@ -1,0 +1,33 @@
+version: "3.1"
+nlu:
+- intent: ask_achievements
+  examples: |
+    - Tell me about achievements
+    - Who are the achievers?
+    - Any awards won?
+    - What are the honors?
+    - Show me the achievers
+
+- intent: ask_alumni_2020
+  examples: |
+    - Who are the alumni from 2020?
+    - Tell me about 2020 alumni
+    - Graduates of 2020
+    - Any past students from 2020?
+    - Alumni batch 2020
+
+- intent: ask_marketing_club
+  examples: |
+    - What is the marketing club?
+    - Show me marketing club activities
+    - Marketing team details
+    - Club events related to marketing
+    - Info about marketing club
+
+- intent: ask_ncc_orientation
+  examples: |
+    - What is NCC orientation?
+    - Tell me about cadet training
+    - NCC program details
+    - Info on NCC orientation
+    - NCC orientation event
