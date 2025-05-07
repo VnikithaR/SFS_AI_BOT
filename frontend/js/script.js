@@ -1,145 +1,157 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const chatbotBtn = document.getElementById('chatbot-btn');
-    const chatbotContainer = document.getElementById('chatbot-container');
-    const closeChatBtn = document.getElementById('close-chat');
-    const confirmClosePopup = document.getElementById('confirm-close-popup');
-    const popupClose = document.getElementById('popup-close');
-    const yesBtn = document.getElementById('yes-btn');
-    const noBtn = document.getElementById('no-btn');
-    const settingsIcon = document.getElementById('settings-icon');
-    const settingsModal = document.getElementById('settings-modal');
-    const closeSettings = document.getElementById('close-settings');
-    const sendBtn = document.getElementById('send-btn');
-    const userInput = document.getElementById('user-input');
-    const chatWindow = document.getElementById('chat-window');
-    const typingIndicator = document.getElementById('typing-indicator');
-    const rasaServerUrl = "http://localhost:5005";
+  // -------- Elements --------
+  const chatbotBtn = document.getElementById('chatbot-btn');
+  const chatbotContainer = document.getElementById('chatbot-container');
+  const closeChatBtn = document.getElementById('close-chat');
+  const confirmClosePopup = document.getElementById('confirm-close-popup');
+  const popupClose = document.getElementById('popup-close');
+  const yesBtn = document.getElementById('yes-btn');
+  const noBtn = document.getElementById('no-btn');
+  const settingsIcon = document.getElementById('settings-icon');
+  const settingsModal = document.getElementById('settings-modal');
+  const closeSettings = document.getElementById('close-settings');
+  const sendBtn = document.getElementById('send-btn');
+  const userInput = document.getElementById('user-input');
+  const chatWindow = document.getElementById('chat-window');
+  const typingIndicator = document.getElementById('typing-indicator');
+  const refreshBtn = document.getElementById('refresh-btn');
 
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  const navOverlay = document.getElementById('nav-overlay');
 
-    // Initially hide the chatbot container
+  const loginBtn = document.querySelector('#login-link'); 
+  const loginOverlay = document.querySelector('.overlay');
+  const loginWrapper = document.querySelector('.auth-wrapper.login-form');
+
+  // -------- Navigation Menu Toggle --------
+  menuToggle.addEventListener('change', function () {
+    toggleMenu(this.checked);
+  });
+
+  navOverlay.addEventListener('click', function () {
+    toggleMenu(false);
+  });
+
+  function toggleMenu(show) {
+    if (show) {
+      menu.classList.add('open');
+      navOverlay.classList.add('show');
+    } else {
+      menu.classList.remove('open');
+      navOverlay.classList.remove('show');
+      menuToggle.checked = false;
+    }
+  }
+
+  // -------- Chatbot Logic --------
+  chatbotContainer.style.display = 'none';
+  let welcomeMessageShown = false;
+
+  chatbotBtn.addEventListener('click', () => {
+    const isVisible = chatbotContainer.style.display !== 'none';
+    chatbotContainer.style.display = isVisible ? 'none' : 'flex';
+    chatbotBtn.classList.toggle('active');
+
+    if (!isVisible && !welcomeMessageShown) {
+      appendMessage('bot', "Hi there! 👋 I'm SFS InfoBot. How can I assist you today?");
+      welcomeMessageShown = true;
+    }
+  });
+
+  closeChatBtn.addEventListener('click', () => {
+    confirmClosePopup.style.display = 'flex';
+  });
+
+  noBtn.addEventListener('click', () => {
+    confirmClosePopup.style.display = 'none';
+  });
+
+  yesBtn.addEventListener('click', () => {
     chatbotContainer.style.display = 'none';
+    confirmClosePopup.style.display = 'none';
+  });
 
-    // Carousel functionality
-    let slideIndex = 0;
-    const slides = document.querySelectorAll('.carousel img');
+  popupClose.addEventListener('click', () => {
+    confirmClosePopup.style.display = 'none';
+  });
 
-    function showSlides() {
-        slides.forEach((slide) => {
-            slide.classList.remove('active');
-        });
-        slideIndex = (slideIndex + 1) % slides.length;
-        slides[slideIndex].classList.add('active');
-    }
+  settingsIcon.addEventListener('click', (e) => {
+    e.preventDefault();
+    settingsModal.style.display = 'flex';
+  });
 
-    setInterval(showSlides, 4000);
+  closeSettings.addEventListener('click', () => {
+    settingsModal.style.display = 'none';
+  });
 
-    // Toggle chatbot visibility
-    let welcomeMessageShown = false;
-    chatbotBtn.addEventListener('click', function () {
-        const isVisible = chatbotContainer.style.display !== 'none';
-        chatbotContainer.style.display = isVisible ? 'none' : 'flex';
-        chatbotBtn.classList.toggle('active');
+  // -------- Chat Send Message --------
+  sendBtn.addEventListener('click', () => {
+    const message = userInput.value.trim();
+    if (!message) return;
 
-        if (!isVisible && !welcomeMessageShown) {
-            appendMessage('bot', "Hi there! 👋 I'm SFS InfoBot. How can I assist you today?");
-            welcomeMessageShown = true;
-        }
+    appendMessage('user', message);
+    userInput.value = '';
+    typingIndicator.style.display = 'block';
+
+    setTimeout(() => {
+      typingIndicator.style.display = 'none';
+      appendMessage('bot', "🤖 I'm just a demo bot! Your message was: " + message);
+    }, 1000);
+  });
+
+  userInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') sendBtn.click();
+  });
+
+  refreshBtn.addEventListener('click', () => {
+    chatWindow.innerHTML = '';
+  });
+
+  function appendMessage(sender, text) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('chat-message', sender === 'user' ? 'user-message' : 'bot-message');
+    messageDiv.textContent = text;
+
+    const timestamp = document.createElement('div');
+    timestamp.classList.add('timestamp');
+    timestamp.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    messageDiv.appendChild(timestamp);
+    chatWindow.appendChild(messageDiv);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+
+  // -------- Carousel (Optional) --------
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.carousel img');
+  if (slides.length > 0) {
+    slides[slideIndex].classList.add('active');
+    setInterval(() => {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add('active');
+    }, 4000);
+  }
+
+  // -------- Login Modal --------
+  if (loginBtn && loginOverlay && loginWrapper) {
+    loginBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.body.classList.add('login-active');
+      loginOverlay.style.display = 'block';
+      loginWrapper.style.display = 'block';
     });
 
-    // Show confirmation popup
-    closeChatBtn.addEventListener('click', function () {
-        confirmClosePopup.style.display = 'flex';
+    loginOverlay.addEventListener('click', function () {
+      document.body.classList.remove('login-active');
+      loginOverlay.style.display = 'none';
+      loginWrapper.style.display = 'none';
     });
+  }
 
-    noBtn.addEventListener('click', function () {
-        confirmClosePopup.style.display = 'none';
-    });
-
-    yesBtn.addEventListener('click', function () {
-        chatbotContainer.style.display = 'none';
-        confirmClosePopup.style.display = 'none';
-    });
-
-    popupClose.addEventListener('click', function () {
-        confirmClosePopup.style.display = 'none';
-    });
-
-    // Settings modal toggle
-    settingsIcon.addEventListener('click', function (e) {
-        e.preventDefault();
-        settingsModal.style.display = 'flex';
-    });
-
-    closeSettings.addEventListener('click', function () {
-        settingsModal.style.display = 'none';
-    });
-
-    // Send message
-    sendBtn.addEventListener('click', function () {
-        const message = userInput.value.trim();
-        if (message === '') return;
-
-        appendMessage('user', message);
-        userInput.value = '';
-        typingIndicator.style.display = 'block'; // 👈 Show typing indicator
-
-        // Fetch response from Rasa backend
-        fetch("http://localhost:5005/webhooks/rest/webhook", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                sender: "user",
-                message: message
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            typingIndicator.style.display = 'none'; // 👈 Hide typing indicator
-
-            if (data && data.length > 0) {
-                data.forEach(botMsg => {
-                    if (botMsg.text) {
-                        appendMessage('bot', botMsg.text);
-                    }
-                });
-            } else {
-                appendMessage('bot', "Hmm... SFS InfoBot didn't get a response. Try again?");
-            }
-        })
-        .catch(error => {
-            typingIndicator.style.display = 'none'; // 👈 Hide typing indicator on error
-            appendMessage('bot', "Oops! SFS InfoBot had trouble connecting to the server.");
-            console.error("Fetch error:", error);
-        });
-    });
-
-    // Send on Enter key
-    userInput.addEventListener('keypress', function (e) {
-        if (e.key === 'Enter') {
-            sendBtn.click();
-        }
-    });
-
-    // Append chat message to window
-    function appendMessage(sender, text) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('chat-message', sender === 'user' ? 'user-message' : 'bot-message');
-        messageDiv.textContent = text;
-
-        const timestamp = document.createElement('div');
-        timestamp.classList.add('timestamp');
-        const now = new Date();
-        timestamp.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
-        messageDiv.appendChild(timestamp);
-        chatWindow.appendChild(messageDiv);
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-    }
-
-    // Clear chat
-    document.getElementById('refresh-btn').addEventListener('click', function () {
-        chatWindow.innerHTML = '';
-    });
+  // -------- Logout Function Placeholder --------
+  window.logout = function () {
+    alert("Logged out!"); // Replace with actual logic
+  };
 });

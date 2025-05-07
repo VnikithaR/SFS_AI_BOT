@@ -1,4 +1,4 @@
-<!--frontend\index.html--->
+<!-- frontend\index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,32 +7,61 @@
   <title>College Website - SFS AI Chatbot</title>
 
   <!-- Fonts and Styles -->
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\css\styles.css" />
+  <link rel="stylesheet" href="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\css\login.css" />
+
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=El+Messiri:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="icon" href="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\favicons\apple-touch-icon.png" type="image/png" />
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="top-bar">
-      <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\favicons\apple-touch-icon.png" alt="SFS Logo" class="logo-img" />
-      <div>
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#academics">Academics</a>
-        <a href="#Admission">Admissions</a>
-        <a href="#contact">Contact</a>
-        <a href="login_signup.html">Login</a>
-      </div>
-    </div>
-    <div class="gold-line"></div>
-    <div class="topbar-text">St. Francis de Sales College</div>
-    <div class="topbar-text">Autonomous</div>
-    <div class="gold-line"></div>
-  </header>
+  <!-- Overlay that appears when menu is open -->
+<div class="nav-overlay" id="nav-overlay" onclick="toggleMenu(false)"></div>
 
-  <!-- Carousel -->
+  <div class="top-bar">
+    <img src="./assets/favicons/apple-touch-icon.png" alt="SFS Logo" class="logo-img" />
+  
+    <!-- Hamburger Menu -->
+    <label class="hamburger">
+      <input type="checkbox" id="menu-toggle" />
+      <svg viewBox="0 0 32 32">
+        <path
+          d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+          class="line line-top-bottom"
+        ></path>
+        <path d="M7 16 27 16" class="line"></path>
+      </svg>
+    </label>
+
+    <!-- Off-Canvas Menu -->
+<nav class="nav-links" id="menu">
+  <!-- College Logo or Name -->
+  <div class="college-logo">
+    <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\favicons\android-chrome-192x192.png" alt="College Logo" class="logo-img" />
+    <h1 class="college-name">SFS College</h1>
+  </div>
+
+  <!-- Navigation Links -->
+  <a href="#">Home</a>
+  <a href="#about">About</a>
+  <a href="#academics">Academics</a>
+  <a href="#Admission">Admissions</a>
+  <a href="#contact">Contact</a>
+
+  <!-- Links with IDs to toggle based on login status -->
+  <a href="#" id="login-link">Login / Sign Up</a>
+  <a href="#" id="profile-link" style="display: none;">Profile</a>
+  <a href="#settings-modal" id="settings-link" style="display: none;">Settings</a>
+  <a href="#" onclick="logout()" id="logout-link" style="display: none;">Logout</a>
+</nav>
+
+<!-- Welcome Message for Logged-in User -->
+<div id="user-welcome-message" style="display: none; color: white; margin-left: 15px;">
+  Welcome, <span id="user-name"></span>!
+</div>
+</div>
+
+  <!-- Carousel Section -->
   <div class="carousel">
     <img src="https://www.sfscollege.in/slide/Photo1.webp" class="active" alt="Slide 1" />
     <img src="https://www.sfscollege.in/slide/Photo5.webp" alt="Slide 2" />
@@ -112,42 +141,142 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container" id="contact">
-      <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-        <div>
-          <h5>Contact Us</h5>
-          <p>SFS College<br>Bangalore, India<br>Phone: +91 12345 67890</p>
-        </div>
-        <div>
-          <h5>Quick Links</h5>
-          <a href="#">Home</a>
-          <a href="#">Admissions</a>
-          <a href="#">Gallery</a>
-        </div>
-        <div>
-          <h5>Follow Us</h5>
-          <p>Facebook | Twitter | YouTube</p>
-        </div>
-      </div>
-      <hr />
-      <p style="text-align: center;">&copy; 2025 St. Francis de Sales College. All rights reserved.</p>
-    </div>
-  </footer>
+<!-- Footer -->
 
-  <!-- Chatbot Button -->
+<footer>
+  <div class="container" id="contact">
+      <div class="footer-container">
+          <!-- Contact Section -->
+          <div class="footer-section">
+              <h5>Contact Us</h5>
+              <p><strong>Admissions:</strong><br>
+              <a href="mailto:admission@sfscollege.in">admission@sfscollege.in</a><br>
+              <strong>Phone:</strong><br>
+              <a href="tel:+918088140679">(+91) 80881 40679</a><br>
+              <a href="tel:+919632415082">(+91) 9632415082</a></p>
+          </div>
+
+          <!-- Quick Links Section -->
+          <div class="footer-section">
+              <h5>Quick Links</h5>
+              <a href="https://www.sfscollege.in/adm-pg.php">Admissions</a>
+              <a href="NPTEL.php">NPTEL</a>
+              <a href="NDL.php">NDL</a>
+              <a href="inflibnet.php">INFLIBNET</a>
+              <a href="Campus.php">Campus</a>
+              <a href="Placement.php">Placement Cell</a>
+              <a href="grievance.php">Grievance</a>
+              <a href="aicte.php">AICTE</a>
+          </div>
+      </div>
+
+      <div class="footer-container">
+          <!-- College Address Section -->
+          <div class="footer-section">
+              <h5>College Address</h5>
+              <p>St Francis de Sales College (Autonomous)<br>
+              Electronics City Post, Bengaluru,<br>
+              Karnataka - 560 100, India</p>
+          </div>
+
+          <!-- Map Section -->
+          <div class="footer-section map-container">
+              <h5>Find Us</h5>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7780.340151161502!2d77.682237!3d12.832284!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6c5ecd556f55%3A0x7f50ed2aa3817700!2sSt.Francis%20de%20Sales%20Degree%20College!5e0!3m2!1sen!2sus!4v1710926959970!5m2!1sen!2sus" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+      </div>
+
+      <!-- Social Media Section -->
+      <div class="social-container">
+          <h5>Follow Us</h5>
+          <div class="social-icons">
+              <a href="https://www.facebook.com/share/5Fv6ihq8Yzwnn74j/" target="_blank">
+                  <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-facebook-logo-48.png" alt="Facebook" />
+              </a>
+              <a href="https://youtube.com/@sfscollegebangalore8557?si=kY60jJ4q_0TIySsM" target="_blank">
+                  <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-youtube.svg" alt="YouTube" />
+              </a>
+              <a href="https://www.instagram.com/sfs.college/?igsh=Z2szNHVkZmFjZTRx" target="_blank">
+                  <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-instagram-logo-48.png" alt="Instagram" />
+              </a>
+              <a href="https://www.linkedin.com/company/st-francis-de-sale-college-autonomous-sfs/" target="_blank">
+                  <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-linkedin-48.png" alt="LinkedIn" />
+              </a>
+          </div>
+      </div>
+
+      <hr />
+      <p style="text-align: center;">&copy; 2025 SFS College. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Login/Signup Modal -->
+<div class="overlay"></div>
+<div class="auth-wrapper login-form">
+    <div class="tab-header">
+        <input type="radio" id="tab-login" name="tab" checked>
+        <label for="tab-login" class="tab">Login</label>
+        <input type="radio" id="tab-signup" name="tab" >
+        <label for="tab-signup" class="tab">Sign Up</label>
+        <span class="tab-indicator"></span>
+    </div>
+
+    <div class="tab-content">
+      <!-- Login Form -->
+      <form id="login-form" class="form login">
+          <div class="title">Welcome back !</div>
+          <input type="email" class="input" placeholder="Email" required>
+          <input type="password" class="input" placeholder="Password" required>
+          <div class="forgot-password-wrapper">
+              <a href="#" class="forgot-password-link">Forgot Password?</a>
+          </div>
+          <button type="submit" class="form-btn">Log In</button>
+          
+          <!-- Sign Up Prompt -->
+          <div class="sign-up-prompt">
+              <p>Don't have an account? <a href="#" class="sign-up-link">Sign up</a></p>
+          </div>
+      </form>
+  </div>      
+
+        <form id="signup-form" class="form signup">
+            <div class="title">Create An account</div>
+            <input type="text" class="input" placeholder="Full Name" required>
+            <input type="email" class="input" placeholder="Email" required>
+            <input type="password" class="input" placeholder="Password" required>
+            <input type="password" class="input" placeholder="Confirm Password" required>
+            <button type="submit" class="form-btn">Sign Up</button>
+            
+            <!-- Already Have an Account Prompt -->
+    <div class="login-prompt">
+      <p>Already have an account? <a href="#" class="login-link">Log In</a></p>
+  </div>
+        </form>
+    </div>
+</div>
+
+<div class="forgot-password-modal" id="forgot-password-modal">
+  <form id="reset-password-form" class="form">
+    <div class="title">Reset Password</div>
+    <input type="email" class="input" placeholder="Enter your email" required>
+    <input type="password" class="input" placeholder="Enter new password" required id="new-password">
+    <button type="submit" class="form-btn">Reset Password</button>
+    <button type="button" class="modal-close" id="close-modal">Cancel</button>
+  </form>
+</div>    
+
+  <!-- Chatbot Button Section -->
   <button id="chatbot-btn" class="chatbot-btn">
-    <img src="assets/icons/icons8-chatbot-94.png" alt="Chatbot Icon" class="icon-img" />
+    <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\icons\icons8-chatbot-94.png" alt="Chatbot Icon" class="icon-img" />
   </button>
 
-  <!-- Chatbot Container -->
+  <!-- Chatbot Container Section -->
   <div id="chatbot-container" class="chatbot-container">
     <div class="chat-header">
-      <img src="assets/favicons/android-chrome-192x192.png" alt="Bot Icon" class="chatbot-icon" />
+      <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\favicons\android-chrome-192x192.png" alt="Bot Icon" class="chatbot-icon" />
       <h2>SFS InfoBot</h2>
       <a href="#" id="settings-icon" class="settings-icon">
-        <img src="assets/icons/icons8-menu-vertical-48.png" alt="Settings Icon" class="icon-img" />
+        <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\icons\icons8-menu-vertical-48.png" alt="Settings Icon" class="icon-img" />
       </a>
       <button id="close-chat" class="close-chat">
         <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\icons\icons8-close-48.png" alt="Close Chat" class="icon-img" />
@@ -156,23 +285,23 @@
 
     <div id="chat-window" class="chat-window"></div>
 
-<!-- Typing indicator inside chat window -->
-<div id="typing-indicator" class="typing-indicator" style="display: none;">SFS InfoBot is typing...</div>
+    <!-- Typing indicator inside chat window -->
+    <div id="typing-indicator" class="typing-indicator" style="display: none;">SFS InfoBot is typing...</div>
 
-<div class="chat-input-container">
-  <img id="refresh-btn" class="refresh-btn icon-img" src="assets/icons/icons8-refresh-48.png" alt="Refresh" />
-  <input type="text" id="user-input" class="user-input" placeholder="Ask something..." />
-  <button id="send-btn" class="send-btn">
-    <img src="assets/icons/icons8-send-48.png" alt="Send Icon" class="icon-img" />
-  </button>
-</div>
+    <div class="chat-input-container">
+      <img id="refresh-btn" class="refresh-btn icon-img" src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets/icons/icons8-refresh-48.png" alt="Refresh" />
+      <input type="text" id="user-input" class="user-input" placeholder="Ask something..." />
+      <button id="send-btn" class="send-btn">
+        <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\icons\icons8-send-48.png" alt="Send Icon" class="icon-img" />
+      </button>
+    </div>
 
     <!-- Watermark: SFS Logo + SFS InfoBot -->
-<div class="chatbot-watermark">
-  <img src="https://www.sfscollege.in/images/sfs24.png" alt="SFS Logo" class="sfs-watermark-logo" />
-  <div class="sfs-watermark-text">SFS InfoBot</div>
-  <div class="sfs-watermark-text2">Your Smart Campus Assistant.</div>
-</div>
+    <div class="chatbot-watermark">
+      <img src="https://www.sfscollege.in/images/sfs24.png" alt="SFS Logo" class="sfs-watermark-logo" />
+      <div class="sfs-watermark-text">SFS InfoBot</div>
+      <div class="sfs-watermark-text2">Your Smart Campus Assistant.</div>
+    </div>
 
     <!-- Confirmation Popup -->
     <div id="confirm-close-popup" class="confirm-close-popup">
@@ -221,7 +350,9 @@
     </div>
   </div>
 
-  <!-- ✅ JS File -->
-  <script src="js/script.js" defer></script>
+  <!-- JS File -->
+  <script src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\js\script.js"></script>
+  <script src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\js\login.js"></script>
+
 </body>
 </html>
