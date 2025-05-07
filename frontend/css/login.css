@@ -1,4 +1,15 @@
 /*-------------------------login styles-------------------------*/
+@media (max-width: 600px) {
+  .form-btn, .forgot-password-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+  
+  .input {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
 
 /* General reset and font settings */
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap');
@@ -140,11 +151,12 @@ input[type="radio"] {
 
 .input::placeholder {
   text-align: left;
-  color: #888;
+  color: #555;
 }
 
-.input:focus {
+.input:focus-visible {
   border-color: #0052cc;
+  box-shadow: 0 0 5px rgba(0, 82, 204, 0.3);
   outline: none;
 }
 
@@ -158,6 +170,7 @@ input[type="radio"] {
 }
 
 .forgot-password-link:hover {
+  color: #003a99;
   text-decoration: none;
 }
 
@@ -414,23 +427,23 @@ input[type="radio"] {
 }
 
 .forgot-password-modal {
-    position: fixed;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 2rem;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    z-index: 10001;
-    width: 90%;
-    max-width: 420px;
-    display: none;
-  }
-  
-  body.forgot-password-active .forgot-password-modal {
-    display: block;
-  }
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  z-index: 10001;
+  width: 90%;
+  max-width: 420px;
+  display: none;
+}
+
+body.forgot-password-active .forgot-password-modal {
+  display: block;
+}
   
   body.forgot-password-active .overlay {
     display: block;

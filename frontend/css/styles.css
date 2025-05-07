@@ -13,7 +13,7 @@ body {
     background-image: url('images/spm-bg.png');
     background-size: cover;
     background-attachment: fixed;
-    font-size: 16px; /* Base font size */
+    font-size: 16px;
 }
 
 /* Header Section */
@@ -34,7 +34,7 @@ header {
     background: linear-gradient(to right, #b20505, #013365);
     color: #ffffff;
     padding: 10px 5%;
-    font-size: 1.2rem; /* Scalable font size */
+    font-size: 1.2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,7 +66,6 @@ header .logo img {
     border-radius: 50%;
 }
 
-/* Logo Text Styles */
 .logo1 {
     margin-top: 0;
     height: 35px;
@@ -99,7 +98,7 @@ header .logo img {
 /* Navigation Styles */
 
 nav {
-    background: white;
+    background: blue;
     padding: 8px 5%;
     position: sticky;
     top: 0;
@@ -107,14 +106,13 @@ nav {
     z-index: 999;
 }
 
-/* Nav Container */
 nav .nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* Logo Image in Nav */
+/* Logo in Nav */
 nav img {
     height: 60px;
 }
@@ -151,7 +149,7 @@ nav ul li a:hover {
 .hamburger {
     cursor: pointer;
     display: none;
-    z-index: 1001;
+    z-index: 1002;
 }
 
 .hamburger input {
@@ -187,17 +185,91 @@ nav ul li a:hover {
     stroke-dashoffset: -32.42;
 }
 
-/* Navigation Styling */
+/* College Logo or Name in Menu */
+nav .college-logo {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #f4f4f9;
+    margin-bottom: 10px;
+}
+
+nav .college-logo .logo-img {
+    width: 80px; 
+    height: auto;
+    border-radius: 50%;
+}
+
+nav .college-logo .college-name {
+    font-size: 1.8rem; 
+    color: #003366;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Nav Links Container */
 .nav-links {
+    position: fixed;
+    top: 0;
+    left: -260px; /* Menu is off-screen initially */
+    width: 260px;
+    height: 100vh;
+    background-color: #ffffff;
     display: flex;
-    gap: 20px;
-    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    padding: 80px 20px 20px 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease; /* Smooth transition for sliding in */
+    z-index: 1001;
+}
+
+.nav-links.open {
+    left: 0;
+}
+
+/* Overlay background */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+.nav-overlay.show {
+    display: block;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: white;
+    color: #333;
     font-weight: 500;
+    padding: 12px 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Hover Gradient */
+.nav-links a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #f33a6a, #2348a6);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 5px;
+}
+
+.nav-links a:hover::before {
+    opacity: 1;
+}
+
+.nav-links a:hover {
+    color: white;
 }
 
 /* Responsive Styling */
@@ -206,26 +278,8 @@ nav ul li a:hover {
         display: block;
     }
 
-    .nav-links {
+    nav ul {
         display: none;
-        flex-direction: column;
-        background-color: #ffffff4e;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        padding: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-    }
-
-    .nav-links.open {
-        display: flex;
-    }
-
-    .nav-links a {
-        padding: 10px 0;
-        font-size: 1.1em;
     }
 
     .top-bar {
