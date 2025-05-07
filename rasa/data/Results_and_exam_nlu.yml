@@ -1,0 +1,26 @@
+version: "3.1"
+nlu:
+- intent: ask_exam_schedule
+  examples: |
+    - When is the next exam?
+    - Give me the exam timetable
+    - Show the exam schedule
+    - Upcoming exams?
+    - What are the exam dates?
+
+- intent: ask_results
+  examples: |
+    - When will results be announced?
+    - Show me the latest results
+    - Where can I find exam results?
+    - I want to check my result
+    - How to see my marks?
+
+- intent: ask_internal_assessment
+  examples: |
+    - Tell me about internal assessments
+    - What is the internal assessment schedule?
+    - Are internals going on?
+    - Internal marks info
+    - When are the internal tests?
+    -

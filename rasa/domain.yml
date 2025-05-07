@@ -19,12 +19,20 @@ intents:
   - ask_pg_course_fee
   - ask_pg_course_syllabus
   - welcome
+  - ask_achievements
+  - ask_alumni_2020
+  - ask_marketing_club
+  - ask_ncc_orientation
+  - ask_exam_schedule
+  - ask_results
+  - ask_internal_assessment
   - ask_college_events
-  - ask_event_on_date
-  - ask_festival_on_date
+  - ask_college_news
+  - ask_skill_development
+  - ask_workshops
+  - ask_contact_info
   - ask_about_facilities
   - ask_about_specific_facility
-
 entities:
   - course_name
   - department_name
@@ -118,7 +126,39 @@ responses:
   - text: "Here's some information about the {facility_type} facilities at SFS College:\n{facility_details}"
   - text: "Regarding {facility_type}, we offer the following:\n{facility_details}"
   - text: "You asked about {facility_type}. Here are the details:\n{facility_details}"
+  utter_ask_achievements:
+    - text: "Check out the achievers and their accomplishments: https://www.sfscollege.in/achievers.php"
+  utter_ask_alumni_2020:
+    - text: "You can learn more about the 2020 alumni here: https://www.sfscollege.in/Alumni_2020.php"
+  utter_ask_marketing_club:
+    - text: "Learn about the Marketing Club and its activities: https://www.sfscollege.in/Marketing_Club24.php"
+  utter_ask_ncc_orientation:
+    - text: "Here are the details about the NCC Orientation: https://www.sfscollege.in/NCC_ORIENTATION.php"
+  utter_ask_exam_schedule:
+    - text: "You can find the latest exam timetable here: https://www.sfscollege.in/exam_schedule.php"
 
+  utter_ask_results:
+    - text: "Exam results are available here: https://www.sfscollege.in/results.php"
+
+  utter_ask_internal_assessment:
+    - text: "Internal assessment details are published here: https://www.sfscollege.in/internal_assessment.php"
+  utter_ask_college_events:
+    - text: "Check out the upcoming and past events here: https://www.sfscollege.in/events.php"
+
+  utter_ask_college_news:
+    - text: "Stay updated with the latest news: https://www.sfscollege.in/news.php"
+  utter_ask_skill_development:
+    - text: "You can explore various skill development programs here: https://www.sfscollege.in/Skill_Development.php"
+
+  utter_ask_workshops:
+    - text: "Find all upcoming and past workshops at: https://www.sfscollege.in/Workshops.php"
+  utter_ask_contact_info:
+    - text: |
+        You can reach SFS College through the following:
+        📍 Address: Hebbagodi, Electronic City, Bangalore
+        📞 Phone: +91-1234567890
+        📧 Email: contact@sfscollege.in
+        🌐 Website: https://www.sfscollege.in/contact.php
 actions:
   - action_list_ug_courses
   - action_show_course_details
@@ -132,7 +172,6 @@ actions:
   - action_show_pg_course_details
   - action_show_pg_course_fee
   - action_show_pg_course_syllabus
-  - action_list_college_events
   - action_show_event_on_date
   - action_show_festival_on_date
   - action_list_all_facilities

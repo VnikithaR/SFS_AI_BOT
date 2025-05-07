@@ -1,0 +1,7 @@
+version: "3.1"
+rules:
+- rule: Respond to contact inquiry
+  steps:
+  - intent: ask_contact_info
+  - action: utter_ask_contact_info
+  -

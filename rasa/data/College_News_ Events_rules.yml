@@ -1,0 +1,7 @@
+version: "3.1"
+rules:
+- rule: Respond to college events inquiry
+  steps:
+  - intent: ask_college_events
+  - action: utter_ask_college_events
+  -

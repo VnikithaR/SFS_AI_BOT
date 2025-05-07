@@ -1,0 +1,18 @@
+version: "3.1"
+nlu:
+- intent: ask_skill_development
+  examples: |
+    - What are the skill development programs?
+    - Any workshops for students?
+    - Are there any training sessions?
+    - Tell me about development programs
+    - Skill-based training available?
+
+- intent: ask_workshops
+  examples: |
+    - What workshops are available?
+    - Upcoming workshops in college?
+    - Tell me about the latest workshops
+    - Are workshops conducted regularly?
+    - Any workshops for personality development?
+    -
