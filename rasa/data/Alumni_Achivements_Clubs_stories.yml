@@ -19,3 +19,4 @@ stories:
   steps:
   - intent: ask_ncc_orientation
   - action: utter_ask_ncc_orientation
+  -

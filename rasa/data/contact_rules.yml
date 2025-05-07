@@ -4,3 +4,4 @@ rules:
   steps:
   - intent: ask_contact_info
   - action: utter_ask_contact_info
+  -
