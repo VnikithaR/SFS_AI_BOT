@@ -1,0 +1,22 @@
+version: "3.1"
+rules:
+- rule: Respond to achievements inquiry
+  steps:
+  - intent: ask_achievements
+  - action: utter_ask_achievements
+
+- rule: Respond to alumni 2020 inquiry
+  steps:
+  - intent: ask_alumni_2020
+  - action: utter_ask_alumni_2020
+
+- rule: Respond to marketing club inquiry
+  steps:
+  - intent: ask_marketing_club
+  - action: utter_ask_marketing_club
+
+- rule: Respond to NCC orientation inquiry
+  steps:
+  - intent: ask_ncc_orientation
+  - action: utter_ask_ncc_orientation
+  -

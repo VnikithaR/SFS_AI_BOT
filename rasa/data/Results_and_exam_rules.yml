@@ -1,0 +1,17 @@
+version: "3.1"
+rules:
+- rule: Respond to exam schedule inquiry
+  steps:
+  - intent: ask_exam_schedule
+  - action: utter_ask_exam_schedule
+
+- rule: Respond to results inquiry
+  steps:
+  - intent: ask_results
+  - action: utter_ask_results
+
+- rule: Respond to internal assessment inquiry
+  steps:
+  - intent: ask_internal_assessment
+  - action: utter_ask_internal_assessment
+  -

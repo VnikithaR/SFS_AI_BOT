@@ -1,0 +1,18 @@
+version: "3.1"
+nlu:
+- intent: ask_college_events
+  examples: |
+    - What are the upcoming college events?
+    - Any events this month?
+    - Tell me about the college events
+    - What's happening at college?
+    - Recent programs held?
+
+- intent: ask_college_news
+  examples: |
+    - Any recent news from the college?
+    - Show me college updates
+    - Latest announcements?
+    - What's new at SFS College?
+    - News about the college?
+    -

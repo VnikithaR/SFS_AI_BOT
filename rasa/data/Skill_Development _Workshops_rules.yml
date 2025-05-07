@@ -1,0 +1,12 @@
+version: "3.1"
+rules:
+- rule: Respond to skill development inquiry
+  steps:
+  - intent: ask_skill_development
+  - action: utter_ask_skill_development
+
+- rule: Respond to workshop inquiry
+  steps:
+  - intent: ask_workshops
+  - action: utter_ask_workshops
+  -

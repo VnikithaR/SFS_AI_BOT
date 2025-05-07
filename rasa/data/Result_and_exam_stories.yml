@@ -1,0 +1,17 @@
+version: "3.1"
+stories:
+- story: user asks about exam schedule
+  steps:
+  - intent: ask_exam_schedule
+  - action: utter_ask_exam_schedule
+
+- story: user asks about results
+  steps:
+  - intent: ask_results
+  - action: utter_ask_results
+
+- story: user asks about internal assessments
+  steps:
+  - intent: ask_internal_assessment
+  - action: utter_ask_internal_assessment
+  -
