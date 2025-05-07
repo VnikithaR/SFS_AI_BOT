@@ -4,4 +4,4 @@ rules:
   steps:
   - intent: ask_college_events
   - action: utter_ask_college_events
-
+  -
