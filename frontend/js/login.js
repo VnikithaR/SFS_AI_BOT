@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const API_BASE = "http://localhost:5000"; // Flask backend
+    const API_BASE = "http://localhost:5000";
 
     // DOM Elements
     const loginForm = document.getElementById("login-form");
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const passwordSignup = signupForm.querySelectorAll('input[type="password"]')[0];
     const confirmPasswordSignup = signupForm.querySelectorAll('input[type="password"]')[1];
 
-    const loginLink = document.querySelector(".login-link");
+    const loginLink = document.querySelector("#login-link");
     const signUpLink = document.querySelector(".sign-up-link");
 
     // === Helper Functions ===
@@ -31,8 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function toggleAuthTabs() {
-        loginForm.style.display = loginTab.checked ? "block" : "none";
-        signupForm.style.display = signupTab.checked ? "block" : "none";
+        if (loginTab.checked) {
+            loginForm.style.display = "flex";
+            signupForm.style.display = "none";
+        } else if (signupTab.checked) {
+            loginForm.style.display = "none";
+            signupForm.style.display = "flex";
+        }
     }
 
     function closeModal() {
@@ -42,16 +47,38 @@ document.addEventListener('DOMContentLoaded', function () {
         forgotPasswordModal.style.display = "none";
     }
 
-    // === Modal and Tab Controls ===
-    loginBtn.addEventListener("click", function (e) {
-        e.preventDefault();
+    function openForgotPassword() {
+        document.body.classList.remove("login-active");
+        loginWrapper.style.display = "none";
+        document.body.classList.add("forgot-password-active");
+        forgotPasswordModal.style.display = "block";
+        overlay.style.display = "block";
+    }
+
+    function closeForgotPassword() {
         document.body.classList.remove("forgot-password-active");
         forgotPasswordModal.style.display = "none";
-        document.body.classList.add("login-active");
-        overlay.style.display = "block";
-        loginWrapper.style.display = "block";
-        toggleAuthTabs();
-    });
+        overlay.style.display = "none";
+    }
+
+    // === Modal and Tab Controls ===
+    if (loginBtn) {
+        loginBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+    
+            // 👇 Ensure reset modal is completely hidden
+            document.body.classList.remove("forgot-password-active");
+            forgotPasswordModal.style.display = "none";
+    
+            // 👇 Open login modal properly
+            document.body.classList.add("login-active");
+            overlay.style.display = "block";
+            loginWrapper.style.display = "block";
+            loginTab.checked = true;
+            toggleAuthTabs();
+        });
+    }
+    
 
     overlay.addEventListener("click", closeModal);
     closeModalBtn.addEventListener("click", closeModal);
@@ -61,17 +88,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     forgotPasswordLink.addEventListener("click", function (e) {
         e.preventDefault();
-        document.body.classList.remove("login-active");
-        loginWrapper.style.display = "none";
-        document.body.classList.add("forgot-password-active");
-        forgotPasswordModal.style.display = "block";
-        overlay.style.display = "block";
+        openForgotPassword();
     });
 
     if (loginLink) {
         loginLink.addEventListener("click", function (e) {
             e.preventDefault();
             loginTab.checked = true;
+            signupTab.checked = false;
+            document.body.classList.add("login-active");
+            overlay.style.display = "block";
+            loginWrapper.style.display = "block";
             toggleAuthTabs();
         });
     }
@@ -80,6 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
         signUpLink.addEventListener("click", function (e) {
             e.preventDefault();
             signupTab.checked = true;
+            loginTab.checked = false;
+            document.body.classList.add("login-active");
+            overlay.style.display = "block";
+            loginWrapper.style.display = "block";
             toggleAuthTabs();
         });
     }
@@ -163,7 +194,8 @@ document.addEventListener('DOMContentLoaded', function () {
             alert(data.message);
             if (data.success) {
                 closeModal();
-                // Redirect or store session info here if needed
+                const dummyName = email.split('@')[0];
+                login(dummyName); // Simulate login
             }
         } catch (err) {
             console.error(err);
@@ -181,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const newPassword = prompt("Enter your new password:");
+        const newPassword = document.getElementById('new-password').value.trim();
         if (!newPassword) return;
 
         try {
@@ -192,58 +224,57 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             const data = await res.json();
             alert(data.message);
-            if (data.success) closeModal();
+            if (data.success) {
+                // Close the modal and redirect to the login form
+                closeForgotPassword();
+                document.body.classList.add("login-active");
+                loginTab.checked = true;
+                toggleAuthTabs();
+                alert("Password reset successful. Please log in.");
+            }
         } catch (err) {
             console.error(err);
             alert("Password reset failed. Please try again.");
         }
     });
+
     // Initial setup
+    loginTab.checked = true;
+    signupTab.checked = false;
     toggleAuthTabs();
 });
 
-
-// Simulated authentication state
+// === Auth State Simulation ===
 let isAuthenticated = false;
 let currentUser = { name: "" };
 
-// Call this function after login
 function login(userName) {
-  isAuthenticated = true;
-  currentUser.name = userName;
-  updateNavForAuth();
+    isAuthenticated = true;
+    currentUser.name = userName;
+    updateNavForAuth();
 }
 
-// Call this function on logout
 function logout() {
-  isAuthenticated = false;
-  currentUser.name = "";
-  updateNavForAuth();
-  alert("You have been logged out.");
+    isAuthenticated = false;
+    currentUser.name = "";
+    updateNavForAuth();
+    alert("You have been logged out.");
 }
 
-// Show/hide links based on authentication
 function updateNavForAuth() {
-  document.getElementById("login-link").style.display = isAuthenticated ? "none" : "inline";
-  document.getElementById("profile-link").style.display = isAuthenticated ? "inline" : "none";
-  document.getElementById("settings-link").style.display = isAuthenticated ? "inline" : "none";
-  document.getElementById("logout-link").style.display = isAuthenticated ? "inline" : "none";
+    document.getElementById("login-link").style.display = isAuthenticated ? "none" : "inline";
+    document.getElementById("profile-link").style.display = isAuthenticated ? "inline" : "none";
+    document.getElementById("settings-link").style.display = isAuthenticated ? "inline" : "none";
+    document.getElementById("logout-link").style.display = isAuthenticated ? "inline" : "none";
 
-  const welcome = document.getElementById("user-welcome-message");
-  if (isAuthenticated) {
-    document.getElementById("user-name").innerText = currentUser.name || "User";
-    welcome.style.display = "inline";
-  } else {
-    welcome.style.display = "none";
-  }
+    const welcome = document.getElementById("user-welcome-message");
+    if (welcome) {
+        if (isAuthenticated) {
+            document.getElementById("user-name").innerText = currentUser.name || "User";
+            welcome.style.display = "inline";
+        } else {
+            welcome.style.display = "none";
+        }
+    }
 }
-
-// Example usage on login form submission (add this in login.js after successful login)
-document.getElementById("login-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  const email = this.querySelector('input[type="email"]').value;
-  // You might fetch user name from backend; using dummy name here
-  const dummyName = email.split('@')[0];
-  login(dummyName); // Simulate login
-});
 

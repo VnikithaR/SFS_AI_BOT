@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // -------- Chatbot Elements --------
+  // -------- Elements --------
   const chatbotBtn = document.getElementById('chatbot-btn');
   const chatbotContainer = document.getElementById('chatbot-container');
   const closeChatBtn = document.getElementById('close-chat');
@@ -15,18 +15,36 @@ document.addEventListener('DOMContentLoaded', function () {
   const chatWindow = document.getElementById('chat-window');
   const typingIndicator = document.getElementById('typing-indicator');
   const refreshBtn = document.getElementById('refresh-btn');
+
   const menuToggle = document.getElementById('menu-toggle');
   const menu = document.getElementById('menu');
+  const navOverlay = document.getElementById('nav-overlay');
 
-  menuToggle.addEventListener('change', () => {
-    menu.classList.toggle('open');
+  const loginBtn = document.querySelector('#login-link'); 
+  const loginOverlay = document.querySelector('.overlay');
+  const loginWrapper = document.querySelector('.auth-wrapper.login-form');
+
+  // -------- Navigation Menu Toggle --------
+  menuToggle.addEventListener('change', function () {
+    toggleMenu(this.checked);
   });
 
-  function logout() {
-    alert("Logged out!"); // Replace with actual logic
+  navOverlay.addEventListener('click', function () {
+    toggleMenu(false);
+  });
+
+  function toggleMenu(show) {
+    if (show) {
+      menu.classList.add('open');
+      navOverlay.classList.add('show');
+    } else {
+      menu.classList.remove('open');
+      navOverlay.classList.remove('show');
+      menuToggle.checked = false;
+    }
   }
 
-  // -------- Chatbot Behavior --------
+  // -------- Chatbot Logic --------
   chatbotContainer.style.display = 'none';
   let welcomeMessageShown = false;
 
@@ -116,23 +134,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 4000);
   }
 
-  // -------- Login UI Modal Trigger Only --------
-  const loginBtn = document.querySelector('.login-btn');
-  const overlay = document.querySelector('.overlay');
-  const loginWrapper = document.querySelector('.auth-wrapper.login-form');
-
-  if (loginBtn && overlay && loginWrapper) {
+  // -------- Login Modal --------
+  if (loginBtn && loginOverlay && loginWrapper) {
     loginBtn.addEventListener('click', function (e) {
       e.preventDefault();
       document.body.classList.add('login-active');
-      overlay.style.display = 'block';
+      loginOverlay.style.display = 'block';
       loginWrapper.style.display = 'block';
     });
 
-    overlay.addEventListener('click', function () {
+    loginOverlay.addEventListener('click', function () {
       document.body.classList.remove('login-active');
-      overlay.style.display = 'none';
+      loginOverlay.style.display = 'none';
       loginWrapper.style.display = 'none';
     });
   }
+
+  // -------- Logout Function Placeholder --------
+  window.logout = function () {
+    alert("Logged out!"); // Replace with actual logic
+  };
 });
