@@ -6,8 +6,8 @@ import pymongo
 
 # Replace with your MongoDB connection details
 MONGO_URI = "mongodb://localhost:27017/"
-DATABASE_NAME = "sfs_info_bot"
-COLLECTION_NAME = "ug_courses"  # Assuming a single collection
+DATABASE_NAME = "sfs_infobot_db"
+COLLECTION_NAME = "ug_courses"  
 
 class ActionListUGCourses(Action):
     def name(self) -> Text:

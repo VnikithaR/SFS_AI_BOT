@@ -7,7 +7,8 @@ import datetime
 
 # Replace with your MongoDB connection details
 MONGO_URI = "mongodb://localhost:27017/"
-DATABASE_NAME = "sfs_info_bot"
+DATABASE_NAME = "sfs_infobot_db"
+COLLECTION_NAME = "ug_courses"  
 
 def format_date(date_str):
     try:

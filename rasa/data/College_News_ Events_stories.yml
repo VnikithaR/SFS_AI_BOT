@@ -9,4 +9,3 @@ stories:
   steps:
   - intent: ask_college_news
   - action: utter_ask_college_news
-  -

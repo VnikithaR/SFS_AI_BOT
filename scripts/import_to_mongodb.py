@@ -4,23 +4,11 @@ from pymongo import MongoClient
 
 # MongoDB setup
 client = MongoClient("mongodb://localhost:27017/")
-db = client["sfs_info_bot"]
+db = client["sfs_infobot_db"]
 
 # Get absolute base path of the parent directory (project root)
 base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 bot_data_path = os.path.join(base_path, "bot_data")
-
-# Define specific paths
-courses_path = os.path.join(bot_data_path, "courses")
-pg_courses_path = os.path.join(courses_path, "pg_courses")
-ug_courses_path = os.path.join(courses_path, "ug_courses")
-events_path = os.path.join(bot_data_path, "events")
-facilities_path = os.path.join(bot_data_path, "facilities")
-institute_info_path = os.path.join(bot_data_path, "institute_info")
-admissions_path = os.path.join(institute_info_path, "admissions")
-placements_path = os.path.join(institute_info_path, "placements")  # Corrected typo
-compliance_path = os.path.join(bot_data_path, "compliance")
-alumni_achievements_clubs_path = os.path.join(bot_data_path, "Alumni_Achievements_Clubs")
 
 # Function to load and insert JSON files into MongoDB
 def load_json_to_mongodb(folder_path, collection_name):
@@ -47,24 +35,27 @@ def load_json_to_mongodb(folder_path, collection_name):
                 except Exception as e:
                     print(f"Error inserting into '{collection_name}' from {filename}: {e}")
 
-# Function to load folders dynamically
-def load_files_from_folder(relative_folder_path, collection_name):
-    abs_folder_path = os.path.join(base_path, relative_folder_path)
+# Directories to process with their corresponding collection names
+folder_collection_map = {
+    "bot_data/Alumni_Achievements_Clubs": "alumni_achievements_clubs",
+    "bot_data/College_News_ Events": "college_news_events",
+    "bot_data/contact": "contact",
+    "bot_data/courses/pg_courses": "pg_courses",
+    "bot_data/courses/ug_courses": "ug_courses",
+    "bot_data/events": "events",
+    "bot_data/facilities": "facilities",
+    "bot_data/institute_info": "institute_info",
+    "bot_data/institute_info/admissions": "admissions",
+    "bot_data/institute_info/placements": "placements",
+    "bot_data/Results_and_exam": "results_and_exam",
+    "bot_data/Skill_Development_Workshops": "skill_development_workshops"
+}
+
+# Load all folders into MongoDB
+for relative_path, collection_name in folder_collection_map.items():
+    abs_folder_path = os.path.join(base_path, relative_path)
     load_json_to_mongodb(abs_folder_path, collection_name)
 
-# Load JSON data into MongoDB
-load_json_to_mongodb(pg_courses_path, "pg_courses")
-load_json_to_mongodb(ug_courses_path, "ug_courses")
-load_json_to_mongodb(events_path, "events")
-load_json_to_mongodb(facilities_path, "facilities")
-load_json_to_mongodb(institute_info_path, "institute_info")
-load_json_to_mongodb(admissions_path, "admissions")
-load_json_to_mongodb(placements_path, "placements")
-
-# Load dynamic folders if needed
-load_files_from_folder("bot_data/compliance", "compliance")
-load_files_from_folder("bot_data/Alumni_Achievements_Clubs", "alumni_achievements_clubs")
-
-# Close the MongoDB connection
+# Close MongoDB connection
 client.close()
 print("All JSON files loaded into MongoDB.")

@@ -1,0 +1,10 @@
+{
+    "upcoming_events": [
+      {"date": "05-05-2025", "day": "Monday", "ug1_event": "Revision", "ug2_3_event": "Final Year Students Report Back"},
+      {"date": "12-05-2025", "day": "Monday", "ug1_event": "End Semester Examination", "ug2_3_event": null},
+      {"date": "17-05-2025", "day": "Saturday", "ug1_event": null, "ug2_3_event": "Graduation Day (School of Commerce and School of Humanities)"},
+      {"date": "24-05-2025", "day": "Saturday", "ug1_event": null, "ug2_3_event": "Graduation Day (School of Science and Management)"},
+      {"date": "30-06-2025", "day": "Monday", "ug1_event": "Commencement of Academic Year 2025-26", "ug2_3_event": "Commencement of Academic Year 2025-26"}
+    ]
+  }
+  

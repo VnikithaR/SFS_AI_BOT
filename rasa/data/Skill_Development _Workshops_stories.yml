@@ -9,4 +9,3 @@ stories:
   steps:
   - intent: ask_workshops
   - action: utter_ask_workshops
-  -
