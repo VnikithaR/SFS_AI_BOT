@@ -9,7 +9,7 @@ CORS(app)  # Enable CORS for frontend JS
 
 # Connect to MongoDB
 client = MongoClient("mongodb://localhost:27017/")
-db = client["sfs_info_bot"]
+db = client["sfs_infobot_db"]
 users_collection = db["users"]
 
 def validate_email(email):

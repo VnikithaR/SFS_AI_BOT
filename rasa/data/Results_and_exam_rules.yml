@@ -14,4 +14,3 @@ rules:
   steps:
   - intent: ask_internal_assessment
   - action: utter_ask_internal_assessment
-  -
