@@ -1,83 +1,83 @@
-<!-- frontend\index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>College Website - SFS AI Chatbot</title>
+  <title>SFS Info Bot</title>
 
   <!-- Fonts and Styles -->
-  <link rel="stylesheet" href="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\css\styles.css" />
-  <link rel="stylesheet" href="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\css\login.css" />
-
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/login.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=El+Messiri:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="icon" href="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\favicons\apple-touch-icon.png" type="image/png" />
+  <link rel="icon" href="assets/favicons/apple-touch-icon.png" type="image/png" />
 </head>
 <body>
 
-  <!-- Overlay that appears when menu is open -->
-<div class="nav-overlay" id="nav-overlay" onclick="toggleMenu(false)"></div>
+  <!-- Floating Overlay Logo -->
+  <a href="index.html" class="overlay-logo-link">
+    <img src="assets/favicons/apple-touch-icon.png" alt="SFS Logo" class="overlay-logo-img" />
+  </a>
 
-<div class="top-bar">
-  <div class="top-bar-left">
-    <img src="./assets/favicons/apple-touch-icon.png" alt="SFS Logo" class="logo-img" />
+  <!-- College Name Bar -->
+  <div class="college-name-bar">
+    St Francis de Sales College (Autonomous)
   </div>
 
-  <div class="top-bar-center">
-    <a href="#" data-text="Home">Home</a>
-    <a href="#about" data-text="About">About</a>
-    <a href="#academics" data-text="Academic">Academics</a>
-    <a href="#Admission" data-text="Admission">Admissions</a>
-    <a href="#contact" data-text="Contact">Contact</a>
+  <!-- Overlay when menu is open -->
+  <div class="nav-overlay" id="nav-overlay" onclick="toggleMenu(false)"></div>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+    </div>
+
+    <div class="top-bar-center">
+      <a href="#" data-text="Home">Home</a>
+      <a href="#about" data-text="About">About</a>
+      <a href="#academics" data-text="Academic">Academics</a>
+      <a href="#Admission" data-text="Admission">Admissions</a>
+      <a href="#contact" data-text="Contact">Contact</a>
+    </div>
+
+    <div class="top-bar-right">
+      <a href="#" id="login-link">Login / Sign Up</a>
+      <a href="#" id="profile-link" style="display: none;">Profile</a>
+      <a href="#settings-modal" id="settings-link" style="display: none;">Settings</a>
+      <a href="#" onclick="logout()" id="logout-link" style="display: none;">Logout</a>
+    </div>
+
+    <!-- Hamburger Icon -->
+    <label class="hamburger">
+      <input type="checkbox" id="menu-toggle" onclick="toggleMenu(this.checked)" />
+      <svg viewBox="0 0 32 32">
+        <path
+          d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+          class="line line-top-bottom"
+        ></path>
+        <path d="M7 16 27 16" class="line"></path>
+      </svg>
+    </label>
   </div>
 
-  <div class="top-bar-right">
-    <a href="#" id="login-link">Login / Sign Up</a>
-    <a href="#" id="profile-link" style="display: none;">Profile</a>
-    <a href="#settings-modal" id="settings-link" style="display: none;">Settings</a>
-    <a href="#" onclick="logout()" id="logout-link" style="display: none;">Logout</a>
+  <!-- Off-Canvas Mobile Nav Menu -->
+  <nav class="nav-links" id="menu">
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#academics">Academics</a>
+    <a href="#Admission">Admissions</a>
+    <a href="#contact">Contact</a>
+
+    <!-- Unique IDs for mobile versions -->
+    <a href="#" id="login-link-mobile">Login / Sign Up</a>
+    <a href="#" id="profile-link-mobile" style="display: none;">Profile</a>
+    <a href="#settings-modal" id="settings-link-mobile" style="display: none;">Settings</a>
+    <a href="#" onclick="logout()" id="logout-link-mobile" style="display: none;">Logout</a>
+  </nav>
+
+  <!-- Welcome Message -->
+  <div id="user-welcome-message" style="display: none; color: white; margin-left: 15px;">
+    Welcome, <span id="user-name"></span>!
   </div>
-
-  <!-- Hamburger Icon -->
-  <label class="hamburger">
-    <input type="checkbox" id="menu-toggle" onclick="toggleMenu(this.checked)" />
-    <svg viewBox="0 0 32 32">
-      <path
-        d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-        class="line line-top-bottom"
-      ></path>
-      <path d="M7 16 27 16" class="line"></path>
-    </svg>
-  </label>
-</div>
-
-    <!-- Off-Canvas Menu -->
-<nav class="nav-links" id="menu">
-  <!-- College Logo or Name -->
-  <div class="college-logo">
-    <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\favicons\android-chrome-192x192.png" alt="College Logo" class="logo-img" />
-    <h1 class="college-name">SFS College</h1>
-  </div>
-
-  <!-- Navigation Links -->
-  <a href="#">Home</a>
-  <a href="#about">About</a>
-  <a href="#academics">Academics</a>
-  <a href="#Admission">Admissions</a>
-  <a href="#contact">Contact</a>
-
-  <!-- Links with IDs to toggle based on login status -->
-  <a href="#" id="login-link">Login / Sign Up</a>
-  <a href="#" id="profile-link" style="display: none;">Profile</a>
-  <a href="#settings-modal" id="settings-link" style="display: none;">Settings</a>
-  <a href="#" onclick="logout()" id="logout-link" style="display: none;">Logout</a>
-</nav>
-
-<!-- Welcome Message for Logged-in User -->
-<div id="user-welcome-message" style="display: none; color: white; margin-left: 15px;">
-  Welcome, <span id="user-name"></span>!
-</div>
-</div>
 
   <!-- Carousel Section -->
   <div class="carousel">
@@ -160,7 +160,6 @@
   </section>
 
 <!-- Footer -->
-
 <footer>
   <div class="container" id="contact">
       <div class="footer-container">
@@ -186,9 +185,7 @@
               <a href="grievance.php">Grievance</a>
               <a href="aicte.php">AICTE</a>
           </div>
-      </div>
 
-      <div class="footer-container">
           <!-- College Address Section -->
           <div class="footer-section">
               <h5>College Address</h5>
@@ -202,24 +199,27 @@
               <h5>Find Us</h5>
               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7780.340151161502!2d77.682237!3d12.832284!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6c5ecd556f55%3A0x7f50ed2aa3817700!2sSt.Francis%20de%20Sales%20Degree%20College!5e0!3m2!1sen!2sus!4v1710926959970!5m2!1sen!2sus" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
+
       </div>
 
-      <!-- Social Media Section -->
-      <div class="social-container">
-          <h5>Follow Us</h5>
-          <div class="social-icons">
-              <a href="https://www.facebook.com/share/5Fv6ihq8Yzwnn74j/" target="_blank">
-                  <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-facebook-logo-48.png" alt="Facebook" />
-              </a>
-              <a href="https://youtube.com/@sfscollegebangalore8557?si=kY60jJ4q_0TIySsM" target="_blank">
-                  <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-youtube.svg" alt="YouTube" />
-              </a>
-              <a href="https://www.instagram.com/sfs.college/?igsh=Z2szNHVkZmFjZTRx" target="_blank">
-                  <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-instagram-logo-48.png" alt="Instagram" />
-              </a>
-              <a href="https://www.linkedin.com/company/st-francis-de-sale-college-autonomous-sfs/" target="_blank">
-                  <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-linkedin-48.png" alt="LinkedIn" />
-              </a>
+      <div class="footer-container">
+          <!-- Social Media Section -->
+          <div class="social-container">
+              <h5>Follow Us</h5>
+              <div class="social-icons">
+                  <a href="https://www.facebook.com/share/5Fv6ihq8Yzwnn74j/" target="_blank">
+                      <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-facebook-logo-48.png" alt="Facebook" />
+                  </a>
+                  <a href="https://youtube.com/@sfscollegebangalore8557?si=kY60jJ4q_0TIySsM" target="_blank">
+                      <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-youtube.svg" alt="YouTube" />
+                  </a>
+                  <a href="https://www.instagram.com/sfs.college/?igsh=Z2szNHVkZmFjZTRx" target="_blank">
+                      <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-instagram-logo-48.png" alt="Instagram" />
+                  </a>
+                  <a href="https://www.linkedin.com/company/st-francis-de-sale-college-autonomous-sfs/" target="_blank">
+                      <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\apps\icons8-linkedin-48.png" alt="LinkedIn" />
+                  </a>
+              </div>
           </div>
       </div>
 
