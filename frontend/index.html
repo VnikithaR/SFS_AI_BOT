@@ -18,20 +18,38 @@
   <!-- Overlay that appears when menu is open -->
 <div class="nav-overlay" id="nav-overlay" onclick="toggleMenu(false)"></div>
 
-  <div class="top-bar">
+<div class="top-bar">
+  <div class="top-bar-left">
     <img src="./assets/favicons/apple-touch-icon.png" alt="SFS Logo" class="logo-img" />
-  
-    <!-- Hamburger Menu -->
-    <label class="hamburger">
-      <input type="checkbox" id="menu-toggle" />
-      <svg viewBox="0 0 32 32">
-        <path
-          d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-          class="line line-top-bottom"
-        ></path>
-        <path d="M7 16 27 16" class="line"></path>
-      </svg>
-    </label>
+  </div>
+
+  <div class="top-bar-center">
+    <a href="#" data-text="Home">Home</a>
+    <a href="#about" data-text="About">About</a>
+    <a href="#academics" data-text="Academic">Academics</a>
+    <a href="#Admission" data-text="Admission">Admissions</a>
+    <a href="#contact" data-text="Contact">Contact</a>
+  </div>
+
+  <div class="top-bar-right">
+    <a href="#" id="login-link">Login / Sign Up</a>
+    <a href="#" id="profile-link" style="display: none;">Profile</a>
+    <a href="#settings-modal" id="settings-link" style="display: none;">Settings</a>
+    <a href="#" onclick="logout()" id="logout-link" style="display: none;">Logout</a>
+  </div>
+
+  <!-- Hamburger Icon -->
+  <label class="hamburger">
+    <input type="checkbox" id="menu-toggle" onclick="toggleMenu(this.checked)" />
+    <svg viewBox="0 0 32 32">
+      <path
+        d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+        class="line line-top-bottom"
+      ></path>
+      <path d="M7 16 27 16" class="line"></path>
+    </svg>
+  </label>
+</div>
 
     <!-- Off-Canvas Menu -->
 <nav class="nav-links" id="menu">
@@ -265,6 +283,62 @@
   </form>
 </div>    
 
+<!-- Profile Section -->
+<div id="profile-section" style="display: none; padding: 20px;">
+  <h2>Your Profile</h2>
+  <div>
+    <img id="profile-picture" src="default-profile.png" alt="Profile Picture" style="width:100px;height:100px;border-radius:50%;" />
+    <input type="file" id="upload-profile-picture" />
+  </div>
+  <p><strong>Name:</strong> <span id="profile-name"></span></p>
+  <p><strong>Email:</strong> <span id="profile-email"></span></p>
+  <p><strong>Enrolled Course:</strong> <span id="profile-course"></span></p>
+  <button onclick="editProfile()">Edit Info</button>
+</div>
+
+<!-- Dashboard Section (Optional but Useful) -->
+<div id="dashboard-section" style="display: none; padding: 20px;">
+  <h2>Dashboard</h2>
+  <p>Welcome back, <span id="dashboard-name"></span>!</p>
+  <div id="recent-activity">No recent activity.</div>
+  <div id="quick-links">
+    <a href="#Admission">Application Status</a> |
+    <a href="#academics">Academic Info</a>
+  </div>
+</div>
+
+<!-- Application Status -->
+<div id="application-status" style="display: none; padding: 20px;">
+  <h2>Application Status</h2>
+  <div id="application-form-container">
+    <!-- Dynamically show form or status here -->
+    <p>You have not applied yet. <a href="#Admission">Apply now</a>.</p>
+  </div>
+</div>
+
+<!-- Academic Info -->
+<div id="academic-info" style="display: none; padding: 20px;">
+  <h2>Academic Information</h2>
+  <p><strong>Courses Enrolled:</strong> <span id="courses-enrolled">Loading...</span></p>
+  <p><strong>Timetable:</strong> <a href="documents/timetable.pdf" target="_blank">Download</a></p>
+  <p><strong>Notices:</strong> <a href="documents/notices.pdf" target="_blank">View Notices</a></p>
+  <p><strong>Grades:</strong> <span id="grades-info">Check on Portal</span></p>
+</div>
+
+<!-- Support/Contact Form Auto-Filled -->
+<div id="support-section" style="display: none; padding: 20px;">
+  <h2>Need Help?</h2>
+  <form>
+    <label>Name</label>
+    <input type="text" id="support-name" readonly />
+    <label>Email</label>
+    <input type="email" id="support-email" readonly />
+    <label>Your Message</label>
+    <textarea required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
   <!-- Chatbot Button Section -->
   <button id="chatbot-btn" class="chatbot-btn">
     <img src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\assets\icons\icons8-chatbot-94.png" alt="Chatbot Icon" class="icon-img" />
@@ -314,41 +388,55 @@
     </div>
 
     <!-- Settings Modal -->
-    <div id="settings-modal" class="settings-modal">
-      <div class="settings-content">
-        <span id="close-settings" class="close-settings">&times;</span>
-        <h3>Settings</h3>
-        <div class="setting-option">
-          <label for="language-select">Language:</label>
-          <select id="language-select">
-            <option value="en">English</option>
-            <option value="es">Spanish</option>
-            <option value="fr">French</option>
-          </select>
-        </div>
+<div id="settings-modal" class="settings-modal">
+  <div class="settings-content">
+    <span id="close-settings" class="close-settings">&times;</span>
+    <h3>Settings</h3>
 
-        <div class="setting-option">
-          <label for="chatbot-toggle">Chatbot Availability:</label>
-          <input type="checkbox" id="chatbot-toggle" checked />
-        </div>
+    <div class="setting-option">
+      <label for="language-select">Language:</label>
+      <select id="language-select">
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+      </select>
+    </div>
 
-        <div class="setting-option">
-          <label for="notification-toggle">Mute Notifications:</label>
-          <input type="checkbox" id="notification-toggle" />
-        </div>
+    <div class="setting-option">
+      <label for="chatbot-toggle">Chatbot Availability:</label>
+      <input type="checkbox" id="chatbot-toggle" checked />
+    </div>
 
-        <div class="setting-option">
-          <a href="#profile-settings">Profile Settings</a>
-        </div>
-        <div class="setting-option">
-          <a href="#help-faq">Help/FAQ</a>
-        </div>
-        <div class="setting-option">
-          <a href="#feedback">Provide Feedback</a>
-        </div>
-      </div>
+    <div class="setting-option">
+      <label for="notification-toggle">Mute Notifications:</label>
+      <input type="checkbox" id="notification-toggle" />
+    </div>
+
+    <div class="setting-option">
+      <a href="#profile-settings">Profile Settings</a>
+    </div>
+    <div class="setting-option">
+      <a href="#help-faq">Help/FAQ</a>
+    </div>
+    <div class="setting-option">
+      <a href="#feedback">Provide Feedback</a>
+    </div>
+
+    <div class="setting-option">
+      <label for="email-update">Update Email:</label>
+      <input type="email" id="email-update" placeholder="New Email" />
+    </div>
+
+    <div class="setting-option">
+      <label for="password-update">Update Password:</label>
+      <input type="password" id="password-update" placeholder="New Password" />
+    </div>
+
+    <div class="setting-option">
+      <button onclick="saveSettings()">Save Changes</button>
     </div>
   </div>
+</div>
 
   <!-- JS File -->
   <script src="C:\Users\vniki\Desktop\projects\SFS_InfoBot\frontend\js\script.js"></script>
