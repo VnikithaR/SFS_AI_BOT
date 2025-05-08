@@ -1,6 +1,4 @@
 /* Global Styles */
-
-/* Website UI styles */
 * {
     margin: 0;
     padding: 0;
@@ -8,6 +6,7 @@
 }
 
 body {
+    padding-top: 60px;
     font-family: 'El Messiri', sans-serif;
     background-color: #f4f4f9;
     background-image: url('images/spm-bg.png');
@@ -16,8 +15,80 @@ body {
     font-size: 16px;
 }
 
-/* Header Section */
+/* Top Bar */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #b20505, #013365);
+    padding: 10px 5%;
+    color: white;
+    font-size: 1.1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1002;
+    box-sizing: border-box;
+}
 
+.top-bar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+}
+
+.top-bar a:hover {
+    text-decoration: underline;
+}
+
+.top-bar-left,
+.top-bar-center,
+.top-bar-right {
+    display: flex;
+    align-items: center;
+}
+
+.top-bar-left {
+    flex: 1;
+}
+
+.top-bar-center {
+    flex: 2;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.top-bar-right {
+    flex: 1;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* Hide hamburger on large screens */
+.hamburger {
+    display: none;
+}
+
+/* Responsive Top Bar for small screens */
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .top-bar-center,
+    .top-bar-right {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+/* Header */
 header {
     background-color: #003366;
     color: white;
@@ -26,29 +97,9 @@ header {
     flex-direction: column;
     align-items: stretch;
     flex-wrap: wrap;
-    box-sizing: border-box;
 }
 
-/* Top Bar */
-.top-bar {
-    background: linear-gradient(to right, #b20505, #013365);
-    color: #ffffff;
-    padding: 10px 5%;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.top-bar a {
-    color: #ffffff;
-    margin-left: 20px;
-    text-decoration: none;
-}
-
-/* Logo Section */
+/* Logo */
 .logo-img {
     height: auto;
     max-height: 80px;
@@ -95,8 +146,7 @@ header .logo img {
     width: 100%;
 }
 
-/* Navigation Styles */
-
+/* Navigation */
 nav {
     background: blue;
     padding: 8px 5%;
@@ -112,12 +162,10 @@ nav .nav-container {
     justify-content: space-between;
 }
 
-/* Logo in Nav */
 nav img {
     height: 60px;
 }
 
-/* Nav List */
 nav ul {
     list-style: none;
     display: flex;
@@ -131,7 +179,6 @@ nav ul li {
     margin-left: 20px;
 }
 
-/* Nav Links */
 nav a,
 nav ul li a {
     text-decoration: none;
@@ -148,7 +195,6 @@ nav ul li a:hover {
 /* Hamburger Button */
 .hamburger {
     cursor: pointer;
-    display: none;
     z-index: 1002;
 }
 
@@ -185,41 +231,20 @@ nav ul li a:hover {
     stroke-dashoffset: -32.42;
 }
 
-/* College Logo or Name in Menu */
-nav .college-logo {
-    padding: 20px;
-    text-align: center;
-    border-bottom: 2px solid #f4f4f9;
-    margin-bottom: 10px;
-}
-
-nav .college-logo .logo-img {
-    width: 80px; 
-    height: auto;
-    border-radius: 50%;
-}
-
-nav .college-logo .college-name {
-    font-size: 1.8rem; 
-    color: #003366;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-/* Nav Links Container */
+/* Mobile Nav */
 .nav-links {
     position: fixed;
     top: 0;
-    left: -260px; /* Menu is off-screen initially */
+    left: -260px;
     width: 260px;
     height: 100vh;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    padding: 80px 20px 20px 20px;
+    gap: 5px;
+    padding: 5px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: left 0.3s ease; /* Smooth transition for sliding in */
+    transition: left 0.3s ease;
     z-index: 1001;
 }
 
@@ -227,7 +252,6 @@ nav .college-logo .college-name {
     left: 0;
 }
 
-/* Overlay background */
 .nav-overlay {
     display: none;
     position: fixed;
@@ -243,50 +267,49 @@ nav .college-logo .college-name {
     display: block;
 }
 
+/* College Logo inside nav */
+nav .college-logo {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #f4f4f9;
+    margin-bottom: 10px;
+}
+
+nav .college-logo .logo-img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+}
+
+nav .college-logo .college-name {
+    font-size: 1.8rem;
+    color: #003366;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Nav Links with Gradient Hover */
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: black;
     font-weight: 500;
-    padding: 12px 15px;
+    padding: 12px 10px;
     position: relative;
     transition: color 0.3s ease;
 }
 
-/* Hover Gradient */
-.nav-links a::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, #f33a6a, #2348a6);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 5px;
-}
-
-.nav-links a:hover::before {
-    opacity: 1;
-}
-
 .nav-links a:hover {
-    color: white;
+    background: linear-gradient(90deg, #f33a6a, #2348a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
-/* Responsive Styling */
+/* Responsive Nav Hide */
 @media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
     nav ul {
         display: none;
-    }
-
-    .top-bar {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
     }
 }
 

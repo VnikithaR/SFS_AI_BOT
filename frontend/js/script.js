@@ -150,6 +150,61 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // -------- Show User Features Function --------
+  window.showUserFeatures = function (user) {
+    document.getElementById("login-link").style.display = "none";
+    document.getElementById("logout-link").style.display = "inline";
+    document.getElementById("profile-link").style.display = "inline";
+    document.getElementById("settings-link").style.display = "inline";
+
+
+    document.getElementById("user-welcome-message").style.display = "block";
+    document.getElementById("user-name").innerText = user.name;
+
+
+    document.getElementById("profile-name").innerText = user.name;
+    document.getElementById("profile-email").innerText = user.email;
+    document.getElementById("profile-course").innerText = user.course || "N/A";
+
+
+    document.getElementById("support-name").value = user.name;
+    document.getElementById("support-email").value = user.email;
+
+
+    document.getElementById("dashboard-section").style.display = "block";
+    document.getElementById("profile-section").style.display = "block";
+    document.getElementById("application-status").style.display = "block";
+    document.getElementById("academic-info").style.display = "block";
+    document.getElementById("support-section").style.display = "block";
+  };
+
+
+  // -------- Logout Function --------
+  window.logout = function () {
+    localStorage.clear(); // or clear cookies
+    location.href = "/";  // redirect to homepage
+  };
+
+
+  // -------- Navigation Scroll Hooks --------
+  const profileLink = document.getElementById("profile-link");
+  if (profileLink) {
+    profileLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      const section = document.getElementById("profile-section");
+      if (section) section.scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+
+  const settingsLink = document.getElementById("settings-link");
+  if (settingsLink) {
+    settingsLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      settingsModal.style.display = "flex";
+    });
+  }
+
   // -------- Logout Function Placeholder --------
   window.logout = function () {
     alert("Logged out!"); // Replace with actual logic
