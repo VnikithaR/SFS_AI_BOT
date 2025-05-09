@@ -1,5 +1,4 @@
 from typing import Any, Text, Dict, List
-
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import pymongo
@@ -8,9 +7,10 @@ import datetime
 # Replace with your MongoDB connection details
 MONGO_URI = "mongodb://localhost:27017/"
 DATABASE_NAME = "sfs_infobot_db"
-COLLECTION_NAME = "ug_courses"  
+COLLECTION_NAME = "upcoming_events"  # You can change this to your event collection name
 
 def format_date(date_str):
+    """Function to format date into a more readable form."""
     try:
         date_obj = datetime.datetime.strptime(date_str, "%d-%m-%Y")
         return date_obj.strftime("%B %d, %Y")
@@ -19,9 +19,10 @@ def format_date(date_str):
             date_obj = datetime.datetime.strptime(date_str, "%d-%b-%y")
             return date_obj.strftime("%B %d, %Y")
         except ValueError:
-            return date_str
+            return date_str  # Return original string if date parsing fails
 
 class ActionListCollegeEvents(Action):
+    """Action to list all upcoming events."""
     def name(self) -> Text:
         return "action_list_college_events"
 
@@ -73,6 +74,7 @@ class ActionListCollegeEvents(Action):
         return []
 
 class ActionShowEventOnDate(Action):
+    """Action to show events on a specific date."""
     def name(self) -> Text:
         return "action_show_event_on_date"
 
@@ -94,7 +96,7 @@ class ActionShowEventOnDate(Action):
                             target_date = datetime.datetime.strptime(date_str, "%B %d, %Y").strftime("%d-%m-%Y")
                         except ValueError:
                             try:
-                                # Attempt to parse relative dates (e.g., "today", "next Monday") - basic implementation
+                                # Attempt to parse relative dates (e.g., "today", "next Monday")
                                 if "today" in date_str.lower():
                                     target_date = datetime.datetime.now().strftime("%d-%m-%Y")
                                 elif "next monday" in date_str.lower():
@@ -102,14 +104,13 @@ class ActionShowEventOnDate(Action):
                                     days_until_monday = (7 - today.weekday() + 0) % 7
                                     next_monday = today + datetime.timedelta(days=days_until_monday)
                                     target_date = next_monday.strftime("%d-%m-%Y")
-                                # Add more relative date parsing as needed
                             except:
                                 pass
 
                 if target_date:
                     client = pymongo.MongoClient(MONGO_URI)
                     db = client[DATABASE_NAME]
-                    events_collection = db["college_events"]
+                    events_collection = db["upcoming_events"]
                     events_on_day = []
                     for event in events_collection.find({"date": target_date}):
                         ug1 = event.get("ug1_event", None)
@@ -142,6 +143,7 @@ class ActionShowEventOnDate(Action):
         return []
 
 class ActionShowFestivalOnDate(Action):
+    """Action to show festivals or special days on a given date or month."""
     def name(self) -> Text:
         return "action_show_festival_on_date"
 
