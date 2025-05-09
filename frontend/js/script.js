@@ -86,27 +86,32 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // -------- Chat Send Message --------
-  sendBtn.addEventListener('click', () => {
-    const message = userInput.value.trim();
-    if (!message) return;
+sendBtn.addEventListener('click', async () => {
+  const message = userInput.value.trim();
+  if (!message) return;
 
-    appendMessage('user', message);
-    userInput.value = '';
-    typingIndicator.style.display = 'block';
+  appendMessage('user', message);
+  userInput.value = '';
+  typingIndicator.style.display = 'block';
 
-    setTimeout(() => {
-      typingIndicator.style.display = 'none';
-      appendMessage('bot', "🤖 I'm just a demo bot! Your message was: " + message);
-    }, 1000);
+  const response = await fetch("http://localhost:5005/webhooks/rest/webhook", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      sender: "user",  // could be dynamic for each session
+      message: message
+    })
   });
 
-  userInput.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') sendBtn.click();
-  });
+  const data = await response.json();
+  typingIndicator.style.display = 'none';
 
-  refreshBtn.addEventListener('click', () => {
-    chatWindow.innerHTML = '';
+  data.forEach(botMsg => {
+    appendMessage('bot', botMsg.text);
   });
+});
 
   function appendMessage(sender, text) {
     const messageDiv = document.createElement('div');
