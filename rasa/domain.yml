@@ -42,6 +42,9 @@ entities:
   - facility_type
 
 slots:
+  user_name:
+    type: text
+    influence_conversation: false
   course_name:
     type: text
     influence_conversation: true
