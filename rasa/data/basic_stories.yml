@@ -1,6 +1,14 @@
 version: "3.1"
 
 stories:
+- story: User logs in
+  steps:
+  - intent: greet
+  - action: action_fetch_user_name  # Fetch the user's name if available
+  - intent: inform_name  # Assuming the user provides their name
+  - action: action_save_user_name  # Save the name to MongoDB
+  - action: action_fetch_user_name  # Fetch and greet the user by name
+
 - story: Greet and then ask about courses
   steps:
   - intent: greet
