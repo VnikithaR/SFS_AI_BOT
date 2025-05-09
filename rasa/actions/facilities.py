@@ -1,14 +1,23 @@
 from typing import Any, Text, Dict, List
-
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import pymongo
 
-# Replace with your MongoDB connection details
+# MongoDB connection details
 MONGO_URI = "mongodb://localhost:27017/"
 DATABASE_NAME = "sfs_infobot_db"
 COLLECTION_NAME = "facilities"  
 
+# Helper function to handle MongoDB connection
+def get_mongo_client():
+    try:
+        client = pymongo.MongoClient(MONGO_URI)
+        return client
+    except pymongo.errors.ConnectionFailure as e:
+        print(f"Error connecting to MongoDB: {e}")
+        return None
+
+# Action to list all facilities
 class ActionListAllFacilities(Action):
     def name(self) -> Text:
         return "action_list_all_facilities"
@@ -17,10 +26,14 @@ class ActionListAllFacilities(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        client = get_mongo_client()
+        if client is None:
+            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+            return []
+
         try:
-            client = pymongo.MongoClient(MONGO_URI)
             db = client[DATABASE_NAME]
-            facilities_collection = db["facilities"]
+            facilities_collection = db[COLLECTION_NAME]
             all_facilities = set()
 
             for facility_doc in facilities_collection.find():
@@ -68,19 +81,16 @@ class ActionListAllFacilities(Action):
             else:
                 dispatcher.utter_message(text="Sorry, I couldn't retrieve the list of facilities at the moment.")
 
-        except pymongo.errors.ConnectionFailure as e:
-            print(f"Error connecting to MongoDB: {e}")
-            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
         except Exception as e:
             print(f"Error fetching facilities: {e}")
             dispatcher.utter_message(text="Sorry, there was an error retrieving the facilities.")
-
         finally:
             if 'client' in locals() and client:
                 client.close()
 
         return []
 
+# Action to show specific facility details
 class ActionShowSpecificFacility(Action):
     def name(self) -> Text:
         return "action_show_specific_facility"
@@ -97,10 +107,14 @@ class ActionShowSpecificFacility(Action):
         facility_type = facility_type.lower()
         facility_details = []
 
+        client = get_mongo_client()
+        if client is None:
+            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+            return []
+
         try:
-            client = pymongo.MongoClient(MONGO_URI)
             db = client[DATABASE_NAME]
-            facilities_collection = db["facilities"]
+            facilities_collection = db[COLLECTION_NAME]
 
             for facility_doc in facilities_collection.find():
                 for category, data in facility_doc.items():
@@ -138,13 +152,9 @@ class ActionShowSpecificFacility(Action):
             else:
                 dispatcher.utter_message(text=f"Sorry, I don't have specific details about '{facility_type}' at the moment.")
 
-        except pymongo.errors.ConnectionFailure as e:
-            print(f"Error connecting to MongoDB: {e}")
-            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
         except Exception as e:
             print(f"Error fetching details for {facility_type}: {e}")
             dispatcher.utter_message(text=f"Sorry, there was an error retrieving details for '{facility_type}'.")
-
         finally:
             if 'client' in locals() and client:
                 client.close()
