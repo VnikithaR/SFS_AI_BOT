@@ -1,14 +1,25 @@
 from typing import Any, Text, Dict, List
-
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import pymongo
 
-# Replace with your MongoDB connection details
+# MongoDB connection details
 MONGO_URI = "mongodb://localhost:27017/"
 DATABASE_NAME = "sfs_infobot_db"
-COLLECTION_NAME = "pg_courses"  
+PG_COURSES_COLLECTION = "pg_courses_available"
+PG_FEE_COLLECTION = "pg_fee_details"
+PG_SYLLABUS_COLLECTION = "pg_syllabus"
 
+# Helper function to handle MongoDB connection
+def get_mongo_client():
+    try:
+        client = pymongo.MongoClient(MONGO_URI)
+        return client
+    except pymongo.errors.ConnectionFailure as e:
+        print(f"Error connecting to MongoDB: {e}")
+        return None
+
+# Action to list postgraduate courses
 class ActionListPGCourses(Action):
     def name(self) -> Text:
         return "action_list_pg_courses"
@@ -17,31 +28,30 @@ class ActionListPGCourses(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        client = get_mongo_client()
+        if client is None:
+            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+            return []
+
         try:
-            client = pymongo.MongoClient(MONGO_URI)
             db = client[DATABASE_NAME]
-            courses_collection = db["pg_courses_available"]
-            courses_data = courses_collection.find_one()
+            courses_data = db[PG_COURSES_COLLECTION].find_one()
 
             if courses_data and "pg_courses" in courses_data:
                 pg_courses = ", ".join(courses_data["pg_courses"])
                 dispatcher.utter_message(text=f"We offer the following postgraduate courses: {pg_courses}")
             else:
                 dispatcher.utter_message(text="Sorry, I couldn't retrieve the list of postgraduate courses at the moment.")
-
-        except pymongo.errors.ConnectionFailure as e:
-            print(f"Error connecting to MongoDB: {e}")
-            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
         except Exception as e:
             print(f"Error fetching PG courses: {e}")
             dispatcher.utter_message(text="Sorry, there was an error retrieving the postgraduate course list.")
-
         finally:
             if 'client' in locals() and client:
                 client.close()
 
         return []
 
+# Action to show details of a specific postgraduate course
 class ActionShowPGCourseDetails(Action):
     def name(self) -> Text:
         return "action_show_pg_course_details"
@@ -53,10 +63,14 @@ class ActionShowPGCourseDetails(Action):
         course_name = tracker.get_slot("pg_course_name")
 
         if course_name:
+            client = get_mongo_client()
+            if client is None:
+                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+                return []
+
             try:
-                client = pymongo.MongoClient(MONGO_URI)
                 db = client[DATABASE_NAME]
-                fee_collection = db["pg_fee_details"]
+                fee_collection = db[PG_FEE_COLLECTION]
                 course_data = None
                 fee_data = fee_collection.find_one({"postgraduate_fee_structure.courses.course_name": course_name})
 
@@ -72,14 +86,9 @@ class ActionShowPGCourseDetails(Action):
                     dispatcher.utter_message(text=f"Details for {course_name}:\n{details_text}")
                 else:
                     dispatcher.utter_message(text=f"Sorry, I couldn't find details for {course_name}.")
-
-            except pymongo.errors.ConnectionFailure as e:
-                print(f"Error connecting to MongoDB: {e}")
-                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
             except Exception as e:
                 print(f"Error fetching PG course details: {e}")
-                dispatcher.utter_message(text="Sorry, there was an error retrieving the details for {course_name}.")
-
+                dispatcher.utter_message(text=f"Sorry, there was an error retrieving the details for {course_name}.")
             finally:
                 if 'client' in locals() and client:
                     client.close()
@@ -88,6 +97,7 @@ class ActionShowPGCourseDetails(Action):
 
         return []
 
+# Action to show fee details for a postgraduate course
 class ActionShowPGCourseFee(Action):
     def name(self) -> Text:
         return "action_show_pg_course_fee"
@@ -99,10 +109,14 @@ class ActionShowPGCourseFee(Action):
         course_name = tracker.get_slot("pg_course_name")
 
         if course_name:
+            client = get_mongo_client()
+            if client is None:
+                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+                return []
+
             try:
-                client = pymongo.MongoClient(MONGO_URI)
                 db = client[DATABASE_NAME]
-                fee_collection = db["pg_fee_details"]
+                fee_collection = db[PG_FEE_COLLECTION]
                 fee_data = fee_collection.find_one({"postgraduate_fee_structure.courses.course_name": course_name})
 
                 if fee_data and "postgraduate_fee_structure" in fee_data and "courses" in fee_data["postgraduate_fee_structure"]:
@@ -122,14 +136,9 @@ class ActionShowPGCourseFee(Action):
                     dispatcher.utter_message(text=f"Fee details not found for {course_name}.")
                 else:
                     dispatcher.utter_message(text=f"Sorry, I couldn't retrieve the fee details for {course_name} at the moment.")
-
-            except pymongo.errors.ConnectionFailure as e:
-                print(f"Error connecting to MongoDB: {e}")
-                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
             except Exception as e:
                 print(f"Error fetching PG course fee: {e}")
-                dispatcher.utter_message(text="Sorry, there was an error retrieving the fee details for {course_name}.")
-
+                dispatcher.utter_message(text=f"Sorry, there was an error retrieving the fee details for {course_name}.")
             finally:
                 if 'client' in locals() and client:
                     client.close()
@@ -138,6 +147,7 @@ class ActionShowPGCourseFee(Action):
 
         return []
 
+# Action to show syllabus details for a postgraduate course
 class ActionShowPGCourseSyllabus(Action):
     def name(self) -> Text:
         return "action_show_pg_course_syllabus"
@@ -161,10 +171,14 @@ class ActionShowPGCourseSyllabus(Action):
         if course_name:
             syllabus_key = syllabus_key_mapping.get(course_name.lower())
             if syllabus_key:
+                client = get_mongo_client()
+                if client is None:
+                    dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+                    return []
+
                 try:
-                    client = pymongo.MongoClient(MONGO_URI)
                     db = client[DATABASE_NAME]
-                    syllabus_collection = db["pg_syllabus"]
+                    syllabus_collection = db[PG_SYLLABUS_COLLECTION]
                     syllabus_data = syllabus_collection.find_one()
 
                     if syllabus_data and syllabus_key in syllabus_data:
@@ -183,14 +197,9 @@ class ActionShowPGCourseSyllabus(Action):
                             dispatcher.utter_message(text=f"Syllabus not available for {course_name} at the moment.")
                     else:
                         dispatcher.utter_message(text=f"Sorry, I couldn't retrieve the syllabus for {course_name}.")
-
-                except pymongo.errors.ConnectionFailure as e:
-                    print(f"Error connecting to MongoDB: {e}")
-                    dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
                 except Exception as e:
                     print(f"Error fetching PG syllabus: {e}")
-                    dispatcher.utter_message(text="Sorry, there was an error retrieving the syllabus for {course_name}.")
-
+                    dispatcher.utter_message(text=f"Sorry, there was an error retrieving the syllabus for {course_name}.")
                 finally:
                     if 'client' in locals() and client:
                         client.close()
