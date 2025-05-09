@@ -1,6 +1,12 @@
 version: "3.1"
 
 rules:
+- rule: Save user's name after login
+  steps:
+  - intent: inform_name  # The user provides their name
+  - action: action_save_user_name  # Save the name to MongoDB
+  - action: action_fetch_user_name  # Fetch and greet the user by name
+  
 - rule: Say goodbye when the user says goodbye
   steps:
   - intent: goodbye
