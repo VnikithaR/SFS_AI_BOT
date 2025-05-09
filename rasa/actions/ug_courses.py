@@ -1,14 +1,23 @@
 from typing import Any, Text, Dict, List
-
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import pymongo
 
-# Replace with your MongoDB connection details
+# MongoDB connection details
 MONGO_URI = "mongodb://localhost:27017/"
 DATABASE_NAME = "sfs_infobot_db"
 COLLECTION_NAME = "ug_courses"  
 
+# Helper function to handle MongoDB connection
+def get_mongo_client():
+    try:
+        client = pymongo.MongoClient(MONGO_URI)
+        return client
+    except pymongo.errors.ConnectionFailure as e:
+        print(f"Error connecting to MongoDB: {e}")
+        return None
+
+# Action to list undergraduate courses
 class ActionListUGCourses(Action):
     def name(self) -> Text:
         return "action_list_ug_courses"
@@ -17,8 +26,12 @@ class ActionListUGCourses(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        client = get_mongo_client()
+        if client is None:
+            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+            return []
+
         try:
-            client = pymongo.MongoClient(MONGO_URI)
             db = client[DATABASE_NAME]
             courses_data = db[COLLECTION_NAME].find_one({"ug_courses": {"$exists": True}})
 
@@ -27,20 +40,16 @@ class ActionListUGCourses(Action):
                 dispatcher.utter_message(text=f"We offer the following undergraduate courses: {ug_courses}")
             else:
                 dispatcher.utter_message(text="Sorry, I couldn't retrieve the list of courses at the moment.")
-
-        except pymongo.errors.ConnectionFailure as e:
-            print(f"Error connecting to MongoDB: {e}")
-            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
         except Exception as e:
             print(f"Error fetching courses: {e}")
             dispatcher.utter_message(text="Sorry, there was an error retrieving the course list.")
-
         finally:
             if 'client' in locals() and client:
                 client.close()
 
         return []
 
+# Action to show course details
 class ActionShowCourseDetails(Action):
     def name(self) -> Text:
         return "action_show_course_details"
@@ -52,8 +61,12 @@ class ActionShowCourseDetails(Action):
         course_name = tracker.get_slot("course_name")
 
         if course_name:
+            client = get_mongo_client()
+            if client is None:
+                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+                return []
+
             try:
-                client = pymongo.MongoClient(MONGO_URI)
                 db = client[DATABASE_NAME]
                 departments_data = db[COLLECTION_NAME].find_one({"departments": {"$exists": True}})
 
@@ -78,13 +91,9 @@ class ActionShowCourseDetails(Action):
                 else:
                     dispatcher.utter_message(text=f"Sorry, I couldn't find details for the course: {course_name}")
 
-            except pymongo.errors.ConnectionFailure as e:
-                print(f"Error connecting to MongoDB: {e}")
-                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
             except Exception as e:
                 print(f"Error fetching course details: {e}")
                 dispatcher.utter_message(text="Sorry, there was an error retrieving the course details.")
-
             finally:
                 if 'client' in locals() and client:
                     client.close()
@@ -93,6 +102,7 @@ class ActionShowCourseDetails(Action):
 
         return []
 
+# Action to show course fee details
 class ActionShowCourseFee(Action):
     def name(self) -> Text:
         return "action_show_course_fee"
@@ -104,8 +114,12 @@ class ActionShowCourseFee(Action):
         course_name = tracker.get_slot("course_name")
 
         if course_name:
+            client = get_mongo_client()
+            if client is None:
+                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+                return []
+
             try:
-                client = pymongo.MongoClient(MONGO_URI)
                 db = client[DATABASE_NAME]
                 fee_data = db[COLLECTION_NAME].find_one({"undergraduate_fee_structure.courses.course_name": {"$regex": f"^{course_name}$", "$options": "i"}})
 
@@ -126,13 +140,9 @@ class ActionShowCourseFee(Action):
 
                 dispatcher.utter_message(text=f"Fee details not found for {course_name}.")
 
-            except pymongo.errors.ConnectionFailure as e:
-                print(f"Error connecting to MongoDB: {e}")
-                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
             except Exception as e:
                 print(f"Error fetching fee details: {e}")
                 dispatcher.utter_message(text="Sorry, there was an error retrieving the fee details.")
-
             finally:
                 if 'client' in locals() and client:
                     client.close()
@@ -141,6 +151,7 @@ class ActionShowCourseFee(Action):
 
         return []
 
+# Action to show course faculty
 class ActionShowCourseFaculty(Action):
     def name(self) -> Text:
         return "action_show_course_faculty"
@@ -165,8 +176,12 @@ class ActionShowCourseFaculty(Action):
         if course_name:
             faculty_list_key = faculty_key_mapping.get(course_name.lower())
             if faculty_list_key:
+                client = get_mongo_client()
+                if client is None:
+                    dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+                    return []
+
                 try:
-                    client = pymongo.MongoClient(MONGO_URI)
                     db = client[DATABASE_NAME]
                     faculty_data = db[COLLECTION_NAME].find_one({faculty_list_key: {"$exists": True}})
 
@@ -178,14 +193,9 @@ class ActionShowCourseFaculty(Action):
                             dispatcher.utter_message(text=f"No faculty information found for {course_name}.")
                     else:
                         dispatcher.utter_message(text=f"Sorry, I couldn't retrieve the faculty list for {course_name} at the moment.")
-
-                except pymongo.errors.ConnectionFailure as e:
-                    print(f"Error connecting to MongoDB: {e}")
-                    dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
                 except Exception as e:
                     print(f"Error fetching faculty list: {e}")
                     dispatcher.utter_message(text="Sorry, there was an error retrieving the faculty list.")
-
                 finally:
                     if 'client' in locals() and client:
                         client.close()
@@ -196,6 +206,7 @@ class ActionShowCourseFaculty(Action):
 
         return []
 
+# Action to show course syllabus
 class ActionShowCourseSyllabus(Action):
     def name(self) -> Text:
         return "action_show_course_syllabus"
@@ -220,8 +231,12 @@ class ActionShowCourseSyllabus(Action):
         if course_name:
             syllabus_key = syllabus_key_mapping.get(course_name.lower())
             if syllabus_key:
+                client = get_mongo_client()
+                if client is None:
+                    dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+                    return []
+
                 try:
-                    client = pymongo.MongoClient(MONGO_URI)
                     db = client[DATABASE_NAME]
                     syllabus_data = db[COLLECTION_NAME].find_one({syllabus_key: {"$exists": True}})
 
@@ -236,77 +251,25 @@ class ActionShowCourseSyllabus(Action):
                                     if link_url:
                                         syllabus_links.append(f"{link_text}: {link_url}")
                             elif isinstance(syllabus_info, dict):
-                                for year, url in syllabus_info.items():
-                                    if url:
-                                        syllabus_links.append(f"{year.replace('_', ' ').title()}: {url}")
+                                link_text = syllabus_info.get("title") or "Syllabus Link"
+                                link_url = syllabus_info.get("url")
+                                if link_url:
+                                    syllabus_links.append(f"{link_text}: {link_url}")
 
-                            if syllabus_links:
-                                dispatcher.utter_message(text=f"Here's the syllabus for {course_name}: {', '.join(syllabus_links)}")
-                            else:
-                                dispatcher.utter_message(text=f"Syllabus links not found for {course_name}.")
+                            dispatcher.utter_message(text=f"The syllabus for {course_name}: \n" + "\n".join(syllabus_links))
                         else:
-                            dispatcher.utter_message(text=f"Syllabus information not available for {course_name}.")
+                            dispatcher.utter_message(text=f"No syllabus information found for {course_name}.")
                     else:
                         dispatcher.utter_message(text=f"Sorry, I couldn't retrieve the syllabus for {course_name} at the moment.")
-
-                except pymongo.errors.ConnectionFailure as e:
-                    print(f"Error connecting to MongoDB: {e}")
-                    dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
                 except Exception as e:
                     print(f"Error fetching syllabus: {e}")
                     dispatcher.utter_message(text="Sorry, there was an error retrieving the syllabus.")
-
                 finally:
                     if 'client' in locals() and client:
                         client.close()
             else:
                 dispatcher.utter_message(text=f"Sorry, I don't have syllabus information for the course: {course_name}.")
         else:
-            dispatcher.utter_message(text="Please specify which course you'd like the syllabus for.")
-
-        return []
-
-class ActionShowDepartmentPrograms(Action):
-    def name(self) -> Text:
-        return "action_show_department_programs"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        department_name = tracker.get_slot("department_name")
-
-        if department_name:
-            try:
-                client = pymongo.MongoClient(MONGO_URI)
-                db = client[DATABASE_NAME]
-                departments_data = db[COLLECTION_NAME].find_one({"departments.name": {"$regex": f"^{department_name}$", "$options": "i"}})
-
-                if departments_data and "departments" in departments_data:
-                    for dept in departments_data["departments"]:
-                        if dept.get("name", "").lower() == department_name.lower() and "programs" in dept:
-                            program_names = [program["name"] for program in dept["programs"]]
-                            if program_names:
-                                dispatcher.utter_message(text=f"The {department_name} department offers the following programs: {', '.join(program_names)}")
-                                return []
-                            else:
-                                dispatcher.utter_message(text=f"No programs found under the {department_name} department.")
-                                return []
-                    dispatcher.utter_message(text=f"Sorry, I couldn't find information for the {department_name} department.")
-                else:
-                    dispatcher.utter_message(text=f"Sorry, I couldn't find information for the {department_name} department.")
-
-            except pymongo.errors.ConnectionFailure as e:
-                print(f"Error connecting to MongoDB: {e}")
-                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
-            except Exception as e:
-                print(f"Error fetching department programs: {e}")
-                dispatcher.utter_message(text="Sorry, there was an error retrieving the department programs.")
-
-            finally:
-                if 'client' in locals() and client:
-                    client.close()
-        else:
-            dispatcher.utter_message(text="Please specify which department you'd like to know the programs for.")
+            dispatcher.utter_message(text="Please specify which course you'd like to know the syllabus for.")
 
         return []
