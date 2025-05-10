@@ -1,6 +1,6 @@
 # **SFS InfoBot**
 
-A chatbot application integrated with **Rasa** for NLP and **MongoDB** for dynamic data management. The bot is designed to assist users with college-related information, such as courses, events, alumni achievements, and more.
+A web-based chatbot application powered by **Rasa** for NLP and **MongoDB** for data-driven responses. It helps students, faculty, and visitors access comprehensive college-related information such as courses, events, facilities, alumni updates, and more through a conversational interface.
 
 ---
 
@@ -28,24 +28,26 @@ SFS InfoBot is a chatbot designed to help users find various college-related inf
 
 * **Alumni Achievements & Clubs**
 * **College News & Events**
-* **Courses Offered** (Undergraduate & Postgraduate)
-* **Facilities Available**
+* **Courses Offered** (Undergraduate & Postgraduate fee, faculty, syllabus details.)
+* **Facilities Available**(Library, WIFI, Sports, ICT, etc.)
 * **Skill Development Workshops**
-* **Exam Results**
+* **Exam Results & Certifications**
+* **Contact & Feedback Info**
 
 ---
 
 ## **Technologies Used**
 
 * **Frontend**: HTML, CSS, JavaScript
-* **Backend**: Rasa, Python
+* **Backend**: Python, Rasa (Core & NLU)
 * **Database**: MongoDB
+
 * **Libraries & Frameworks**:
 
   * **Rasa**: NLP and chatbot logic
   * **Flask** or **FastAPI** (for backend API)
   * **MongoDB**: Dynamic data storage
-  * **Pymongo**: MongoDB Python driver
+  * **Pymongo**: MongoDB cient  for Python
 
 ---
 
@@ -112,10 +114,11 @@ C:.
 |   +---Results_and_exam
 |   +---Skill_Development_Workshops
 |
-+---frontend
++---frontend                                   
 |   +---assets
 |   +---css
 |   +---js
+|   +---index.html
 |
 +---rasa
 |   +---actions
@@ -132,7 +135,7 @@ C:.
 * **bot\_data**: Contains the data (in JSON format) used by the chatbot to provide information to the users.
 * **frontend**: The user interface for the chatbot, built with HTML, CSS, and JavaScript.
 * **rasa**: Contains Rasa configuration files, custom actions, training data, and models.
-* **scripts**: Python scripts for MongoDB integration and data import.
+* **scripts**: Python scripts to Imports JSON to MongoDB.
 
 ---
 
@@ -167,14 +170,13 @@ This will train the chatbot based on the defined intents, stories, and actions.
 
 ## **MongoDB Integration**
 
-MongoDB serves as the dynamic data source for the chatbot. The bot queries the MongoDB database to retrieve the following information:
+Each topic (e.g., courses, events) is stored as a JSON file and imported to MongoDB collections via the import script. Custom actions in Rasa then query MongoDB based on user intent and dynamically generate responses.
 
-* **Courses Available** (UG and PG)
-* **Upcoming Events**
-* **Alumni Achievements**
-* **Facilities at the College**
+**Example:**
 
-Ensure that MongoDB is running and properly connected to Rasa via the custom actions defined in the **actions** directory.
+* User: "Tell me about PG courses"
+* Bot queries `pg_courses_available` collection
+* Responds with structured course list
 
 ---
 
@@ -188,6 +190,30 @@ Ensure that MongoDB is running and properly connected to Rasa via the custom act
 
 1. **User**: "What courses do you offer?"
 2. **Bot**: "We offer undergraduate and postgraduate courses in various fields, including Computer Science, Business Administration, etc."
+
+### Chat UI Features:
+
+* Open/Close chatbot widget
+* Welcome message on first open
+* Send/Receive chat messages
+* Typing indicator
+* Session-specific user state and settings
+* Login modal and feature toggles for user dashboard
+
+**Backend API Integration:**
+
+```javascript
+POST http://localhost:5005/webhooks/rest/webhook
+```
+
+**Request Payload:**
+
+```json
+{
+  "sender": "user",
+  "message": "Show me the syllabus"
+}
+```
 
 ---
 
