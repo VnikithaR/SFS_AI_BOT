@@ -1,5 +1,5 @@
 
-# 📊 Git Contribution Statistics
+# Git Contribution Statistics
 
 The following statistics were generated using `git fame` and `git shortlog`:
 
