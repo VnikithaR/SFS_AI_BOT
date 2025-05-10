@@ -6,11 +6,10 @@ import pymongo
 # MongoDB connection details
 MONGO_URI = "mongodb://localhost:27017/"
 DATABASE_NAME = "sfs_infobot_db"
-PG_COURSES_COLLECTION = "pg_courses_available"
-PG_FEE_COLLECTION = "pg_fee_details"
-PG_SYLLABUS_COLLECTION = "pg_syllabus"
+PG_COURSES_COLLECTION = "courses_pg_courses_pg_courses_available"
+PG_FEE_COLLECTION = "courses_pg_courses_pg_fee_details"
+PG_SYLLABUS_COLLECTION = "courses_pg_courses_pg_syllabus"
 
-# Helper function to handle MongoDB connection
 def get_mongo_client():
     try:
         client = pymongo.MongoClient(MONGO_URI)
@@ -19,7 +18,6 @@ def get_mongo_client():
         print(f"Error connecting to MongoDB: {e}")
         return None
 
-# Action to list postgraduate courses
 class ActionListPGCourses(Action):
     def name(self) -> Text:
         return "action_list_pg_courses"
@@ -51,7 +49,6 @@ class ActionListPGCourses(Action):
 
         return []
 
-# Action to show details of a specific postgraduate course
 class ActionShowPGCourseDetails(Action):
     def name(self) -> Text:
         return "action_show_pg_course_details"
@@ -97,7 +94,6 @@ class ActionShowPGCourseDetails(Action):
 
         return []
 
-# Action to show fee details for a postgraduate course
 class ActionShowPGCourseFee(Action):
     def name(self) -> Text:
         return "action_show_pg_course_fee"
@@ -147,7 +143,6 @@ class ActionShowPGCourseFee(Action):
 
         return []
 
-# Action to show syllabus details for a postgraduate course
 class ActionShowPGCourseSyllabus(Action):
     def name(self) -> Text:
         return "action_show_pg_course_syllabus"

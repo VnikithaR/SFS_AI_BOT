@@ -4,25 +4,28 @@ from rasa_sdk.executor import CollectingDispatcher
 import pymongo
 import datetime
 
-# Replace with your MongoDB connection details
+# MongoDB configuration
 MONGO_URI = "mongodb://localhost:27017/"
 DATABASE_NAME = "sfs_infobot_db"
-COLLECTION_NAME = "upcoming_events"  # You can change this to your event collection name
 
 def format_date(date_str):
-    """Function to format date into a more readable form."""
-    try:
-        date_obj = datetime.datetime.strptime(date_str, "%d-%m-%Y")
-        return date_obj.strftime("%B %d, %Y")
-    except ValueError:
+    """Format date into a more readable form."""
+    for fmt in ("%d-%m-%Y", "%d-%b-%y", "%d %B", "%B %d, %Y"):
         try:
-            date_obj = datetime.datetime.strptime(date_str, "%d-%b-%y")
-            return date_obj.strftime("%B %d, %Y")
+            return datetime.datetime.strptime(date_str, fmt).strftime("%B %d, %Y")
         except ValueError:
-            return date_str  # Return original string if date parsing fails
+            continue
+    return date_str  # Return original if parsing fails
+
+def get_db_collection(collection_name):
+    """Helper function to get MongoDB collection."""
+    client = pymongo.MongoClient(MONGO_URI)
+    db = client[DATABASE_NAME]
+    return db[collection_name], client
+
+# =================== ACTION: LIST COLLEGE EVENTS ===================
 
 class ActionListCollegeEvents(Action):
-    """Action to list all upcoming events."""
     def name(self) -> Text:
         return "action_list_college_events"
 
@@ -31,50 +34,42 @@ class ActionListCollegeEvents(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         try:
-            client = pymongo.MongoClient(MONGO_URI)
-            db = client[DATABASE_NAME]
-            events_collection = db["upcoming_events"]
-            events_data = events_collection.find_one()
+            collection, client = get_db_collection("college_events")
+            events_cursor = collection.find({})  # Get all events
+            events_list = []
 
-            if events_data and "upcoming_events" in events_data:
-                events_list = []
-                for event in events_data["upcoming_events"]:
-                    date_str = format_date(event.get("date", "N/A"))
-                    ug1 = event.get("ug1_event", "N/A")
-                    ug2_3 = event.get("ug2_3_event", "N/A")
-                    event_info = f"{date_str} ({event.get('day', 'N/A')}): "
-                    if ug1 and ug2_3:
-                        event_info += f"UG 1 - {ug1}; UG 2/3 - {ug2_3}"
-                    elif ug1:
-                        event_info += f"UG 1 - {ug1}"
-                    elif ug2_3:
-                        event_info += f"UG 2/3 - {ug2_3}"
-                    else:
-                        event_info += "No specific event mentioned"
-                    events_list.append(event_info)
+            for event in events_cursor:
+                date_str = format_date(event.get("date", "N/A"))
+                ug1 = event.get("ug1_event")
+                ug2_3 = event.get("ug2_3_event")
+                day = event.get("day", "N/A")
+                event_info = f"{date_str} ({day}): "
 
-                if events_list:
-                    dispatcher.utter_message(text="Here are the upcoming college events:\n" + "\n".join(events_list))
+                if ug1 and ug2_3:
+                    event_info += f"UG 1 - {ug1}; UG 2/3 - {ug2_3}"
+                elif ug1:
+                    event_info += f"UG 1 - {ug1}"
+                elif ug2_3:
+                    event_info += f"UG 2/3 - {ug2_3}"
                 else:
-                    dispatcher.utter_message(text="There are no specific upcoming college events listed at the moment.")
+                    continue  # skip null entries
+                events_list.append(event_info)
+
+            if events_list:
+                dispatcher.utter_message(text="Here are the upcoming college events:\n" + "\n".join(events_list))
             else:
-                dispatcher.utter_message(text="Sorry, I couldn't retrieve the upcoming college events right now.")
-
-        except pymongo.errors.ConnectionFailure as e:
-            print(f"Error connecting to MongoDB: {e}")
-            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+                dispatcher.utter_message(text="No upcoming college events listed.")
         except Exception as e:
-            print(f"Error fetching upcoming events: {e}")
-            dispatcher.utter_message(text="Sorry, there was an error retrieving the upcoming college events.")
-
+            print(f"Error: {e}")
+            dispatcher.utter_message(text="There was an error fetching college events.")
         finally:
-            if 'client' in locals() and client:
-                client.close()
+            client.close()
 
         return []
 
+# =================== ACTION: SHOW EVENTS ON A SPECIFIC DATE ===================
+
 class ActionShowEventOnDate(Action):
-    """Action to show events on a specific date."""
     def name(self) -> Text:
         return "action_show_event_on_date"
 
@@ -83,67 +78,50 @@ class ActionShowEventOnDate(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         date_str = tracker.get_slot("date")
-        if date_str:
-            try:
-                target_date = None
+        if not date_str:
+            dispatcher.utter_message(text="Please specify a date.")
+            return []
+
+        try:
+            for fmt in ("%d-%m-%Y", "%d %B", "%B %d, %Y"):
                 try:
-                    target_date = datetime.datetime.strptime(date_str, "%d-%m-%Y").strftime("%d-%m-%Y")
+                    target_date = datetime.datetime.strptime(date_str, fmt).strftime("%d-%m-%Y")
+                    break
                 except ValueError:
-                    try:
-                        target_date = datetime.datetime.strptime(date_str, "%d %B").strftime("%d-%m-%Y")
-                    except ValueError:
-                        try:
-                            target_date = datetime.datetime.strptime(date_str, "%B %d, %Y").strftime("%d-%m-%Y")
-                        except ValueError:
-                            try:
-                                # Attempt to parse relative dates (e.g., "today", "next Monday")
-                                if "today" in date_str.lower():
-                                    target_date = datetime.datetime.now().strftime("%d-%m-%Y")
-                                elif "next monday" in date_str.lower():
-                                    today = datetime.datetime.now()
-                                    days_until_monday = (7 - today.weekday() + 0) % 7
-                                    next_monday = today + datetime.timedelta(days=days_until_monday)
-                                    target_date = next_monday.strftime("%d-%m-%Y")
-                            except:
-                                pass
-
-                if target_date:
-                    client = pymongo.MongoClient(MONGO_URI)
-                    db = client[DATABASE_NAME]
-                    events_collection = db["upcoming_events"]
-                    events_on_day = []
-                    for event in events_collection.find({"date": target_date}):
-                        ug1 = event.get("ug1_event", None)
-                        ug2_3 = event.get("ug2_3_event", None)
-                        if ug1:
-                            events_on_day.append(f"UG 1: {ug1}")
-                        if ug2_3:
-                            events_on_day.append(f"UG 2/3: {ug2_3}")
-
-                    if events_on_day:
-                        dispatcher.utter_message(text=f"On {format_date(target_date)}, the following events are scheduled:\n" + "\n".join(events_on_day))
-                    else:
-                        dispatcher.utter_message(text=f"There are no specific college events listed for {format_date(target_date)}.")
+                    continue
+            else:
+                if "today" in date_str.lower():
+                    target_date = datetime.datetime.now().strftime("%d-%m-%Y")
                 else:
-                    dispatcher.utter_message(text=f"Sorry, I couldn't understand the date you provided.")
+                    dispatcher.utter_message(text="Could not understand the date provided.")
+                    return []
 
-            except pymongo.errors.ConnectionFailure as e:
-                print(f"Error connecting to MongoDB: {e}")
-                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
-            except Exception as e:
-                print(f"Error fetching events by date: {e}")
-                dispatcher.utter_message(text="Sorry, there was an error retrieving events for that date.")
+            collection, client = get_db_collection("college_events")
+            event = collection.find_one({"date": target_date})
 
-            finally:
-                if 'client' in locals() and client:
-                    client.close()
-        else:
-            dispatcher.utter_message(text="Please specify the date for which you want to know the events.")
+            if event:
+                messages = []
+                if event.get("ug1_event"):
+                    messages.append(f"UG 1: {event['ug1_event']}")
+                if event.get("ug2_3_event"):
+                    messages.append(f"UG 2/3: {event['ug2_3_event']}")
+                if messages:
+                    dispatcher.utter_message(text=f"Events on {format_date(target_date)}:\n" + "\n".join(messages))
+                else:
+                    dispatcher.utter_message(text=f"No specific events listed on {format_date(target_date)}.")
+            else:
+                dispatcher.utter_message(text=f"No events found on {format_date(target_date)}.")
+        except Exception as e:
+            print(f"Error: {e}")
+            dispatcher.utter_message(text="There was an error fetching the events.")
+        finally:
+            client.close()
 
         return []
 
+# =================== ACTION: SHOW FESTIVAL OR SPECIAL DAY ===================
+
 class ActionShowFestivalOnDate(Action):
-    """Action to show festivals or special days on a given date or month."""
     def name(self) -> Text:
         return "action_show_festival_on_date"
 
@@ -154,81 +132,50 @@ class ActionShowFestivalOnDate(Action):
         date_str = tracker.get_slot("date")
         month_str = tracker.get_slot("month")
 
-        if date_str:
-            try:
-                target_date = None
-                try:
-                    target_date_obj = datetime.datetime.strptime(date_str, "%d-%m-%Y")
-                    target_date_formatted = target_date_obj.strftime("%d-%b-%y")
-                except ValueError:
+        try:
+            collection, client = get_db_collection("festivals_special_days")
+
+            if date_str:
+                for fmt in ("%d-%m-%Y", "%d-%b-%y", "%d %B", "%B %d, %Y"):
                     try:
-                        target_date_obj = datetime.datetime.strptime(date_str, "%d %B")
-                        target_date_formatted = target_date_obj.strftime("%d-%b-%y")
-                    except ValueError:
-                        try:
-                            target_date_obj = datetime.datetime.strptime(date_str, "%B %d, %Y")
-                            target_date_formatted = target_date_obj.strftime("%d-%b-%y")
-                        except ValueError:
-                            dispatcher.utter_message(text=f"Sorry, I couldn't understand the date you provided.")
-                            return []
-
-                if target_date_formatted:
-                    client = pymongo.MongoClient(MONGO_URI)
-                    db = client[DATABASE_NAME]
-                    festivals_collection = db["festivals_special_days"]
-                    festival_found = None
-                    for month_data in festivals_collection.find():
-                        for day_event in month_data.get(list(month_data.keys())[0], []):
-                            if day_event.get("date", "").lower() == target_date_formatted.lower():
-                                festival_found = day_event.get("event")
-                                break
-                        if festival_found:
-                            break
-
-                    if festival_found:
-                        dispatcher.utter_message(text=f"On {format_date(date_str)}, the following festival or special day is observed: {festival_found}")
-                    else:
-                        dispatcher.utter_message(text=f"There are no specific festivals or special days listed for {format_date(date_str)}.")
-
-            except pymongo.errors.ConnectionFailure as e:
-                print(f"Error connecting to MongoDB: {e}")
-                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
-            except Exception as e:
-                print(f"Error fetching festival by date: {e}")
-                dispatcher.utter_message(text="Sorry, there was an error retrieving the festival for that date.")
-
-            finally:
-                if 'client' in locals() and client:
-                    client.close()
-        elif month_str:
-            try:
-                client = pymongo.MongoClient(MONGO_URI)
-                db = client[DATABASE_NAME]
-                festivals_collection = db["festivals_special_days"]
-                festivals_in_month = []
-                for month_data in festivals_collection.find():
-                    month_name = list(month_data.keys())[0]
-                    if month_name.lower() == month_str.lower():
-                        for day_event in month_data.get(month_name, []):
-                            festivals_in_month.append(f"{day_event.get('date', 'N/A')} ({day_event.get('day', 'N/A')}): {day_event.get('event', 'N/A')}")
+                        date_obj = datetime.datetime.strptime(date_str, fmt)
+                        formatted_date = date_obj.strftime("%d-%b-%y")
+                        month_key = date_obj.strftime("%B %Y")
                         break
-
-                if festivals_in_month:
-                    dispatcher.utter_message(text=f"In {month_str.capitalize()}, the following festivals and special days are observed:\n" + "\n".join(festivals_in_month))
+                    except ValueError:
+                        continue
                 else:
-                    dispatcher.utter_message(text=f"There are no specific festivals or special days listed for {month_str.capitalize()}.")
+                    dispatcher.utter_message(text="Could not parse the date format.")
+                    return []
 
-            except pymongo.errors.ConnectionFailure as e:
-                print(f"Error connecting to MongoDB: {e}")
-                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
-            except Exception as e:
-                print(f"Error fetching festivals by month: {e}")
-                dispatcher.utter_message(text="Sorry, there was an error retrieving the festivals for that month.")
+                result = collection.find_one({month_key: {"$exists": True}})
+                if result:
+                    for event in result[month_key]:
+                        if event.get("date") == formatted_date:
+                            dispatcher.utter_message(
+                                text=f"On {format_date(formatted_date)}, the festival/special day is: {event['event']}")
+                            return []
+                dispatcher.utter_message(text=f"No festival or special day found on {format_date(formatted_date)}.")
 
-            finally:
-                if 'client' in locals() and client:
-                    client.close()
-        else:
-            dispatcher.utter_message(text="Please specify the date or month for which you want to know the festivals or special days.")
+            elif month_str:
+                month_key = month_str.strip().capitalize()
+                festivals = []
+                result = collection.find_one({month_key: {"$exists": True}})
+                if result:
+                    for event in result[month_key]:
+                        festivals.append(f"{event.get('date')} ({event.get('day', 'N/A')}): {event.get('event')}")
+                if festivals:
+                    dispatcher.utter_message(text=f"Festivals in {month_key}:\n" + "\n".join(festivals))
+                else:
+                    dispatcher.utter_message(text=f"No festivals listed for {month_key}.")
+
+            else:
+                dispatcher.utter_message(text="Please specify a date or month.")
+
+        except Exception as e:
+            print(f"Error: {e}")
+            dispatcher.utter_message(text="There was an error retrieving festival information.")
+        finally:
+            client.close()
 
         return []

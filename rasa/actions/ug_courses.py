@@ -6,18 +6,20 @@ import pymongo
 # MongoDB connection details
 MONGO_URI = "mongodb://localhost:27017/"
 DATABASE_NAME = "sfs_infobot_db"
-COLLECTION_NAME = "ug_courses"  
 
-# Helper function to handle MongoDB connection
+UG_COURSES_COLLECTION = "courses_ug_courses_ug_courses_available"
+UG_FACULTY_COLLECTION = "courses_ug_courses_ug_faculties"
+UG_FEE_COLLECTION = "courses_ug_courses_ug_fee_details"
+UG_PROGRAMS_COLLECTION = "courses_ug_courses_ug_programs_details"
+UG_SYLLABUS_COLLECTION = "courses_ug_courses_ug_syllabus"
+
 def get_mongo_client():
     try:
-        client = pymongo.MongoClient(MONGO_URI)
-        return client
+        return pymongo.MongoClient(MONGO_URI)
     except pymongo.errors.ConnectionFailure as e:
         print(f"Error connecting to MongoDB: {e}")
         return None
 
-# Action to list undergraduate courses
 class ActionListUGCourses(Action):
     def name(self) -> Text:
         return "action_list_ug_courses"
@@ -33,23 +35,21 @@ class ActionListUGCourses(Action):
 
         try:
             db = client[DATABASE_NAME]
-            courses_data = db[COLLECTION_NAME].find_one({"ug_courses": {"$exists": True}})
+            data = db[UG_COURSES_COLLECTION].find_one()
 
-            if courses_data and "ug_courses" in courses_data:
-                ug_courses = ", ".join(courses_data["ug_courses"])
-                dispatcher.utter_message(text=f"We offer the following undergraduate courses: {ug_courses}")
+            if data and "ug_courses" in data:
+                courses = ", ".join(data["ug_courses"])
+                dispatcher.utter_message(text=f"We offer the following undergraduate courses: {courses}")
             else:
                 dispatcher.utter_message(text="Sorry, I couldn't retrieve the list of courses at the moment.")
         except Exception as e:
             print(f"Error fetching courses: {e}")
             dispatcher.utter_message(text="Sorry, there was an error retrieving the course list.")
         finally:
-            if 'client' in locals() and client:
-                client.close()
+            client.close()
 
         return []
 
-# Action to show course details
 class ActionShowCourseDetails(Action):
     def name(self) -> Text:
         return "action_show_course_details"
@@ -59,50 +59,43 @@ class ActionShowCourseDetails(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         course_name = tracker.get_slot("course_name")
+        if not course_name:
+            dispatcher.utter_message(text="Please specify which course you'd like details for.")
+            return []
 
-        if course_name:
-            client = get_mongo_client()
-            if client is None:
-                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+        client = get_mongo_client()
+        if client is None:
+            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+            return []
+
+        try:
+            db = client[DATABASE_NAME]
+            data = db[UG_PROGRAMS_COLLECTION].find_one()
+
+            if not data or "departments" not in data:
+                dispatcher.utter_message(text="No program details found.")
                 return []
 
-            try:
-                db = client[DATABASE_NAME]
-                departments_data = db[COLLECTION_NAME].find_one({"departments": {"$exists": True}})
-
-                course_details = None
-                if departments_data and "departments" in departments_data:
-                    for dept in departments_data["departments"]:
-                        for program in dept.get("programs", []):
-                            if program.get("name", "").lower() == course_name.lower():
-                                course_details = program
-                                break
-                        if course_details:
-                            break
-
-                if course_details:
-                    details_text = f"Duration: {course_details.get('duration', 'Not specified')}\n"
-                    if "specializations" in course_details:
-                        details_text += f"Specializations: {', '.join(course_details['specializations'])}\n"
-                    if "professional_certifications" in course_details:
-                        details_text += f"Professional Certifications: {', '.join(course_details['professional_certifications'])}\n"
-                    details_text += f"Description: {course_details.get('description', 'No description available')}"
-                    dispatcher.utter_message(text=f"Here are some details about {course_name}: {details_text}")
-                else:
-                    dispatcher.utter_message(text=f"Sorry, I couldn't find details for the course: {course_name}")
-
-            except Exception as e:
-                print(f"Error fetching course details: {e}")
-                dispatcher.utter_message(text="Sorry, there was an error retrieving the course details.")
-            finally:
-                if 'client' in locals() and client:
-                    client.close()
-        else:
-            dispatcher.utter_message(text="Please specify which course you'd like details for.")
+            for dept in data["departments"]:
+                for prog in dept.get("programs", []):
+                    if prog.get("name", "").lower() == course_name.lower():
+                        text = f"Duration: {prog.get('duration', 'Not specified')}\n"
+                        if "specializations" in prog:
+                            text += f"Specializations: {', '.join(prog['specializations'])}\n"
+                        if "professional_certifications" in prog:
+                            text += f"Certifications: {', '.join(prog['professional_certifications'])}\n"
+                        text += f"Description: {prog.get('description', 'No description available')}"
+                        dispatcher.utter_message(text=f"Here are some details about {course_name}:\n{text}")
+                        return []
+            dispatcher.utter_message(text=f"Sorry, I couldn't find details for the course: {course_name}")
+        except Exception as e:
+            print(f"Error fetching course details: {e}")
+            dispatcher.utter_message(text="Sorry, there was an error retrieving the course details.")
+        finally:
+            client.close()
 
         return []
 
-# Action to show course fee details
 class ActionShowCourseFee(Action):
     def name(self) -> Text:
         return "action_show_course_fee"
@@ -112,46 +105,42 @@ class ActionShowCourseFee(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         course_name = tracker.get_slot("course_name")
-
-        if course_name:
-            client = get_mongo_client()
-            if client is None:
-                dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
-                return []
-
-            try:
-                db = client[DATABASE_NAME]
-                fee_data = db[COLLECTION_NAME].find_one({"undergraduate_fee_structure.courses.course_name": {"$regex": f"^{course_name}$", "$options": "i"}})
-
-                if fee_data and "undergraduate_fee_structure" in fee_data and "courses" in fee_data["undergraduate_fee_structure"]:
-                    for course in fee_data["undergraduate_fee_structure"]["courses"]:
-                        if course["course_name"].lower() == course_name.lower():
-                            fee_details = f"Year 1: ₹{course.get('year_1_fee', 'N/A')}, Year 2: ₹{course.get('year_2_fee', 'N/A')}, Year 3: ₹{course.get('year_3_fee', 'N/A')}"
-                            dispatcher.utter_message(text=f"The fee details for {course_name} are: {fee_details}")
-                            return []
-
-                semester_fee_data_doc = db[COLLECTION_NAME].find_one({"semester_wise_fee_breakdown.1st_year.course_name": {"$regex": f"^{course_name}$", "$options": "i"}})
-                if semester_fee_data_doc and "semester_wise_fee_breakdown" in semester_fee_data_doc and "1st_year" in semester_fee_data_doc["semester_wise_fee_breakdown"]:
-                    for course in semester_fee_data_doc["semester_wise_fee_breakdown"]["1st_year"]:
-                        if course["course_name"].lower() == course_name.lower():
-                            fee_details = f"First Year - Odd Semester: ₹{course.get('odd_semester', {}).get('total_fee', 'N/A')}, Even Semester: ₹{course.get('even_semester', {}).get('total_fee', 'N/A')}, Grand Total: ₹{course.get('grand_total', 'N/A')}"
-                            dispatcher.utter_message(text=f"The first year semester-wise fee breakdown for {course_name} is: {fee_details}")
-                            return []
-
-                dispatcher.utter_message(text=f"Fee details not found for {course_name}.")
-
-            except Exception as e:
-                print(f"Error fetching fee details: {e}")
-                dispatcher.utter_message(text="Sorry, there was an error retrieving the fee details.")
-            finally:
-                if 'client' in locals() and client:
-                    client.close()
-        else:
+        if not course_name:
             dispatcher.utter_message(text="Please specify which course you'd like the fee details for.")
+            return []
+
+        client = get_mongo_client()
+        if client is None:
+            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+            return []
+
+        try:
+            db = client[DATABASE_NAME]
+            fee_data = db[UG_FEE_COLLECTION].find_one({"undergraduate_fee_structure.courses.course_name": {"$regex": f"^{course_name}$", "$options": "i"}})
+
+            if fee_data:
+                for course in fee_data.get("undergraduate_fee_structure", {}).get("courses", []):
+                    if course["course_name"].lower() == course_name.lower():
+                        fee_text = f"Year 1: ₹{course.get('year_1_fee', 'N/A')}, Year 2: ₹{course.get('year_2_fee', 'N/A')}, Year 3: ₹{course.get('year_3_fee', 'N/A')}"
+                        dispatcher.utter_message(text=f"The fee details for {course_name} are: {fee_text}")
+                        return []
+
+                sem_data = fee_data.get("semester_wise_fee_breakdown", {}).get("1st_year", [])
+                for course in sem_data:
+                    if course["course_name"].lower() == course_name.lower():
+                        sem_text = f"Odd Sem: ₹{course['odd_semester']['total_fee']}, Even Sem: ₹{course['even_semester']['total_fee']}, Total: ₹{course['grand_total']}"
+                        dispatcher.utter_message(text=f"The semester-wise fee for {course_name} is: {sem_text}")
+                        return []
+
+            dispatcher.utter_message(text=f"Fee details not found for {course_name}.")
+        except Exception as e:
+            print(f"Error fetching fee details: {e}")
+            dispatcher.utter_message(text="Sorry, there was an error retrieving the fee details.")
+        finally:
+            client.close()
 
         return []
 
-# Action to show course faculty
 class ActionShowCourseFaculty(Action):
     def name(self) -> Text:
         return "action_show_course_faculty"
@@ -168,45 +157,39 @@ class ActionShowCourseFaculty(Action):
             "bba(regular)": "bba_reg_faculty_list",
             "bca": "bca_faculty_list",
             "bcom(regular)": "bcom_faculty_list",
-            "bcom(travel & tourism)": "bcom_faculty_list", # Assuming same faculty as regular B.Com
+            "bcom(travel & tourism)": "bcom_faculty_list",
             "bsc(mec & cjp)": "bsc_faculty_list",
             "bsc(pcm)": "bsc_faculty_list"
         }
 
-        if course_name:
-            faculty_list_key = faculty_key_mapping.get(course_name.lower())
-            if faculty_list_key:
-                client = get_mongo_client()
-                if client is None:
-                    dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
-                    return []
+        faculty_key = faculty_key_mapping.get(course_name.lower())
+        if not faculty_key:
+            dispatcher.utter_message(text=f"Sorry, I don't have faculty information for {course_name}.")
+            return []
 
-                try:
-                    db = client[DATABASE_NAME]
-                    faculty_data = db[COLLECTION_NAME].find_one({faculty_list_key: {"$exists": True}})
+        client = get_mongo_client()
+        if client is None:
+            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+            return []
 
-                    if faculty_data and faculty_list_key in faculty_data:
-                        faculty_info = [f"{f['name']} (Qualification: {f['qualification']})" for f in faculty_data[faculty_list_key]]
-                        if faculty_info:
-                            dispatcher.utter_message(text=f"The faculty members for {course_name} are: {', '.join(faculty_info)}")
-                        else:
-                            dispatcher.utter_message(text=f"No faculty information found for {course_name}.")
-                    else:
-                        dispatcher.utter_message(text=f"Sorry, I couldn't retrieve the faculty list for {course_name} at the moment.")
-                except Exception as e:
-                    print(f"Error fetching faculty list: {e}")
-                    dispatcher.utter_message(text="Sorry, there was an error retrieving the faculty list.")
-                finally:
-                    if 'client' in locals() and client:
-                        client.close()
+        try:
+            db = client[DATABASE_NAME]
+            data = db[UG_FACULTY_COLLECTION].find_one({faculty_key: {"$exists": True}})
+
+            if data and faculty_key in data:
+                faculty = data[faculty_key]
+                faculty_list = [f"{f['name']} (Qualification: {f['qualification']})" for f in faculty]
+                dispatcher.utter_message(text=f"The faculty members for {course_name} are: {', '.join(faculty_list)}")
             else:
-                dispatcher.utter_message(text=f"Sorry, I don't have faculty information for the course: {course_name}.")
-        else:
-            dispatcher.utter_message(text="Please specify which course you'd like to know the faculty for.")
+                dispatcher.utter_message(text=f"Sorry, no faculty information found for {course_name}.")
+        except Exception as e:
+            print(f"Error fetching faculty list: {e}")
+            dispatcher.utter_message(text="Sorry, there was an error retrieving the faculty list.")
+        finally:
+            client.close()
 
         return []
 
-# Action to show course syllabus
 class ActionShowCourseSyllabus(Action):
     def name(self) -> Text:
         return "action_show_course_syllabus"
@@ -228,48 +211,35 @@ class ActionShowCourseSyllabus(Action):
             "bsc(pcm)": "BSC_PCM_syllabus"
         }
 
-        if course_name:
-            syllabus_key = syllabus_key_mapping.get(course_name.lower())
-            if syllabus_key:
-                client = get_mongo_client()
-                if client is None:
-                    dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
-                    return []
+        syllabus_key = syllabus_key_mapping.get(course_name.lower())
+        if not syllabus_key:
+            dispatcher.utter_message(text=f"Sorry, I don't have syllabus information for {course_name}.")
+            return []
 
-                try:
-                    db = client[DATABASE_NAME]
-                    syllabus_data = db[COLLECTION_NAME].find_one({syllabus_key: {"$exists": True}})
+        client = get_mongo_client()
+        if client is None:
+            dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
+            return []
 
-                    if syllabus_data and syllabus_key in syllabus_data:
-                        syllabus_info = syllabus_data[syllabus_key].get("syllabus")
-                        if syllabus_info:
-                            syllabus_links = []
-                            if isinstance(syllabus_info, list):
-                                for item in syllabus_info:
-                                    link_text = item.get("year") or item.get("title") or "Syllabus Link"
-                                    link_url = item.get("url")
-                                    if link_url:
-                                        syllabus_links.append(f"{link_text}: {link_url}")
-                            elif isinstance(syllabus_info, dict):
-                                link_text = syllabus_info.get("title") or "Syllabus Link"
-                                link_url = syllabus_info.get("url")
-                                if link_url:
-                                    syllabus_links.append(f"{link_text}: {link_url}")
+        try:
+            db = client[DATABASE_NAME]
+            data = db[UG_SYLLABUS_COLLECTION].find_one({syllabus_key: {"$exists": True}})
 
-                            dispatcher.utter_message(text=f"The syllabus for {course_name}: \n" + "\n".join(syllabus_links))
-                        else:
-                            dispatcher.utter_message(text=f"No syllabus information found for {course_name}.")
-                    else:
-                        dispatcher.utter_message(text=f"Sorry, I couldn't retrieve the syllabus for {course_name} at the moment.")
-                except Exception as e:
-                    print(f"Error fetching syllabus: {e}")
-                    dispatcher.utter_message(text="Sorry, there was an error retrieving the syllabus.")
-                finally:
-                    if 'client' in locals() and client:
-                        client.close()
+            if data and syllabus_key in data:
+                syllabus_data = data[syllabus_key].get("syllabus")
+                links = []
+                if isinstance(syllabus_data, list):
+                    for entry in syllabus_data:
+                        links.append(f"{entry.get('year', 'Year')}: {entry.get('url')}")
+                elif isinstance(syllabus_data, dict):
+                    links.append(f"{syllabus_data.get('title', 'Syllabus')}: {syllabus_data.get('url')}")
+                dispatcher.utter_message(text=f"The syllabus for {course_name}:\n" + "\n".join(links))
             else:
-                dispatcher.utter_message(text=f"Sorry, I don't have syllabus information for the course: {course_name}.")
-        else:
-            dispatcher.utter_message(text="Please specify which course you'd like to know the syllabus for.")
+                dispatcher.utter_message(text=f"No syllabus information found for {course_name}.")
+        except Exception as e:
+            print(f"Error fetching syllabus: {e}")
+            dispatcher.utter_message(text="Sorry, there was an error retrieving the syllabus.")
+        finally:
+            client.close()
 
         return []
