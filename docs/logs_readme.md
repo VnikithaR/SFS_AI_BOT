@@ -1,5 +1,4 @@
-
-# Git Contribution Statistics
+# Project Contribution Statistics
 
 The following statistics were generated using `git fame` and `git shortlog`:
 
