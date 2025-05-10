@@ -186,12 +186,12 @@ Each topic (e.g., courses, events) is stored as a JSON file and imported to Mong
 * After processing the message, Rasa sends a response (e.g., course details, faculty information) back to the frontend.
 * The frontend then displays this response to the user in the chatbot interface.
 
-### Example Interaction:
+### Example Interaction
 
 1. **User**: "What courses do you offer?"
 2. **Bot**: "We offer undergraduate and postgraduate courses in various fields, including Computer Science, Business Administration, etc."
 
-### Chat UI Features:
+### Chat UI Features
 
 * Open/Close chatbot widget
 * Welcome message on first open
@@ -227,23 +227,23 @@ To run the chatbot locally, follow these steps:
 rasa run --model models --enable-api --cors "*"
 ```
 
-2. **Start the Frontend** (if applicable):
+1. **Start the Frontend** (if applicable):
 
 ```bash
 npm start
 ```
 
-3. **Access the chatbot**: Open your browser and visit `http://localhost:3000` (or the configured port).
+1. **Access the chatbot**: Open your browser and visit `http://localhost:3000` (or the configured port).
 
 ---
 
 ## **Testing**
 
-### 1. **Unit Tests**: Ensure that custom actions, NLU configurations, and models are properly tested.
+### 1. **Unit Tests**: Ensure that custom actions, NLU configurations, and models are properly tested
 
-### 2. **MongoDB Queries**: Test the data import script to verify correct population of MongoDB.
+### 2. **MongoDB Queries**: Test the data import script to verify correct population of MongoDB
 
-### 3. **End-to-End Testing**: Test the complete chatbot workflow from frontend interaction to data retrieval from MongoDB.
+### 3. **End-to-End Testing**: Test the complete chatbot workflow from frontend interaction to data retrieval from MongoDB
 
 ---
 
@@ -267,5 +267,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 * **Rasa**: For providing the NLP engine for the chatbot.
 * **MongoDB**: For providing the database to store and manage dynamic data.
-* **All contributors**: Thanks for your contributions to making this project successful!
-
+* **All contributors**: Thanks for your contributions to making this project successful.
