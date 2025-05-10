@@ -1,0 +1,20 @@
+version: "3.1"
+
+rules:
+- rule: Ask about all college events
+  steps:
+  - intent: ask_college_events
+  - action: action_list_college_events
+  - action: utter_college_events
+
+- rule: Ask about event on a specific date
+  steps:
+  - intent: ask_event_on_date
+  - action: action_show_event_on_date
+  - action: utter_event_on_date
+
+- rule: Ask about festival on a specific date
+  steps:
+  - intent: ask_festival_on_date
+  - action: action_show_festival_on_date
+  - action: utter_festival_on_date

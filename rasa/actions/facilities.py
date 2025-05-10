@@ -6,18 +6,26 @@ import pymongo
 # MongoDB connection details
 MONGO_URI = "mongodb://localhost:27017/"
 DATABASE_NAME = "sfs_infobot_db"
-COLLECTION_NAME = "facilities"  
 
-# Helper function to handle MongoDB connection
+# Mapping facility types to actual collection names
+FACILITY_COLLECTIONS = {
+    "cultural": "facilities_cultural_sports_facilities",
+    "sports": "facilities_cultural_sports_facilities",
+    "facilities_at_sfs": "facilities_facilities_at_sfs",
+    "ict": "facilities_ict_facilities",
+    "library": "facilities_library_facilities",
+    "physical": "facilities_physical_facilities",
+    "welfare": "facilities_welfare_facilities",
+    "wifi": "facilities_wifi_facilities"
+}
+
 def get_mongo_client():
     try:
-        client = pymongo.MongoClient(MONGO_URI)
-        return client
+        return pymongo.MongoClient(MONGO_URI)
     except pymongo.errors.ConnectionFailure as e:
         print(f"Error connecting to MongoDB: {e}")
         return None
 
-# Action to list all facilities
 class ActionListAllFacilities(Action):
     def name(self) -> Text:
         return "action_list_all_facilities"
@@ -27,70 +35,53 @@ class ActionListAllFacilities(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         client = get_mongo_client()
-        if client is None:
+        if not client:
             dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
             return []
 
+        all_facilities = set()
+
         try:
             db = client[DATABASE_NAME]
-            facilities_collection = db[COLLECTION_NAME]
-            all_facilities = set()
-
-            for facility_doc in facilities_collection.find():
-                if "facilities_at_sfs_college" in facility_doc:
-                    for category, facilities_list in facility_doc["facilities_at_sfs_college"].items():
-                        if isinstance(facilities_list, list):
-                            for facility in facilities_list:
-                                all_facilities.add(facility)
-                        elif isinstance(facilities_list, dict):
-                            if isinstance(facilities_list.get("facilities"), list):
-                                for facility in facilities_list["facilities"]:
-                                    if isinstance(facility, dict) and "name" in facility:
-                                        all_facilities.add(facility["name"])
-                                    elif isinstance(facility, str):
-                                        all_facilities.add(facility)
-                            elif isinstance(facilities_list.get("cultural_activities"), list):
-                                for facility in facilities_list["cultural_activities"]:
-                                    if isinstance(facility, dict) and "name" in facility:
-                                        all_facilities.add(facility["name"])
-                                    elif isinstance(facility, str):
-                                        all_facilities.add(facility)
-                            elif isinstance(facilities_list.get("sports_activities"), list):
-                                for facility in facilities_list["sports_activities"]:
-                                    if isinstance(facility, dict) and "name" in facility:
-                                        all_facilities.add(facility["name"])
-                                    elif isinstance(facility, str):
-                                        all_facilities.add(facility)
-                            elif isinstance(facilities_list.get("gym_facilities"), list):
-                                for facility in facilities_list["gym_facilities"]:
-                                    if isinstance(facility, dict) and "name" in facility:
-                                        all_facilities.add(facility["name"])
-                                    elif isinstance(facility, str):
-                                        all_facilities.add(facility)
-                            elif isinstance(facilities_list.get("yoga_facilities"), list):
-                                for facility in facilities_list["yoga_facilities"]:
-                                    if isinstance(facility, dict) and "name" in facility:
-                                        all_facilities.add(facility["name"])
-                                    elif isinstance(facility, str):
-                                        all_facilities.add(facility)
-                        elif isinstance(facilities_list, str):
-                            all_facilities.add(facilities_list)
+            for coll in FACILITY_COLLECTIONS.values():
+                try:
+                    collection = db[coll]
+                    documents = collection.find({})
+                    for doc in documents:
+                        for key, value in doc.items():
+                            if isinstance(value, list):
+                                for item in value:
+                                    if isinstance(item, dict) and "name" in item:
+                                        all_facilities.add(item["name"])
+                                    elif isinstance(item, str):
+                                        all_facilities.add(item)
+                            elif isinstance(value, dict):
+                                for sub_key, sub_value in value.items():
+                                    if isinstance(sub_value, list):
+                                        for item in sub_value:
+                                            if isinstance(item, dict) and "name" in item:
+                                                all_facilities.add(item["name"])
+                                            elif isinstance(item, str):
+                                                all_facilities.add(item)
+                                    elif isinstance(sub_value, str):
+                                        all_facilities.add(sub_value)
+                            elif isinstance(value, str):
+                                all_facilities.add(value)
+                except Exception as e:
+                    print(f"Error reading from {coll}: {e}")
+                    continue
 
             if all_facilities:
-                dispatcher.utter_message(text="St. Francis de Sales College offers a wide range of facilities including: " + ", ".join(sorted(list(all_facilities))))
+                dispatcher.utter_message(
+                    text="St. Francis de Sales College offers the following facilities:\n" +
+                         ", ".join(sorted(all_facilities)))
             else:
-                dispatcher.utter_message(text="Sorry, I couldn't retrieve the list of facilities at the moment.")
-
-        except Exception as e:
-            print(f"Error fetching facilities: {e}")
-            dispatcher.utter_message(text="Sorry, there was an error retrieving the facilities.")
+                dispatcher.utter_message(text="Sorry, I couldn't retrieve the list of facilities.")
         finally:
-            if 'client' in locals() and client:
-                client.close()
+            client.close()
 
         return []
 
-# Action to show specific facility details
 class ActionShowSpecificFacility(Action):
     def name(self) -> Text:
         return "action_show_specific_facility"
@@ -104,59 +95,63 @@ class ActionShowSpecificFacility(Action):
             dispatcher.utter_message(text="Please specify which facility you are interested in.")
             return []
 
-        facility_type = facility_type.lower()
-        facility_details = []
+        facility_type_lower = facility_type.strip().lower()
+        matched_collection = None
+        for key in FACILITY_COLLECTIONS:
+            if key in facility_type_lower:
+                matched_collection = FACILITY_COLLECTIONS[key]
+                break
+
+        if not matched_collection:
+            dispatcher.utter_message(text=f"Sorry, I couldn't find details related to '{facility_type}'.")
+            return []
 
         client = get_mongo_client()
-        if client is None:
+        if not client:
             dispatcher.utter_message(text="Sorry, I'm having trouble connecting to the database.")
             return []
 
+        facility_details = []
+
         try:
             db = client[DATABASE_NAME]
-            facilities_collection = db[COLLECTION_NAME]
+            collection = db[matched_collection]
+            documents = collection.find({})
 
-            for facility_doc in facilities_collection.find():
-                for category, data in facility_doc.items():
-                    if isinstance(data, dict):
-                        for sub_category, items in data.items():
-                            if isinstance(items, list):
-                                for item in items:
+            for doc in documents:
+                for key, value in doc.items():
+                    if isinstance(value, list):
+                        for item in value:
+                            if isinstance(item, dict):
+                                for k, v in item.items():
+                                    if isinstance(v, str) and facility_type_lower in v.lower():
+                                        facility_details.append(f"{k.capitalize()}: {v}")
+                            elif isinstance(item, str) and facility_type_lower in item.lower():
+                                facility_details.append(item)
+                    elif isinstance(value, dict):
+                        for sub_key, sub_val in value.items():
+                            if isinstance(sub_val, list):
+                                for item in sub_val:
                                     if isinstance(item, dict):
-                                        for key, value in item.items():
-                                            if isinstance(value, str) and facility_type in value.lower():
-                                                details = f"{key.capitalize()}: {value}"
-                                                if details not in facility_details:
-                                                    facility_details.append(details)
-                                            elif key.lower() == "types" and isinstance(value, list) and facility_type in ", ".join(value).lower():
-                                                details = f"{key.capitalize()}: {', '.join(value)}"
-                                                if details not in facility_details:
-                                                    facility_details.append(details)
-                                            elif key.lower() == "description" and facility_type in value.lower():
-                                                if value not in facility_details:
-                                                    facility_details.append(value)
-                                    elif isinstance(item, str) and facility_type in item.lower():
-                                        if item not in facility_details:
-                                            facility_details.append(item)
-                            elif isinstance(items, str) and facility_type in items.lower():
-                                if items not in facility_details:
-                                    facility_details.append(items)
-                    elif isinstance(data, list):
-                        for item in data:
-                            if isinstance(item, str) and facility_type in item.lower():
-                                if item not in facility_details:
-                                    facility_details.append(item)
+                                        for k, v in item.items():
+                                            if isinstance(v, str) and facility_type_lower in v.lower():
+                                                facility_details.append(f"{k.capitalize()}: {v}")
+                                    elif isinstance(item, str) and facility_type_lower in item.lower():
+                                        facility_details.append(item)
+                            elif isinstance(sub_val, str) and facility_type_lower in sub_val.lower():
+                                facility_details.append(sub_val)
+                    elif isinstance(value, str) and facility_type_lower in value.lower():
+                        facility_details.append(value)
 
             if facility_details:
-                dispatcher.utter_message(text=f"Here's some information about the {facility_type} facilities at SFS College:\n" + "\n".join(facility_details))
+                dispatcher.utter_message(
+                    text=f"Here's what I found about the {facility_type} facilities:\n" + "\n".join(facility_details))
             else:
-                dispatcher.utter_message(text=f"Sorry, I don't have specific details about '{facility_type}' at the moment.")
-
+                dispatcher.utter_message(text=f"No specific details found for '{facility_type}'.")
         except Exception as e:
-            print(f"Error fetching details for {facility_type}: {e}")
-            dispatcher.utter_message(text=f"Sorry, there was an error retrieving details for '{facility_type}'.")
+            print(f"Error fetching facility details: {e}")
+            dispatcher.utter_message(text="An error occurred while retrieving the information.")
         finally:
-            if 'client' in locals() and client:
-                client.close()
+            client.close()
 
         return []
