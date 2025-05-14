@@ -5,6 +5,18 @@
       {"date": "17-05-2025", "day": "Saturday", "ug1_event": null, "ug2_3_event": "Graduation Day (School of Commerce and School of Humanities)"},
       {"date": "24-05-2025", "day": "Saturday", "ug1_event": null, "ug2_3_event": "Graduation Day (School of Science and Management)"},
       {"date": "30-06-2025", "day": "Monday", "ug1_event": "Commencement of Academic Year 2025-26", "ug2_3_event": "Commencement of Academic Year 2025-26"}
-    ]
+    {"date": "05-05-2025", "day": "Monday", "ug1_event": "Revision", "ug2_3_event": "Final Year Students Report Back"},
+    {"date": "12-05-2025", "day": "Monday", "ug1_event": "End Semester Examination", "ug2_3_event": null},
+    {"date": "17-05-2025", "day": "Saturday", "ug1_event": null, "ug2_3_event": "Graduation Day (School of Commerce and School of Humanities)"},
+    {"date": "20-05-2025", "day": "Tuesday", "ug1_event": "Machine Learning Lab", "ug2_3_event": null},
+    {"date": "21-05-2025", "day": "Wednesday", "ug1_event": "Design and Analysis of Algorithm Lab", "ug2_3_event": null},
+    {"date": "22-05-2025", "day": "Thursday", "ug1_event": "Database Management System Lab", "ug2_3_event": null},
+    {"date": "23-05-2025", "day": "Friday", "ug1_event": "Mobile Application Development Lab", "ug2_3_event": "Internet Technologies Lab"},
+    {"date": "24-05-2025", "day": "Saturday", "ug1_event": "Object Oriented Programming Using Java", "ug2_3_event": "Graduation Day (School of Science and Management)"},
+    {"date": "26-05-2025", "day": "Monday", "ug1_event": "Computer Assembly and Repair", "ug2_3_event": null},
+    {"date": "27-05-2025", "day": "Tuesday", "ug1_event": "Project Work", "ug2_3_event": null},
+    {"date": "28-05-2025", "day": "Wednesday", "ug1_event": "LINUX and Shell Programming Lab", "ug2_3_event": null},
+    {"date": "30-06-2025", "day": "Monday", "ug1_event": "Commencement of Academic Year 2025-26", "ug2_3_event": "Commencement of Academic Year 2025-26"}
+  ] 
   }
   
