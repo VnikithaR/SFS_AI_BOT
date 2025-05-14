@@ -1,12 +1,13 @@
 version: "3.1"
-language: en
 
-# Configuration for the NLU pipeline
+language: "en"
+
 pipeline:
-- name: "WhitespaceTokenizer"
-- name: "RegexFeaturizer"
-- name: "LexicalSyntacticFeaturizer"
-- name: "CountVectorsFeaturizer"
+- name: "SpacyNLP"
+  model: "en_core_web_md"
+- name: "SpacyTokenizer"
+- name: "spell_checker_component.SpellCheckerComponent"
+- name: "SpacyFeaturizer"
 - name: "DIETClassifier"
   epochs: 100
   constrain_similarities: true
@@ -17,30 +18,13 @@ pipeline:
 - name: "FallbackClassifier"
   threshold: 0.6
 
-# Configuration for policies
 policies:
 - name: "MemoizationPolicy"
 - name: "RulePolicy"
 - name: "TEDPolicy"
+  max_history: 5
+  epochs: 100
 - name: "UnexpecTEDIntentPolicy"
   max_history: 5
   epochs: 100
-
-# Configuration for data loading
-data:
-- data/basic_nlu.yml
-- data/basic_rules.yml
-- data/basic_stories.yml
-- data/events_nlu.yml
-- data/events_rules.yml
-- data/events_stories.yml
-- data/facilities_nlu.yml
-- data/facilities_rules.yml
-- data/facilities_stories.yml
-- data/courses/pg_courses/pg_courses_nlu.yml
-- data/courses/pg_courses/pg_courses_rules.yml
-- data/courses/pg_courses/pg_courses_stories.yml
-- data/courses/ug_courses/ug_courses_nlu.yml
-- data/courses/ug_courses/ug_courses_rules.yml
-- data/courses/ug_courses/ug_courses_stories.yml
-assistant_id: 20250425-232113-numerous-mint
+assistant_id: 20250510-171755-binary-barnacles

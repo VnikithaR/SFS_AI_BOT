@@ -1,0 +1,229 @@
+SFS_InfoBot
+C:.
+|   # Git Contribution Statistics.md
+|   README.md
+|   
++---bot_data
+|   +---Alumni_Achievements_Clubs
+|   |       achievers.json
+|   |       alumni_2020.json
+|   |       marketing_club.json
+|   |       ncc_orientation.json
+|   |       
+|   +---College_News_ Events
+|   |       college_news.json
+|   |       media_coverage.json
+|   |       newsletter.json
+|   |
+|   +---contact
+|   |       contact_info.json
+|   |       feedback_form.json
+|   |
+|   +---courses
+|   |   +---pg_courses
+|   |   |       pg_courses_available.json
+|   |   |       pg_fee_details.json
+|   |   |       pg_syllabus.json
+|   |   |
+|   |   \---ug_courses
+|   |           ug_courses_available.json
+|   |           ug_faculties.json
+|   |           ug_fee_details.json
+|   |           ug_programs_details.json
+|   |           ug_syllabus.json
+|   |
+|   +---events
+|   |       college_events.json
+|   |       festivals_special_days.json
+|   |       upcoming_events.json
+|   |
+|   +---facilities
+|   |       cultural_sports_facilities.json
+|   |       facilities_at_sfs.json
+|   |       ict_facilities.json
+|   |       library_facilities.json
+|   |       physical_facilities.json
+|   |       welfare_facilities.json
+|   |       wifi_facilities.json
+|   |
+|   +---institute_info
+|   |   |   campus.json
+|   |   |   college_timings.json
+|   |   |   founder.json
+|   |   |   history.json
+|   |   |   logo_anthem.json
+|   |   |   naac_data.json
+|   |   |   patron.json
+|   |   |   principal_message.json
+|   |   |   social_media_and_brochure.json
+|   |   |   values.json
+|   |   |   vision.json
+|   |   |
+|   |   \---admissions
+|   |           admission_details.json
+|   |
+|   +---Results_and_exam
+|   |       exam_results.json
+|   |       question_papers.json
+|   |       result_certification.json
+|   |
+|   \---Skill_Development _Workshops
+|           advanced_excel_workshop.json
+|           personal_branding_workshop.json
+|           python_programming_workshop.json
+|
++---frontend
+|   |   db_auth.py
+|   |   index.html
+|   |
+|   +---assets
+|   |   |   site
+|   |   |
+|   |   +---apps
+|   |   |       icons8-facebook-logo-48.png
+|   |   |       icons8-google-mail-48.png
+|   |   |       icons8-google-maps-48.png
+|   |   |       icons8-instagram-logo-48.png
+|   |   |       icons8-linkedin-48.png
+|   |   |       icons8-twitter.svg
+|   |   |       icons8-whatsapp-48.png
+|   |   |       icons8-youtube.svg
+|   |   |
+|   |   +---favicons
+|   |   |       android-chrome-192x192.png
+|   |   |       android-chrome-512x512.png
+|   |   |       apple-touch-icon.png
+|   |   |       favicon-16x16.png
+|   |   |       favicon-32x32.png
+|   |   |       favicon.ico
+|   |   |
+|   |   \---icons
+|   |           icons8-chatbot-94.png
+|   |           icons8-chatbot.gif
+|   |           icons8-close-48.png
+|   |           icons8-history-50.png
+|   |           icons8-menu-vertical-48.png
+|   |           icons8-mic-32.png
+|   |           icons8-refresh-48.png
+|   |           icons8-send-48.png
+|   |           icons8-settings-94.png
+|   |
+|   +---css
+|   |       login.css
+|   |       styles.css
+|   |
+|   +---js
+|   |       login.js
+|   |       script.js
+|   |
+|   \---__pycache__
+|           db_auth.cpython-39.pyc
+|
++---logs
+|   +---contributions
+|   |       sambramam_contributions.csv
+|   |       vnikitha_contributions.csv
+|   |
+|   \---docs
+|           logs_readme.md
+|
++---rasa
+|   |   config.yml
+|   |   credentials.yml
+|   |   domain.yml
+|   |   endpoints.yml
+|   |   spell_checker_component.py
+|   |
+|   +---.rasa
+|   |   \---cache
+|   |       |   cache.db
+|   |       |
+|   |       +---tmp4jmq378b
+|   |       |       patterns.json
+|   |       |
+|   |       +---tmpaik_7uvt
+|   |       |       feature_to_idx_dict.json
+|   |       |
+|   |       +---tmpb4cqz_2i
+|   |       |       oov_words.json
+|   |       |       vocabularies.json
+|   |       |
+|   |       +---tmpd_ne0qib
+|   |       |       featurizer.json
+|   |       |       memorized_turns.json
+|   |       |
+|   |       +---tmpgn55fzqg
+|   |       |       synonyms.json
+|   |       |
+|   |       +---tmpqww7v3ah
+|   |       \---tmpu5f4xkg3
+|   |               checkpoint
+|   |               DIETClassifier.data_example.st
+|   |               DIETClassifier.data_example_metadata.json   
+|   |               DIETClassifier.entity_tag_specs.json        
+|   |               DIETClassifier.index_label_id_mapping.json  
+|   |               DIETClassifier.label_data.st
+|   |               DIETClassifier.label_data_metadata.json     
+|   |               DIETClassifier.sparse_feature_sizes.json    
+|   |               DIETClassifier.tf_model.data-00000-of-00001 
+|   |               DIETClassifier.tf_model.index
+|   |
+|   +---actions
+|   |   |   action.py
+|   |   |   events.py
+|   |   |   facilities.py
+|   |   |   pg_courses.py
+|   |   |   ug_courses.py
+|   |   |
+|   |   \---__pycache__
+|   |           action.cpython-39.pyc
+|   |           events.cpython-39.pyc
+|   |           facilities.cpython-39.pyc
+|   |           pg_courses.cpython-39.pyc
+|   |           ug_courses.cpython-39.pyc
+|   |
+|   +---data
+|   |       Alumni_Achivements_Clubs_nlu.yml
+|   |       Alumni_Achivements_Clubs_rules.yml
+|   |       Alumni_Achivements_Clubs_stories.yml
+|   |       basic_nlu.yml
+|   |       basic_rules.yml
+|   |       basic_stories.yml
+|   |       College_News_ Events_nlu.yml
+|   |       College_News_ Events_rules.yml
+|   |       College_News_ Events_stories.yml
+|   |       contact_nlu.yml
+|   |       contact_rules.yml
+|   |       contact_stories.yml
+|   |       events_nlu.yml
+|   |       events_rules.yml
+|   |       events_stories.yml
+|   |       facilities_nlu.yml
+|   |       facilities_rules.yml
+|   |       facilities_stories.yml
+|   |       pg_courses_nlu.yml
+|   |       pg_courses_rules.yml
+|   |       pg_courses_stories.yml
+|   |       Results_and_exam_nlu.yml
+|   |       Results_and_exam_rules.yml
+|   |       Result_and_exam_stories.yml
+|   |       Skill_Development _Workshops_nlu.yml
+|   |       Skill_Development _Workshops_rules.yml
+|   |       Skill_Development _Workshops_stories.yml
+|   |       ug_courses_nlu.yml
+|   |       ug_courses_rules.yml
+|   |       ug_courses_stories.yml
+|   |
+|   +---models
+|   \---__pycache__
+|           spell_checker_component.cpython-39.pyc
+|
++---scripts
+|   |   import_to_mongodb.py
+|   |
+|   \---__pycache__
+|           import_to_mongodb.cpython-39.pyc
+|
+\---__pycache__
+        spell_checker_component.cpython-39.pyc
+

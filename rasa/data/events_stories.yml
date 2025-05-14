@@ -5,7 +5,7 @@ stories:
   steps:
   - intent: ask_event_on_date
     entities:
-    - date: "03-01-2025"
+    - date: "03-01-2025"  # Example date, could be variable
   - action: action_show_event_on_date
   - action: utter_event_on_date
 
@@ -21,6 +21,6 @@ stories:
   steps:
   - intent: ask_festival_on_date
     entities:
-    - date: "14-01-2025"
+    - date: "14-01-2025"  # Example date, could be variable
   - action: action_show_festival_on_date
   - action: utter_festival_on_date

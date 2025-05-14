@@ -27,11 +27,11 @@ nlu:
     - Tell me about festivals on [March 14th](date)?
     - What festival is on [April 18th](date)?
     - Any special days around [May](month)?
-    - Festivals in [June](month).
+    - Festivals in [June](month)?
 
 entities:
   - date:
-      type: temporal_entity
+      type: date  # Use 'date' for temporal entities in Rasa
   - month:
       type: categorical
       values:

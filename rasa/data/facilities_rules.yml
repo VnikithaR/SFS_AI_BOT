@@ -4,11 +4,11 @@ rules:
 - rule: Ask about all facilities
   steps:
   - intent: ask_about_facilities
-  - action: action_list_all_facilities
+  - action: action_list_all_facilities  # Ensure custom action is implemented
 
 - rule: Ask about specific facility
   steps:
   - intent: ask_about_specific_facility
-  - action: action_show_specific_facility
+  - action: action_show_specific_facility  # Ensure custom action is implemented
   - slot_was_set:
-    - facility_type: "{facility_type}"
+    - facility_type: "{facility_type}"  # Use the facility_type slot

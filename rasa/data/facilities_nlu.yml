@@ -29,75 +29,75 @@ nlu:
 
 entities:
   - facility_type:
-    type: categorical
-    values:
-      - library
-      - sports
-      - computer lab
-      - cultural
-      - hostel
-      - gym
-      - wifi
-      - canteen
-      - parking
-      - bank
-      - welfare
-      - ICT
-      - physical
-      - auditorium
-      - study lawns
-      - classrooms
-      - labs
-      - digital library
-      - chapel
-      - recording studio
-      - media room
-      - news zones
-      - placement cell
-      - counselling room
-      - sick room
-      - board room
-      - conference room
-      - sfs college app
-      - butterfly park
-      - herbal garden
-      - music zone
-      - prayer hall
-      - research / ip cell
-      - sfs woods
-      - sports room
-      - table tennis room
-      - women’s cell
-      - yoga hall
-      - ambedkar study centre
-      - cultural room
-      - cultural store room
-      - seminar hall
-      - common room
-      - music area
-      - green room
-      - backstage
-      - toilet
-      - open auditorium
-      - new auditorium
-      - basketball courts
-      - volleyball courts
-      - badminton courts
-      - cricket practice pitch
-      - cricket ground
-      - football ground
-      - softball practice ground
-      - baseball practice ground
-      - kho-kho practice ground
-      - kabaddi practice ground
-      - indoor games
-      - multi-gym facility
-      - yoga and prayer centre
-      - ncc office
-      - ngo aspire cell
-      - radio room
-      - throw ball court
-      - volley ball
-      - gandhian study centre
-      - garden
-      - hand ball / soft ball court
+      type: categorical
+      values:
+        - library
+        - sports
+        - computer lab
+        - cultural
+        - hostel
+        - gym
+        - wifi
+        - canteen
+        - parking
+        - bank
+        - welfare
+        - ICT
+        - physical
+        - auditorium
+        - study lawns
+        - classrooms
+        - labs
+        - digital library
+        - chapel
+        - recording studio
+        - media room
+        - news zones
+        - placement cell
+        - counselling room
+        - sick room
+        - board room
+        - conference room
+        - sfs college app
+        - butterfly park
+        - herbal garden
+        - music zone
+        - prayer hall
+        - research / ip cell
+        - sfs woods
+        - sports room
+        - table tennis room
+        - women’s cell
+        - yoga hall
+        - ambedkar study centre
+        - cultural room
+        - cultural store room
+        - seminar hall
+        - common room
+        - music area
+        - green room
+        - backstage
+        - toilet
+        - open auditorium
+        - new auditorium
+        - basketball courts
+        - volleyball courts
+        - badminton courts
+        - cricket practice pitch
+        - cricket ground
+        - football ground
+        - softball practice ground
+        - baseball practice ground
+        - kho-kho practice ground
+        - kabaddi practice ground
+        - indoor games
+        - multi-gym facility
+        - yoga and prayer centre
+        - ncc office
+        - ngo aspire cell
+        - radio room
+        - throw ball court
+        - volley ball
+        - gandhian study centre
+        - garden
+        - hand ball / soft ball court

@@ -4,17 +4,17 @@ rules:
 - rule: Ask about all college events
   steps:
   - intent: ask_college_events
-  - action: action_list_college_events
-  - action: utter_college_events
+  - action: action_list_college_events  # Ensure this action is defined in your custom actions
+  - action: utter_college_events  # This should be a response action defined in your domain
 
 - rule: Ask about event on a specific date
   steps:
   - intent: ask_event_on_date
-  - action: action_show_event_on_date
-  - action: utter_event_on_date
+  - action: action_show_event_on_date  # Define this action to fetch events based on the date
+  - action: utter_event_on_date  # Ensure a relevant response is defined
 
 - rule: Ask about festival on a specific date
   steps:
   - intent: ask_festival_on_date
-  - action: action_show_festival_on_date
-  - action: utter_festival_on_date
+  - action: action_show_festival_on_date  # Action to handle festival-related queries
+  - action: utter_festival_on_date  # Ensure this action responds with festival information

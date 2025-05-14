@@ -60,3 +60,27 @@ nlu:
     - Are you an AI?
     - Who are you?
     - What are you?
+
+- intent: inform_name
+  examples: |
+    - My name is [John](name)
+    - I am [Sarah](name)
+    - Call me [Mike](name)
+    - I'm [Anna](name)
+    - The name's [David](name)
+
+- intent: ask_about_courses
+  examples: |
+    - Tell me about the courses
+    - What courses are available?
+    - Can you list the courses?
+    - What programs do you offer?
+    - Tell me about the programs
+
+- intent: ask_pg_courses
+  examples: |
+    - Do you offer postgraduate courses?
+    - Tell me about PG courses
+    - What are the postgraduate programs available?
+    - Can you list the PG courses?
+    - Are there any master's programs?

@@ -4,14 +4,14 @@ stories:
 - story: User asks about all facilities
   steps:
   - intent: ask_about_facilities
-  - action: action_list_all_facilities
+  - action: action_list_all_facilities  # Ensure custom action to list all facilities
 
 - story: User asks about library facilities
   steps:
   - intent: ask_about_specific_facility
     entities:
     - facility_type: "library"
-  - action: action_show_specific_facility
+  - action: action_show_specific_facility  # Action for specific facility details
 
 - story: User asks about sports facilities
   steps:

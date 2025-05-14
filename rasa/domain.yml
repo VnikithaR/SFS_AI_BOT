@@ -1,4 +1,3 @@
-# domain.yml
 version: "3.1"
 
 intents:
@@ -33,6 +32,10 @@ intents:
   - ask_contact_info
   - ask_about_facilities
   - ask_about_specific_facility
+  - inform_name
+  - ask_event_on_date
+  - ask_festival_on_date
+
 entities:
   - course_name
   - department_name
@@ -45,123 +48,162 @@ slots:
   user_name:
     type: text
     influence_conversation: false
+    mappings:
+      - type: from_text
+
   course_name:
     type: text
     influence_conversation: true
     mappings:
-    - type: from_entity
-      entity: course_name
+      - type: from_entity
+        entity: course_name
+
   department_name:
     type: text
     influence_conversation: true
     mappings:
-    - type: from_entity
-      entity: department_name
+      - type: from_entity
+        entity: department_name
+
   pg_course_name:
     type: text
     influence_conversation: true
     mappings:
-    - type: from_entity
-      entity: pg_course_name
+      - type: from_entity
+        entity: pg_course_name
+
   date:
     type: text
     influence_conversation: true
     mappings:
-    - type: from_entity
-      entity: date
+      - type: from_entity
+        entity: date
+
   month:
     type: text
     influence_conversation: true
     mappings:
-    - type: from_entity
-      entity: month
+      - type: from_entity
+        entity: month
+
   facility_type:
     type: text
     influence_conversation: true
     mappings:
-    - type: from_entity
-      entity: facility_type
+      - type: from_entity
+        entity: facility_type
 
 responses:
   utter_greet:
-  - text: "Hello! Welcome to SFS InfoBot. How can I help you with information about St. Francis de Sales College?"
+    - text: "Hello! Welcome to SFS InfoBot. How can I help you with information about St. Francis de Sales College?"
+
   utter_goodbye:
-  - text: "Goodbye! Feel free to reach out if you have more questions about SFS College."
+    - text: "Goodbye! Feel free to reach out if you have more questions about SFS College."
+
   utter_default:
-  - text: "I'm sorry, I didn't understand that. Could you please rephrase your question?"
+    - text: "I'm sorry, I didn't understand that. Could you please rephrase your question?"
+
   utter_bot_challenge:
-  - text: "I am SFS InfoBot, a chatbot designed to provide information about St. Francis de Sales College."
+    - text: "I am SFS InfoBot, a chatbot designed to provide information about St. Francis de Sales College."
+
   utter_thankyou:
-  - text: "You're welcome! Glad I could assist you."
+    - text: "You're welcome! Glad I could assist you."
+
   utter_ask_about_courses:
-  - text: "We offer the following undergraduate courses: {ug_courses}"
+    - text: "We offer the following undergraduate courses: {ug_courses}"
+
   utter_course_details:
-  - text: "Here are some details about {course_name}: {course_details}"
+    - text: "Here are some details about {course_name}: {course_details}"
+
   utter_course_fee:
-  - text: "The fee details for {course_name} are: {fee_details}"
+    - text: "The fee details for {course_name} are: {fee_details}"
+
   utter_course_faculty:
-  - text: "The faculty members for {course_name} are: {faculty_list}"
+    - text: "The faculty members for {course_name} are: {faculty_list}"
+
   utter_course_syllabus:
-  - text: "You can find the syllabus for {course_name} here: {syllabus_links}"
+    - text: "You can find the syllabus for {course_name} here: {syllabus_links}"
+
   utter_department_programs:
-  - text: "The {department_name} department offers the following programs: {department_programs}"
+    - text: "The {department_name} department offers the following programs: {department_programs}"
+
   utter_ask_pg_courses:
-  - text: "We offer the following postgraduate courses: {pg_courses}"
+    - text: "We offer the following postgraduate courses: {pg_courses}"
+
   utter_pg_course_details:
-  - text: "Here are some details about {pg_course_name}: {pg_course_details}"
+    - text: "Here are some details about {pg_course_name}: {pg_course_details}"
+
   utter_pg_course_fee:
-  - text: "The fee details for {pg_course_name} are: {pg_fee_details}"
+    - text: "The fee details for {pg_course_name} are: {pg_fee_details}"
+
   utter_pg_course_syllabus:
-  - text: "You can find the syllabus for {pg_course_name} here: {pg_syllabus_links}"
+    - text: "You can find the syllabus for {pg_course_name} here: {pg_syllabus_links}"
+
   utter_welcome:
-  - text: "Welcome to SFS InfoBot! St. Francis de Sales College, established in 2004, is a leading institution in Bengaluru... How can I assist you today?"
+    - text: "Welcome to SFS InfoBot! St. Francis de Sales College, established in 2004, is a leading institution in Bengaluru... How can I assist you today?"
+
   utter_college_events:
-  - text: "Here are the upcoming college events:\n{college_events}"
+    - text: "Here are the upcoming college events:\n{college_events}"
+
   utter_event_on_date:
-  - text: "On {date}, the following events are scheduled:\n{events_on_date}"
+    - text: "On {date}, the following events are scheduled:\n{events_on_date}"
+
   utter_festival_on_date:
-  - text: "On {date}, the following festival or special day is observed: {festival_on_date}"
+    - text: "On {date}, the following festival or special day is observed: {festival_on_date}"
+
   utter_festivals_in_month:
-  - text: "In {month}, the following festivals and special days are observed:\n{festivals_in_month}"
+    - text: "In {month}, the following festivals and special days are observed:\n{festivals_in_month}"
+
   utter_all_facilities:
-  - text: "St. Francis de Sales College offers a wide range of facilities including physical infrastructure like spacious classrooms, a well-stocked library, digital library, computer labs, science labs, a gymnasium, auditoriums, and sports grounds. We also have ICT facilities such as Wi-Fi, smart classrooms, and a dedicated server. For cultural and sports activities, we have dedicated rooms, courts, and an open auditorium. Welfare facilities include a canteen, hostels, bank, parking, and support for staff."
+    - text: >
+        St. Francis de Sales College offers a wide range of facilities including physical infrastructure like spacious classrooms, a well-stocked library, digital library, computer labs, science labs, a gymnasium, auditoriums, and sports grounds. We also have ICT facilities such as Wi-Fi, smart classrooms, and a dedicated server. For cultural and sports activities, we have dedicated rooms, courts, and an open auditorium. Welfare facilities include a canteen, hostels, bank, parking, and support for staff.
+
   utter_specific_facility:
-  - text: "Here's some information about the {facility_type} facilities at SFS College:\n{facility_details}"
-  - text: "Regarding {facility_type}, we offer the following:\n{facility_details}"
-  - text: "You asked about {facility_type}. Here are the details:\n{facility_details}"
+    - text: "Here's some information about the {facility_type} facilities at SFS College:\n{facility_details}"
+    - text: "Regarding {facility_type}, we offer the following:\n{facility_details}"
+    - text: "You asked about {facility_type}. Here are the details:\n{facility_details}"
+
   utter_ask_achievements:
-    - text: "Check out the achievers and their accomplishments: https://www.sfscollege.in/achievers.php"
+    - text: "Check out the achievers and their accomplishments: [https://www.sfscollege.in/achievers.php](https://www.sfscollege.in/achievers.php)"
+
   utter_ask_alumni_2020:
-    - text: "You can learn more about the 2020 alumni here: https://www.sfscollege.in/Alumni_2020.php"
+    - text: "You can learn more about the 2020 alumni here: [https://www.sfscollege.in/Alumni_2020.php](https://www.sfscollege.in/Alumni_2020.php)"
+
   utter_ask_marketing_club:
-    - text: "Learn about the Marketing Club and its activities: https://www.sfscollege.in/Marketing_Club24.php"
+    - text: "Learn about the Marketing Club and its activities: [https://www.sfscollege.in/Marketing_Club24.php](https://www.sfscollege.in/Marketing_Club24.php)"
+
   utter_ask_ncc_orientation:
-    - text: "Here are the details about the NCC Orientation: https://www.sfscollege.in/NCC_ORIENTATION.php"
+    - text: "Here are the details about the NCC Orientation: [https://www.sfscollege.in/NCC_ORIENTATION.php](https://www.sfscollege.in/NCC_ORIENTATION.php)"
+
   utter_ask_exam_schedule:
-    - text: "You can find the latest exam timetable here: https://www.sfscollege.in/exam_schedule.php"
+    - text: "You can find the latest exam timetable here: [https://www.sfscollege.in/exam_schedule.php](https://www.sfscollege.in/exam_schedule.php)"
 
   utter_ask_results:
-    - text: "Exam results are available here: https://www.sfscollege.in/results.php"
+    - text: "Exam results are available here: [https://www.sfscollege.in/results.php](https://www.sfscollege.in/results.php)"
 
   utter_ask_internal_assessment:
-    - text: "Internal assessment details are published here: https://www.sfscollege.in/internal_assessment.php"
+    - text: "Internal assessment details are published here: [https://www.sfscollege.in/internal_assessment.php](https://www.sfscollege.in/internal_assessment.php)"
+
   utter_ask_college_events:
-    - text: "Check out the upcoming and past events here: https://www.sfscollege.in/events.php"
+    - text: "Check out the upcoming and past events here: [https://www.sfscollege.in/events.php](https://www.sfscollege.in/events.php)"
 
   utter_ask_college_news:
-    - text: "Stay updated with the latest news: https://www.sfscollege.in/news.php"
+    - text: "Stay updated with the latest news: [https://www.sfscollege.in/news.php](https://www.sfscollege.in/news.php)"
+
   utter_ask_skill_development:
-    - text: "You can explore various skill development programs here: https://www.sfscollege.in/Skill_Development.php"
+    - text: "You can explore various skill development programs here: [https://www.sfscollege.in/Skill_Development.php](https://www.sfscollege.in/Skill_Development.php)"
 
   utter_ask_workshops:
-    - text: "Find all upcoming and past workshops at: https://www.sfscollege.in/Workshops.php"
+    - text: "Find all upcoming and past workshops at: [https://www.sfscollege.in/Workshops.php](https://www.sfscollege.in/Workshops.php)"
+
   utter_ask_contact_info:
     - text: |
         You can reach SFS College through the following:
-        📍 Address: Hebbagodi, Electronic City, Bangalore
-        📞 Phone: +91-1234567890
-        📧 Email: contact@sfscollege.in
-        🌐 Website: https://www.sfscollege.in/contact.php
+        📍 Address: Hebbagodi, Electronic City, Bangalore  
+        📞 Phone: +91-1234567890  
+        📧 Email: [contact@sfscollege.in](mailto:contact@sfscollege.in)  
+        🌐 Website: [https://www.sfscollege.in/contact.php](https://www.sfscollege.in/contact.php)
+
 actions:
   - action_list_ug_courses
   - action_show_course_details
@@ -179,6 +221,9 @@ actions:
   - action_show_festival_on_date
   - action_list_all_facilities
   - action_show_specific_facility
+  - action_fetch_user_name
+  - action_save_user_name
+  - action_list_college_events
 
 session_config:
   session_expiration_time: 60
