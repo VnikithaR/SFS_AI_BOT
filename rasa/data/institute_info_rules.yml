@@ -1,0 +1,28 @@
+version: "3.1"
+rules:
+
+- rule: Respond to college information
+  steps:
+  - intent: ask_about_college
+  - action: utter_about_college
+  - action: action_about_college
+
+- rule: Respond to location query
+  steps:
+  - intent: ask_college_location
+  - action: utter_college_location
+
+- rule: Respond to contact information request
+  steps:
+  - intent: ask_contact_info
+  - action: utter_college_contact
+
+- rule: Respond to courses offered
+  steps:
+  - intent: ask_courses_offered
+  - action: utter_courses_offered
+
+- rule: Respond to principal information
+  steps:
+  - intent: ask_principal_info
+  - action: utter_principal_info

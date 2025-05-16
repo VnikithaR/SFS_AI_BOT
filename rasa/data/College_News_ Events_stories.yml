@@ -1,11 +1,9 @@
 version: "3.1"
 stories:
-- story: user asks about college events
+- story: Respond to event inquiry using flow
   steps:
   - intent: ask_college_events
   - action: utter_ask_college_events
+  - intent: affirm
+  - action: action_list_college_events
 
-- story: user asks about college news
-  steps:
-  - intent: ask_college_news
-  - action: utter_ask_college_news

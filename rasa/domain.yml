@@ -29,12 +29,18 @@ intents:
   - ask_college_news
   - ask_skill_development
   - ask_workshops
-  - ask_contact_info
   - ask_about_facilities
   - ask_about_specific_facility
   - inform_name
   - ask_event_on_date
   - ask_festival_on_date
+  - ask_about_college
+  - ask_college_location
+  - ask_courses_offered
+  - ask_principal_info
+  - ask_festivals_in_month       # <-- newly added
+  - ask_college_contact 
+  - ask_contact_info         # <-- newly added
 
 entities:
   - course_name
@@ -196,13 +202,25 @@ responses:
   utter_ask_workshops:
     - text: "Find all upcoming and past workshops at: [https://www.sfscollege.in/Workshops.php](https://www.sfscollege.in/Workshops.php)"
 
-  utter_ask_contact_info:
+  utter_college_contact:
     - text: |
         You can reach SFS College through the following:
         📍 Address: Hebbagodi, Electronic City, Bangalore  
-        📞 Phone: +91-1234567890  
+        📞 Phone: +91-9876543210
         📧 Email: [contact@sfscollege.in](mailto:contact@sfscollege.in)  
         🌐 Website: [https://www.sfscollege.in/contact.php](https://www.sfscollege.in/contact.php)
+
+  utter_about_college:
+    - text: "SFS College is a reputed institution offering undergraduate and postgraduate programs in arts, science, and commerce."
+
+  utter_college_location:
+    - text: "The college is located in Hebbagodi, Bengaluru, Karnataka."
+
+  utter_courses_offered:
+    - text: "The college offers BCA, BCom, BBA, BA, MSc, and MCom programs."
+
+  utter_principal_info:
+    - text: "The principal of SFS College is Dr. John Smith, a visionary leader and academic."
 
 actions:
   - action_list_ug_courses
@@ -224,6 +242,11 @@ actions:
   - action_fetch_user_name
   - action_save_user_name
   - action_list_college_events
+  - action_about_college
+  - action_college_location
+  - action_college_contact
+  - action_courses_offered
+  - action_principal_info
 
 session_config:
   session_expiration_time: 60
