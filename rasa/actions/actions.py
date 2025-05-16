@@ -146,12 +146,12 @@ class ActionPrincipalInfo(Action):
     "Our students are our real treasure. Their passion for learning and diligence in completing the tasks entrusted to them are inspiring. The diverse backgrounds they bring, the curious and ever wondering minds they display, "
     "and the variety of experiences and thoughts they share make SFS College a special place. Interacting and working with them is one of the privileges that I have in being the Principal of this college. "
     "It is a great honor to see and hear how they grow and mature over the years, and how God works with each one of them, shaping them into women and men who become a blessing to the world.\n\n"
-    "Situated on a beautiful campus, SFS College is a welcome home to anyone in the pursuit of knowledge and transformation. A wide variety of disciplines and academic programs are offered, "
+    "Situated on a Beautiful campus, SFS College is a welcome home to anyone in the pursuit of knowledge and transformation. A wide variety of disciplines and academic programs are offered, "
     "and the students are taught to integrate their personal lives, classroom learning, and life in the community. We insist on discipline but we encourage freedom with responsibility.\n\n"
     "I hope your visit to this website helps you to get to know us more. If you are a prospective student, I extend to you a very warm welcome to our campus. If you are a visitor or well-wisher, "
     "I invite you to partner with us in the mission of education.\n\n"
     "With Warm Wishes and God’s Blessings,\nRev. Dr. Binu Edathumparambil, MSFS\nPrincipal, St. Francis de Sales College"
 )
-
-        dispatcher.utter_message(text=message)
-        return []
+       
+       dispatcher.utter_message(text=message)
+       return []
