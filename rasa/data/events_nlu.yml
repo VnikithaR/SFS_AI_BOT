@@ -1,7 +1,7 @@
 version: "3.1"
 
 nlu:
-- intent: ask_college_events
+- intent: ask_all_college_events
   examples: |
     - What are the college events?
     - Tell me about upcoming events.

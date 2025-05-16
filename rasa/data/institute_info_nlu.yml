@@ -1,0 +1,41 @@
+version: "3.1"
+nlu:
+- intent: ask_about_college
+  examples: |
+    - Tell me about the college
+    - What is SFS College?
+    - Can you give me details about the college?
+    - I want to know more about the college
+    - What does the college offer?
+
+- intent: ask_college_location
+  examples: |
+    - Where is the college located?
+    - What is the address of the college?
+    - Location of SFS College?
+    - How do I reach the college?
+    - Where can I find the college?
+
+- intent: ask_contact_info
+  examples: |
+    - How can I contact the college?
+    - Give me the contact number of SFS College
+    - What is the phone number of the college?
+    - College email ID?
+    - Contact info of the college?
+
+- intent: ask_courses_offered
+  examples: |
+    - What courses are offered?
+    - List of courses available in the college
+    - Tell me about the programs provided
+    - UG and PG courses available?
+    - What programs do you offer?
+
+- intent: ask_principal_info
+  examples: |
+    - Who is the principal?
+    - Name of the principal
+    - Tell me about the college principal
+    - Who heads the institution?
+    - Who is the current principal of the college?

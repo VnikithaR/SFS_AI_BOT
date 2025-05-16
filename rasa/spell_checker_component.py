@@ -1,5 +1,3 @@
-# spell_checker_component.py
-
 from typing import Any, Text, Dict, List
 from rasa.engine.graph import GraphComponent, ExecutionContext
 from rasa.engine.storage.resource import Resource
@@ -48,3 +46,13 @@ class SpellCheckerComponent(GraphComponent):
 
     def train(self, training_data: TrainingData) -> GraphComponent:
         return self
+
+    # ✅ Add this method to fix the error during rasa train
+    def process_training_data(self, training_data: TrainingData) -> TrainingData:
+        # Optionally, correct spelling in training examples here
+        for example in training_data.training_examples:
+            text = example.get("text")
+            if text:
+                corrected_text = self.correct_spelling(text)
+                example.set("text", corrected_text)
+        return training_data

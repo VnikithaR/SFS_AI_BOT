@@ -1,0 +1,28 @@
+version: "3.1"
+stories:
+
+- story: User asks about the college
+  steps:
+  - intent: ask_about_college
+  - action: utter_about_college
+  - action: action_about_college
+  
+- story: User asks for college location
+  steps:
+  - intent: ask_college_location
+  - action: utter_college_location
+
+- story: User asks for contact info
+  steps:
+  - intent: ask_contact_info
+  - action: utter_college_contact
+
+- story: User asks for courses
+  steps:
+  - intent: ask_courses_offered
+  - action: utter_courses_offered
+
+- story: User asks about the principal
+  steps:
+  - intent: ask_principal_info
+  - action: utter_principal_info

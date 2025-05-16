@@ -3,7 +3,7 @@ version: "3.1"
 rules:
 - rule: Ask about all college events
   steps:
-  - intent: ask_college_events
+  - intent: ask_all_college_events
   - action: action_list_college_events  # Ensure this action is defined in your custom actions
   - action: utter_college_events  # This should be a response action defined in your domain
 
