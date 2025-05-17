@@ -3,5 +3,5 @@ rules:
 - rule: Respond to college events inquiry
   steps:
   - intent: ask_college_events
-  - action: utter_ask_college_events
+  - action: utter_college_events
 

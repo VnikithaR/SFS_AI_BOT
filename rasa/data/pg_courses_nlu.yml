@@ -3,13 +3,13 @@ version: "3.1"
 nlu:
 - intent: ask_pg_courses
   examples: |
-    - What postgraduate courses do you offer?
+    - What postgraduate courses do you offer
     - Tell me about the available PG courses.
     - List the postgraduate programs.
-    - What are the PG courses offered?
+    - What are the PG courses offered
     - Show me the postgraduate courses.
-    - What master's programs are available?
-    - Can you list the PG degrees?
+    - What master's programs are available
+    - Can you list the PG degrees
 
 - intent: ask_pg_course_details
   examples: |

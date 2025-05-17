@@ -38,9 +38,9 @@ intents:
   - ask_college_location
   - ask_courses_offered
   - ask_principal_info
-  - ask_festivals_in_month       # <-- newly added
-  - ask_college_contact 
-  - ask_contact_info         # <-- newly added
+  - ask_festivals_in_month
+  - ask_college_contact
+  - ask_contact_info
 
 entities:
   - course_name
@@ -53,9 +53,9 @@ entities:
 slots:
   user_name:
     type: text
-    influence_conversation: false
     mappings:
-      - type: from_text
+      - type: from_entity
+        entity: user_name
 
   course_name:
     type: text
@@ -211,7 +211,7 @@ responses:
         🌐 Website: [https://www.sfscollege.in/contact.php](https://www.sfscollege.in/contact.php)
 
   utter_about_college:
-    - text: "SFS College is a reputed institution offering undergraduate and postgraduate programs in arts, science, and commerce."
+    - text: "St. Francis de Sales College (SFS College), established in 2004 and run by the Missionaries of St. Francis de Sales (MSFS), is a leading institution in Bengaluru, Karnataka. With a focus on excellence, efficiency, and transformation, the college is NAAC-accredited with an 'A' grade, AICTE-approved, and UGC-recognized. It offers undergraduate, postgraduate, and doctoral programs and is permanently affiliated with Bangalore University. In 2024, it was granted Autonomous status, further cementing its commitment to quality education. The college is ISO 9001:2015 certified."
 
   utter_college_location:
     - text: "The college is located in Hebbagodi, Bengaluru, Karnataka."
@@ -221,6 +221,7 @@ responses:
 
   utter_principal_info:
     - text: "The principal of SFS College is Dr. John Smith, a visionary leader and academic."
+
 
 actions:
   - action_list_ug_courses
